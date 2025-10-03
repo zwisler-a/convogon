@@ -1,0 +1,17 @@
+<div>
+  <app-type-selection #type></app-type-selection>
+  @if (personaService.type == 'nsc' || personaService.type == 'sc') {
+    <app-player-info></app-player-info>
+  }
+  @if (personaService.type == 'kid') {
+    <app-kid-info></app-kid-info>
+  }
+
+  @if (personaService.type == 'nsc') {
+    <app-nsc-info></app-nsc-info>
+  }
+
+  @if (personaService.type == 'sc') {
+    <app-sc-info></app-sc-info>
+  }
+</div>
