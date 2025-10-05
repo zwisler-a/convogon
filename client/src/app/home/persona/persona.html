@@ -1,10 +1,10 @@
 <div>
-  @if (!personaService.type) {
-  <app-type-selection #type></app-type-selection>
+  @if (!type) {
+  <app-type-selection (type)="type = $event"></app-type-selection>
   } @else {
 
   <mat-stepper [linear]="true">
-    @if (personaService.type == 'nsc' || personaService.type == 'sc') {
+    @if (type == 'nsc' || type == 'sc') {
     <mat-step [formGroup]="otInfo">
       <app-ot-info [form]="otInfo"></app-ot-info>
     </mat-step>
@@ -12,20 +12,23 @@
     <mat-step [formGroup]="itInfo">
       <app-it-info [form]="itInfo"></app-it-info>
     </mat-step>
-    } @if (personaService.type == 'kid') {
+    } @if (type == 'kid') {
     <mat-step [formGroup]="kidInfo">
       <app-kid-info [form]="kidInfo"></app-kid-info>
     </mat-step>
-    } @if (personaService.type == 'nsc') {
+    } @if (type == 'nsc') {
     <mat-step [formGroup]="npcInfo">
       <app-nsc-info [form]="npcInfo"></app-nsc-info>
     </mat-step>
-    } @if (personaService.type == 'sc') {
+    } @if (type == 'sc') {
     <mat-step [formGroup]="playerCharInfo">
       <app-sc-info [form]="playerCharInfo"></app-sc-info>
     </mat-step>
     }
-    <mat-step> Review </mat-step>
+    <mat-step>
+      <p></p>
+      <button mat-raised-button (click)="createPersona()">Create</button>
+    </mat-step>
   </mat-stepper>
 
   }

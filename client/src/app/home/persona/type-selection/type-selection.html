@@ -5,19 +5,19 @@
   <div>Bitte jede Person einzeln anmelden, auch Kleinkinder. Danke!</div>
 
   <div class="types">
-    <div class="type" (click)="personaService.type = 'sc'">
+    <div class="type" (click)="type.emit('sc')">
       <div>SC</div>
       <div>Spieler:in-Charakter</div>
     </div>
 
-    <div class="type" (click)="personaService.type = 'nsc'">
+    <div class="type" (click)="type.emit('nsc')">
       <div>NSC</div>
       <div>Nicht-Spieler:in-Charakter</div>
     </div>
 
-    <div class="type" (click)="personaService.type = 'kid'">
-      <div>Kind</div>
-      <div>Nicht-Spieler:in</div>
-    </div>
+
+  <div class="type" (click)="type.emit('kid')">      <div>Kind</div>
+    <div>Nicht-Spieler:in</div>
+  </div>
   </div>
 </mat-card>

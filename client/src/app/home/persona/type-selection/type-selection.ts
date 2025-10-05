@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {
   MatCard,
   MatCardActions,
@@ -17,15 +17,14 @@ import {PersonaService} from '../persona.service';
     MatCard,
     MatCardHeader,
     MatCardTitle,
-    MatCardContent,
-    MatRadioGroup,
-    MatRadioButton,
     FormsModule
   ],
   templateUrl: './type-selection.html',
   styleUrl: './type-selection.css'
 })
 export class TypeSelection {
-  constructor(public personaService: PersonaService) {
+  @Output() type = new EventEmitter<string>();
+
+  constructor() {
   }
 }

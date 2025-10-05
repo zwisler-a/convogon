@@ -1,13 +1,23 @@
 import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class PersonaService {
 
-  public type: 'nsc' | 'sc' | 'kid' | undefined;
-
-  start() {
-    this.type = undefined
+  constructor(private http: HttpClient) {
   }
 
 
+  createPersona(persona: any) {
+    return this.http.post('/api/persona', persona);
+  }
+
+  getPersonas() {
+    return this.http.get<any[]>('/api/persona').pipe(map(response => response));
+  }
+
+  getPersona(id: string) {
+    return this.getPersonas().pipe(map(response => response.find(persona => persona.id === id)));
+  }
 }

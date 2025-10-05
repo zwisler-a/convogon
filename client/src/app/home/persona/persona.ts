@@ -31,6 +31,8 @@ import { OtInfo } from './ot-info/ot-info';
   styleUrl: './persona.css',
 })
 export class Persona {
+  type?: string = undefined;
+
   itInfo: FormGroup;
   otInfo: FormGroup;
   kidInfo: FormGroup;
@@ -71,5 +73,16 @@ export class Persona {
     this.npcInfo = this.fb.group({
       interests: [''],
     });
+  }
+
+  createPersona() {
+    this.personaService.createPersona({
+      type: this.type,
+      ...(this.type == 'nsc' || this.type == 'sc' ? this.itInfo.value : {}),
+      ...(this.type == 'nsc' || this.type == 'sc' ? this.otInfo.value : {}),
+      ...(this.type == 'nsc' ? this.npcInfo.value : {}),
+      ...(this.type == 'sc' ? this.playerCharInfo.value : {}),
+      ...(this.type == 'kid' ? this.kidInfo.value : {}),
+    }).subscribe()
   }
 }
