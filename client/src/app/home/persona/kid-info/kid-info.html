@@ -2,38 +2,34 @@
 
   <mat-card-header>
     <mat-card-title>
-      Personal Info
+      Kind (nicht-Spieler:in) anmelden
     </mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
     <form [formGroup]="form" class="player-info-form">
       <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
+        <mat-label>Vorname</mat-label>
         <input matInput formControlName="firstName">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Last Name</mat-label>
+        <mat-label>Nachname</mat-label>
         <input matInput formControlName="lastName">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Age</mat-label>
+        <mat-label>Alter</mat-label>
         <input matInput formControlName="age" type="tel">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Arrival</mat-label>
-        <input matInput formControlName="arrival" type="date">
+        <mat-label>Sonstiges</mat-label>
+        <input matInput formControlName="other">
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Departure</mat-label>
-        <input matInput formControlName="departure" type="date">
-      </mat-form-field>
     </form>
-    <button mat-raised-button matStepperNext color="primary">Save</button>
+    <button mat-raised-button matStepperNext color="primary">Weiter</button>
   </mat-card-content>
 
 </mat-card>

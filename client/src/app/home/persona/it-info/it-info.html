@@ -1,44 +1,31 @@
 <mat-card>
-
   <mat-card-header>
-    <mat-card-title>
-      IT Info
-    </mat-card-title>
+    <mat-card-title> IT-Informationen </mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
     <form [formGroup]="form" class="player-info-form">
-
       <mat-form-field appearance="fill">
-        <mat-label>Character Name</mat-label>
-        <input matInput formControlName="characterName">
+        <mat-label>Charaktername</mat-label>
+        <input matInput formControlName="characterName" />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Character Class</mat-label>
-        <input matInput formControlName="characterClass">
+        <mat-label>Klasse</mat-label>
+        <input matInput formControlName="characterClass" />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Character Class Details</mat-label>
-        <textarea matInput formControlName="characterClassDetails"></textarea>
+        <mat-label>Fertigkeiten</mat-label>
+        <input
+          matInput
+          formControlName="skills"
+          placeholder="Comma separated"
+        />
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Skills</mat-label>
-        <input matInput formControlName="skills" placeholder="Comma separated">
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Group Name</mat-label>
-        <input matInput formControlName="groupName">
-      </mat-form-field>
-
-      <mat-slide-toggle formControlName="fighter">Fighter</mat-slide-toggle>
-
-      <mat-slide-toggle formControlName="travellingWithGroup">Travelling with Group</mat-slide-toggle>
+      <mat-checkbox formControlName="fighter">Kämpfer</mat-checkbox>
     </form>
     <button mat-raised-button matStepperNext color="primary">Save</button>
   </mat-card-content>
-
 </mat-card>

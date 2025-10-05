@@ -32,7 +32,6 @@ export interface PlayerCharacter extends OutOfCharacterInfo, InCharacterInfo {
 export interface NonPlayerCharacter extends OutOfCharacterInfo, InCharacterInfo {
   typ: 'nsc';
   interests: string[];
-  interestsDetails?: string;
 }
 
 export interface Child {

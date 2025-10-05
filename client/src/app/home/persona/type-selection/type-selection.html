@@ -1,24 +1,23 @@
-
-
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Bitte auswählen</mat-card-title>
+    <mat-card-title>Neue Person anmelden</mat-card-title>
   </mat-card-header>
+  <div>Bitte jede Person einzeln anmelden, auch Kleinkinder. Danke!</div>
 
   <div class="types">
-  <div class="type" (click)="personaService.type = 'nsc'">
-    NSC
+    <div class="type" (click)="personaService.type = 'sc'">
+      <div>SC</div>
+      <div>Spieler:in-Charakter</div>
+    </div>
+
+    <div class="type" (click)="personaService.type = 'nsc'">
+      <div>NSC</div>
+      <div>Nicht-Spieler:in-Charakter</div>
+    </div>
+
+    <div class="type" (click)="personaService.type = 'kid'">
+      <div>Kind</div>
+      <div>Nicht-Spieler:in</div>
+    </div>
   </div>
-
-
-  <div class="type" (click)="personaService.type = 'sc'">
-    SC
-  </div>
-
-
-  <div class="type" (click)="personaService.type = 'kid'">
-    Kid
-  </div>
-  </div>
-
 </mat-card>

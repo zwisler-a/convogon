@@ -2,7 +2,7 @@
 
   <mat-card-header>
     <mat-card-title>
-      SC Info
+      Spieler spezifische Informationen
     </mat-card-title>
   </mat-card-header>
 
@@ -10,27 +10,27 @@
     <form [formGroup]="form" class="player-info-form">
 
       <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
+        <mat-label>Folgendes sollte die SL über meinen Charakter wissen</mat-label>
         <input matInput formControlName="importantInfoForGM">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
+        <mat-label>Was ist für deinen Charakter das Wichtigste</mat-label>
         <input matInput formControlName="mostImportantForCharacter">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
+        <mat-label>Hast du wichtige Informationen über die Charaktere DEINER FREUNDE, damit die Spielleitung einen möglichst individuellen Plot zusammenstellen kann? :)</mat-label>
         <input matInput formControlName="infoAboutFriends">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
+        <mat-label>Story/Lore (kurze Zusammenfassung!!)</mat-label>
         <input matInput formControlName="storyLore">
       </mat-form-field>
 
     </form>
-    <button mat-raised-button matStepperNext color="primary">Save</button>
+    <button mat-raised-button matStepperNext color="primary">Weiter</button>
   </mat-card-content>
 
 </mat-card>

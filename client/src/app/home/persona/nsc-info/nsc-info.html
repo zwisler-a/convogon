@@ -2,7 +2,7 @@
 
   <mat-card-header>
     <mat-card-title>
-      SC Info
+      NSC spezifische Informationen
     </mat-card-title>
   </mat-card-header>
 
@@ -10,17 +10,12 @@
     <form [formGroup]="form" class="player-info-form">
 
       <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
+        <mat-label>Worauf hast du Lust?</mat-label>
         <input matInput formControlName="interests">
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
-        <input matInput formControlName="interestsDetails">
-      </mat-form-field>
-
     </form>
-    <button mat-raised-button matStepperNext color="primary">Save</button>
+    <button mat-raised-button matStepperNext color="primary">Weiter</button>
   </mat-card-content>
 
 </mat-card>

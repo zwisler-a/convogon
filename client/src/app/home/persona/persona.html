@@ -1,42 +1,32 @@
 <div>
   @if (!personaService.type) {
-    <app-type-selection #type></app-type-selection>
+  <app-type-selection #type></app-type-selection>
   } @else {
 
+  <mat-stepper [linear]="true">
+    @if (personaService.type == 'nsc' || personaService.type == 'sc') {
+    <mat-step [formGroup]="otInfo">
+      <app-ot-info [form]="otInfo"></app-ot-info>
+    </mat-step>
 
-    <mat-stepper [linear]="true">
-
-      @if (personaService.type == 'nsc' || personaService.type == 'sc') {
-        <mat-step [formGroup]="itInfo">
-          <app-it-info [form]="itInfo"></app-it-info>
-        </mat-step>
-
-        <mat-step [formGroup]="otInfo">
-          <app-ot-info [form]="otInfo"></app-ot-info>
-        </mat-step>
-      }
-
-      @if (personaService.type == 'kid') {
-        <mat-step [formGroup]="kidInfo">
-          <app-kid-info [form]="kidInfo"></app-kid-info>
-        </mat-step>
-      }
-
-      @if (personaService.type == 'nsc') {
-        <mat-step [formGroup]="npcInfo">
-          <app-nsc-info [form]="npcInfo"></app-nsc-info>
-        </mat-step>
-      }
-
-      @if (personaService.type == 'sc') {
-        <mat-step [formGroup]="playerCharInfo">
-          <app-sc-info [form]="playerCharInfo"></app-sc-info>
-        </mat-step>
-      }
-      <mat-step>
-        Review
-      </mat-step>
-    </mat-stepper>
+    <mat-step [formGroup]="itInfo">
+      <app-it-info [form]="itInfo"></app-it-info>
+    </mat-step>
+    } @if (personaService.type == 'kid') {
+    <mat-step [formGroup]="kidInfo">
+      <app-kid-info [form]="kidInfo"></app-kid-info>
+    </mat-step>
+    } @if (personaService.type == 'nsc') {
+    <mat-step [formGroup]="npcInfo">
+      <app-nsc-info [form]="npcInfo"></app-nsc-info>
+    </mat-step>
+    } @if (personaService.type == 'sc') {
+    <mat-step [formGroup]="playerCharInfo">
+      <app-sc-info [form]="playerCharInfo"></app-sc-info>
+    </mat-step>
+    }
+    <mat-step> Review </mat-step>
+  </mat-stepper>
 
   }
 </div>

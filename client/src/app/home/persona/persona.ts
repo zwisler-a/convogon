@@ -1,13 +1,18 @@
-import {Component} from '@angular/core';
-import {TypeSelection} from './type-selection/type-selection';
-import {ItInfo} from './it-info/it-info';
-import {KidInfo} from './kid-info/kid-info';
-import {NscInfo} from './nsc-info/nsc-info';
-import {ScInfo} from './sc-info/sc-info';
-import {PersonaService} from './persona.service';
-import {MatStep, MatStepper} from '@angular/material/stepper';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {OtInfo} from './ot-info/ot-info';
+import { Component } from '@angular/core';
+import { TypeSelection } from './type-selection/type-selection';
+import { ItInfo } from './it-info/it-info';
+import { KidInfo } from './kid-info/kid-info';
+import { NscInfo } from './nsc-info/nsc-info';
+import { ScInfo } from './sc-info/sc-info';
+import { PersonaService } from './persona.service';
+import { MatStep, MatStepper } from '@angular/material/stepper';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { OtInfo } from './ot-info/ot-info';
 
 @Component({
   selector: 'app-persona',
@@ -20,10 +25,10 @@ import {OtInfo} from './ot-info/ot-info';
     MatStepper,
     MatStep,
     ReactiveFormsModule,
-    OtInfo
+    OtInfo,
   ],
   templateUrl: './persona.html',
-  styleUrl: './persona.css'
+  styleUrl: './persona.css',
 })
 export class Persona {
   itInfo: FormGroup;
@@ -35,31 +40,27 @@ export class Persona {
   constructor(public personaService: PersonaService, private fb: FormBuilder) {
     this.otInfo = this.fb.group({
       firstName: ['', Validators.required],
-      lastName: [''],
-      address: [''],
-      mobileNumber: [''],
-      diet: [''],
-      dietDetails: [''],
-      accommodation: [''],
-      roommate: [''],
-      arrival: [''],
-      departure: [''],
+      lastName: ['', Validators.required],
+      address: ['', Validators.required],
+      mobileNumber: ['', Validators.required],
+      diet: ['', Validators.required],
+      accommodation: ['', Validators.required],
+      travellingWithGroup: [false, Validators.required],
+      groupName: [''],
+      arrival: ['', Validators.required],
+      departure: ['', Validators.required],
     });
     this.itInfo = this.fb.group({
       characterName: [''],
       characterClass: [''],
-      characterClassDetails: [''],
       skills: [''],
       fighter: [false],
-      travellingWithGroup: [false],
-      groupName: ['']
-    })
+    });
     this.kidInfo = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       age: ['', Validators.required],
-      arrival: ['', Validators.required],
-      departure: ['', Validators.required],
+      other: [''],
     });
     this.playerCharInfo = this.fb.group({
       importantInfoForGM: [''],
@@ -69,7 +70,6 @@ export class Persona {
     });
     this.npcInfo = this.fb.group({
       interests: [''],
-      interestsDetails: [''],
     });
   }
 }
