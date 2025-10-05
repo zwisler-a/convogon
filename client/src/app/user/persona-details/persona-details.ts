@@ -1,12 +1,15 @@
 import {Component} from '@angular/core';
-import {PersonaService} from '../persona/persona.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {PersonaService} from '../../service/persona.service';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {JsonPipe} from '@angular/common';
+import {MatButton} from '@angular/material/button';
 
 @Component({
-  selector: 'app-persona-details',
+  selector: 'app-add-persona-details',
   imports: [
-    JsonPipe
+    JsonPipe,
+    MatButton,
+    RouterLink
   ],
   templateUrl: './persona-details.html',
   styleUrl: './persona-details.css'

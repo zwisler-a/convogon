@@ -9,7 +9,7 @@ import {
 } from '@angular/material/card';
 import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
 import {FormsModule} from '@angular/forms';
-import {PersonaService} from '../persona.service';
+import {PersonaService} from '../../../service/persona.service';
 
 @Component({
   selector: 'app-type-selection',
@@ -17,7 +17,8 @@ import {PersonaService} from '../persona.service';
     MatCard,
     MatCardHeader,
     MatCardTitle,
-    FormsModule
+    FormsModule,
+    MatCardContent
   ],
   templateUrl: './type-selection.html',
   styleUrl: './type-selection.css'

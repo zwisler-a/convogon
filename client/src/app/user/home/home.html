@@ -1,7 +1,9 @@
 <mat-list>
   @for (persona of (personas$ | async); track persona.id) {
     <mat-list-item
-      [routerLink]="['/persona/' + persona.id]">{{ persona.type }} {{ persona.firstName }} {{ persona.lastName }}
+      [routerLink]="['/persona/' + persona.id]">
+      {{ persona.firstName }} {{ persona.lastName }}
+      <mat-icon matListItemIcon>account_circle</mat-icon>
     </mat-list-item>
   }
 </mat-list>

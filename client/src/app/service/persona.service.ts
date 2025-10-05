@@ -14,10 +14,15 @@ export class PersonaService {
   }
 
   getPersonas() {
+    return this.http.get<any[]>('/api/persona/own').pipe(map(response => response));
+  }
+
+
+  getAllPersonas() {
     return this.http.get<any[]>('/api/persona').pipe(map(response => response));
   }
 
   getPersona(id: string) {
-    return this.getPersonas().pipe(map(response => response.find(persona => persona.id === id)));
+    return this.http.get<any[]>('/api/persona/' + id).pipe(map(response => response));
   }
 }

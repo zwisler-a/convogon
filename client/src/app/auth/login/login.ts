@@ -7,7 +7,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup} from '@angular/forms';
 import {NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
-import {AuthService} from '../service/auth.service';
+import {AuthService} from '../auth.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({

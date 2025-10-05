@@ -11,6 +11,12 @@ export class AuthService {
     this.token = localStorage.getItem('token');
   }
 
+  getUserInfo() {
+    if (!this.token) return {}
+    const body = this.token.split('.')[1]
+    return JSON.parse(atob(body));
+  }
+
   login(email: string) {
     return this.http.post('/api/auth/login', {
       email: email,
@@ -46,6 +52,13 @@ export class AuthService {
     this.token = null;
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
+  }
+
+  isAdmin() {
+    if (!this.token) {
+      return false;
+    }
+    return this.getUserInfo().role === 'admin';
   }
 
   getToken() {

@@ -1,1 +1,9 @@
-<p>admin works!</p>
+<mat-list>
+  @for (persona of (personas$ | async); track persona.id) {
+    <mat-list-item
+      [routerLink]="['/persona/' + persona.id]">
+      {{ persona.firstName }} {{ persona.lastName }}
+      <mat-icon matListItemIcon>add</mat-icon>
+    </mat-list-item>
+  }
+</mat-list>

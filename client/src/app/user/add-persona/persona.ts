@@ -4,7 +4,7 @@ import { ItInfo } from './it-info/it-info';
 import { KidInfo } from './kid-info/kid-info';
 import { NscInfo } from './nsc-info/nsc-info';
 import { ScInfo } from './sc-info/sc-info';
-import { PersonaService } from './persona.service';
+import { PersonaService } from '../../service/persona.service';
 import { MatStep, MatStepper } from '@angular/material/stepper';
 import {
   FormBuilder,
@@ -13,9 +13,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { OtInfo } from './ot-info/ot-info';
+import {MatButton} from '@angular/material/button';
+import {JsonPipe} from '@angular/common';
 
 @Component({
-  selector: 'app-persona',
+  selector: 'app-add-persona',
   imports: [
     TypeSelection,
     ItInfo,
@@ -26,6 +28,8 @@ import { OtInfo } from './ot-info/ot-info';
     MatStep,
     ReactiveFormsModule,
     OtInfo,
+    MatButton,
+    JsonPipe,
   ],
   templateUrl: './persona.html',
   styleUrl: './persona.css',
@@ -75,14 +79,18 @@ export class Persona {
     });
   }
 
-  createPersona() {
-    this.personaService.createPersona({
+  getPersonFromForm() {
+    return {
       type: this.type,
       ...(this.type == 'nsc' || this.type == 'sc' ? this.itInfo.value : {}),
       ...(this.type == 'nsc' || this.type == 'sc' ? this.otInfo.value : {}),
       ...(this.type == 'nsc' ? this.npcInfo.value : {}),
       ...(this.type == 'sc' ? this.playerCharInfo.value : {}),
       ...(this.type == 'kid' ? this.kidInfo.value : {}),
-    }).subscribe()
+    };
+  }
+
+  createPersona() {
+    this.personaService.createPersona(this.getPersonFromForm()).subscribe()
   }
 }

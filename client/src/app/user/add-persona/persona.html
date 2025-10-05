@@ -26,7 +26,7 @@
     </mat-step>
     }
     <mat-step>
-      <p></p>
+      <pre>{{getPersonFromForm() | json}}</pre>
       <button mat-raised-button (click)="createPersona()">Create</button>
     </mat-step>
   </mat-stepper>

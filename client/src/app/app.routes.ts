@@ -1,19 +1,21 @@
 import {Routes} from '@angular/router';
 import {Login} from './auth/login/login';
 import {AuthGuard} from './auth/auth.guard';
-import {HomeShell} from './home/home-shell/home-shell';
-import {Overview} from './home/overview/overview';
-import {Persona} from './home/persona/persona';
-import {PersonaDetails} from './home/persona-details/persona-details';
+import {Shell} from './shell/shell';
+import {Home} from './user/home/home';
+import {Persona} from './user/add-persona/persona';
+import {PersonaDetails} from './user/persona-details/persona-details';
+import {Admin} from './admin/admin';
 
 export const routes: Routes = [
   {path: 'login', component: Login},
   {
-    path: '', component: HomeShell, children: [
-      {path: 'overview', component: Overview},
+    path: '', component: Shell, children: [
+      {path: 'home', component: Home},
       {path: 'add', component: Persona},
       {path: 'persona/:id', component: PersonaDetails},
-      {path: '**', redirectTo: 'overview'},
+      {path: 'admin', component: Admin},
+      {path: '**', redirectTo: 'home'},
     ], canActivate: [AuthGuard],
   }
 ];

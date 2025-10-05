@@ -1,29 +1,30 @@
 import { Component } from '@angular/core';
 import {MatButton} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
-import {PersonaService} from '../persona/persona.service';
+import {PersonaService} from '../../service/persona.service';
 import {MatList, MatListItem} from '@angular/material/list';
 import {AsyncPipe} from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
-  selector: 'app-overview',
+  selector: 'app-home',
   imports: [
     MatButton,
     RouterLink,
     MatList,
     AsyncPipe,
-    MatListItem
+    MatListItem,
+    MatIconModule
   ],
-  templateUrl: './overview.html',
-  styleUrl: './overview.css'
+  templateUrl: './home.html',
+  styleUrl: './home.css'
 })
-export class Overview {
+export class Home {
 
   personas$;
 
   constructor(private personaService: PersonaService) {
     this.personas$ = this.personaService.getPersonas();
-    console.log(this.personas$);
   }
 
 }
