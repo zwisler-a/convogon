@@ -7,12 +7,12 @@ export class AuthController {
     }
 
     @Post('login')
-    async login(@Body('email') email: string, @Body('password') password: string) {
-        return this.userService.signIn(email, password);
+    async login(@Body('email') email: string) {
+        return this.userService.signIn(email);
     }
 
     @Post('register')
-    async register(@Body('email') email: string, @Body('password') password: string) {
-        return this.userService.register(email, password);
+    async register(@Body('email') email: string) {
+        return this.userService.register(email);
     }
 }

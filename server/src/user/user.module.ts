@@ -5,6 +5,7 @@ import {UserService} from "./user.service";
 import {UserEntity} from "./user.entity";
 import {JwtModule} from "@nestjs/jwt";
 import {jwtSecret} from "../constants";
+import {MailService} from "./mail.service";
 
 
 @Module({
@@ -19,7 +20,7 @@ import {jwtSecret} from "../constants";
         JwtModule.register({secret: jwtSecret})
     ],
     controllers: [AuthController],
-    providers: [UserService],
+    providers: [UserService, MailService],
 })
 export class UserModule {
 }

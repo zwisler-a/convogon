@@ -8,9 +8,6 @@ export class UserEntity {
     @Column({unique: true})
     email: string;
 
-    @Column()
-    password: string;
-
     @Column({default: 'user'})
     role: string;
 
