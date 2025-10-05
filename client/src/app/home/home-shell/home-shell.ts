@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {AuthService} from '../../auth/service/auth.service';
 import {MatButton} from '@angular/material/button';
 
@@ -7,7 +7,8 @@ import {MatButton} from '@angular/material/button';
   selector: 'app-home-shell',
   imports: [
     RouterOutlet,
-    MatButton
+    MatButton,
+    RouterLink
   ],
   templateUrl: './home-shell.html',
   styleUrl: './home-shell.css'

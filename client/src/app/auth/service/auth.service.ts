@@ -11,30 +11,35 @@ export class AuthService {
     this.token = localStorage.getItem('token');
   }
 
-  login(email: string, password: string) {
+  login(email: string) {
     return this.http.post('/api/auth/login', {
       email: email,
-      password: password,
-    }).subscribe((res: any) => {
-      this.token = res.token;
-      localStorage.setItem("token", res.token);
-      this.router.navigate(['/'])
-    })
+    });
   }
 
-  register(email: string, password: string) {
-    this.http.post('/api/auth/register', {
+  register(email: string) {
+    return this.http.post('/api/auth/register', {
       email: email,
-      password: password,
-    }).subscribe((res: any) => {
-      if (res.id) {
-        this.router.navigate(['/login'])
-      }
-    })
+    });
   }
 
   isLoggedIn() {
+    if (!this.token) {
+      this.token = this.getQueryParams()['token'];
+      if (this.token) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+        localStorage.setItem('token', this.token);
+        return true;
+      }
+    }
     return !!this.token;
+  }
+
+  getQueryParams(): Record<string, string> {
+    const url = new URL(window.location.href);
+    const params: Record<string, string> = {};
+    url.searchParams.forEach((value, key) => params[key] = value);
+    return params;
   }
 
   logout() {

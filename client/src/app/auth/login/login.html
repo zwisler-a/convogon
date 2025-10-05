@@ -1,4 +1,4 @@
-<div class="login-container">
+@if (!isMailSend) {
   <mat-card>
     <mat-card-header>
       <mat-card-title>Login</mat-card-title>
@@ -16,31 +16,24 @@
           }
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-label>Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="current-password"
-                 required>
-          <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
-                  [attr.aria-label]="'Toggle password visibility'">
-            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
-          @if (form.get('password')?.hasError('required')) {
-            <mat-error>Password is required</mat-error>
-          }
-          @if (form.get('password')?.hasError('minlength')) {
-            <mat-error>At least 8 characters</mat-error>
-          }
-        </mat-form-field>
-
         <div class="actions">
           <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
             {{ 'Login' }}
           </button>
-          <button mat-raised-button color="primary" [routerLink]="['/register']">
+          <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="register($event)">
             {{ 'register' }}
           </button>
         </div>
       </form>
     </mat-card-content>
   </mat-card>
-</div>
+} @else {
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Check your Mails</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      Check your Mails
+    </mat-card-content>
+  </mat-card>
+}

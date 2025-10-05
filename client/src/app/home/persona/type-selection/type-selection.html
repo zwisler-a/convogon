@@ -5,11 +5,20 @@
     <mat-card-title>Bitte auswählen</mat-card-title>
   </mat-card-header>
 
-  <mat-card-content>
-    <mat-radio-group [(ngModel)]="personaService.type" aria-label="Persona type selection">
-      <mat-radio-button value="sc">Spieler</mat-radio-button>
-      <mat-radio-button value="nsc">Nicht Spielbarer Character</mat-radio-button>
-      <mat-radio-button value="kid">Kind</mat-radio-button>
-    </mat-radio-group>
-  </mat-card-content>
+  <div class="types">
+  <div class="type" (click)="personaService.type = 'nsc'">
+    NSC
+  </div>
+
+
+  <div class="type" (click)="personaService.type = 'sc'">
+    SC
+  </div>
+
+
+  <div class="type" (click)="personaService.type = 'kid'">
+    Kid
+  </div>
+  </div>
+
 </mat-card>

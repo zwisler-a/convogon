@@ -1,1 +1,36 @@
-<p>sc-info works!</p>
+<mat-card>
+
+  <mat-card-header>
+    <mat-card-title>
+      SC Info
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form" class="player-info-form">
+
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="importantInfoForGM">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="mostImportantForCharacter">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="infoAboutFriends">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="storyLore">
+      </mat-form-field>
+
+    </form>
+    <button mat-raised-button matStepperNext color="primary">Save</button>
+  </mat-card-content>
+
+</mat-card>

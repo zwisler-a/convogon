@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup} fr
 import {NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {AuthService} from '../service/auth.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -26,18 +27,26 @@ import {AuthService} from '../service/auth.service';
 })
 export class Login {
   form: FormGroup;
-  hide = true;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  isMailSend = false;
+
+  constructor(private fb: FormBuilder, private authService: AuthService, private snackBar: MatSnackBar) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
   onSubmit() {
     if (this.form.invalid) return;
-    this.authService.login(this.form.get('email')?.value, this.form.get('password')?.value);
-    console.log('Login payload', this.form.value);
+    this.authService.login(this.form.get('email')?.value).subscribe((res: any) => {
+      this.isMailSend = true;
+    })
+  }
+
+  register(ev: any) {
+    ev.preventDefault();
+    this.authService.register(this.form.get('email')?.value).subscribe((res: any) => {
+      this.snackBar.open("Account was registered", 'OK', {})
+    })
   }
 }

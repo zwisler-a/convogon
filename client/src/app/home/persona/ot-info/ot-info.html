@@ -2,12 +2,13 @@
 
   <mat-card-header>
     <mat-card-title>
-      Personal Info
+      OT Info
     </mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
     <form [formGroup]="form" class="player-info-form">
+
       <mat-form-field appearance="fill">
         <mat-label>First Name</mat-label>
         <input matInput formControlName="firstName">
@@ -19,8 +20,33 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Age</mat-label>
-        <input matInput formControlName="age" type="tel">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput formControlName="mobileNumber" type="tel">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Diet</mat-label>
+        <input matInput formControlName="diet">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Diet Details</mat-label>
+        <textarea matInput formControlName="dietDetails"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Accommodation</mat-label>
+        <input matInput formControlName="accommodation">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Roommate</mat-label>
+        <input matInput formControlName="roommate">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
