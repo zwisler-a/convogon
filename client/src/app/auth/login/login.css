@@ -9,3 +9,12 @@ form {
   display: flex;
   flex-direction: column;
 }
+
+.mat-card {
+  width: 500px;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
