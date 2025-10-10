@@ -20,11 +20,11 @@ export class UserService {
         const user = await this.userRepo.findOneOrFail({where: {email: mail}});
         const payload: JwtPayloadDto = {
             user_id: user.id,
-            role: user.role
+            role: user.role,
+            email: user.email
         };
         const token = this.jwtService.sign(payload);
         this.mailService.sendMail(user.email, `Login`, `Open: http://localhost:4200/home?token=${token}`);
-
     }
 
 

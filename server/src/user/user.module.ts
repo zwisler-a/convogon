@@ -6,21 +6,18 @@ import {UserEntity} from "./user.entity";
 import {JwtModule} from "@nestjs/jwt";
 import {jwtSecret} from "../constants";
 import {MailService} from "./mail.service";
+import {AuthGuard} from "./auth.guard";
+import {AdminAuthGuard} from "./admin-auth.guard";
 
 
 @Module({
     imports: [
-        TypeOrmModule.forRoot({
-            type: 'sqlite',
-            database: 'db.sqlite',
-            autoLoadEntities: true,
-            synchronize: true,
-        }),
         TypeOrmModule.forFeature([UserEntity]),
         JwtModule.register({secret: jwtSecret})
     ],
     controllers: [AuthController],
-    providers: [UserService, MailService],
+    providers: [UserService, MailService, AuthGuard, AdminAuthGuard],
+    exports: [AuthGuard, UserService, AdminAuthGuard]
 })
 export class UserModule {
 }
