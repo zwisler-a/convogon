@@ -25,4 +25,8 @@ export class PersonaService {
   getPersona(id: string) {
     return this.http.get<any[]>('/api/persona/' + id).pipe(map(response => response));
   }
+
+  delete(id: string) {
+    return this.http.delete('/api/persona/' + id).pipe(map(response => response));
+  }
 }

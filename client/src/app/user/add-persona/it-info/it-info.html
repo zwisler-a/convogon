@@ -29,8 +29,10 @@
         </mat-chip-grid>
         <input
           [matChipInputFor]="reactiveChipGrid"
+          [matChipInputSeparatorKeyCodes]="[COMMA, ENTER, SEMICOLON]"
           (matChipInputTokenEnd)="addReactiveKeyword($event)"
         />
+        <mat-hint>Fähigkeit mit Komma seperieren</mat-hint>
       </mat-form-field>
 
 

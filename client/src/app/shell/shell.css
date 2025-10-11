@@ -6,15 +6,38 @@ nav {
   padding: 1rem 2rem;
 }
 
-main {
+
+.status-banner {
+  width: 100%;
   padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.status-banner .action {
+}
+.status-banner.warning {
+  background: #600101;
+  font-weight: bolder;
+  font-size: 1.1rem;
+}
+.status-banner.success {
+  background: #046001;
+  font-weight: bolder;
+  font-size: 1.1rem;
+}
+
+main {
+  padding: 1rem ;
   box-sizing: border-box;
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
   align-items: stretch;
   margin: auto;
-  max-width: 640px;
+  max-width: 1280px;
   width: 100%;
 }
 

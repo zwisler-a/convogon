@@ -7,7 +7,7 @@ import {
     UseGuards,
     Param,
     NotFoundException,
-    ForbiddenException
+    ForbiddenException, Delete
 } from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Persona} from "./entity/persona.entity";
@@ -25,6 +25,13 @@ export class PersonaController {
     public async create(@Body() persona: Persona, @Req() req: any): Promise<Persona> {
         const userId = req.user.id;
         return this.personaRepository.save(this.personaRepository.create({...persona, user: {id: userId}}));
+    }
+
+    @UseGuards(AuthGuard)
+    @Delete(':id')
+    public async delete(@Param('id') id: string, @Req() req: any){
+        const userId = req.user.id;
+        await this.personaRepository.delete({id: id, user: {id: userId}});
     }
 
     @UseGuards(AuthGuard)

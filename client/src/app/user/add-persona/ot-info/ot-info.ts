@@ -12,6 +12,7 @@ import {
   MatDatepickerModule,
   MatDatepickerToggle
 } from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: 'app-ot-info',
@@ -28,7 +29,7 @@ import {
     MatStepperNext,
     MatDatepickerModule,
     MatCardActions,
-    MatStepperPrevious
+    MatSelectModule,
   ],
   templateUrl: './ot-info.html',
   styleUrl: './ot-info.css'

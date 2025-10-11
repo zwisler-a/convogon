@@ -2,17 +2,29 @@
   <img src="/convogon.png" class="logo"/>
   <span class="title" [routerLink]="['/']">ConZentration</span>
   <span class="spacer"></span>
-  <button mat-button [matMenuTriggerFor]="menu">
-    <span>{{ mail }}</span>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>account_circle</mat-icon>
   </button>
 </nav>
 <mat-menu #menu="matMenu">
+  <button mat-menu-item><span>{{ mail }}</span></button>
+  <mat-divider></mat-divider>
   @if (isAdmin) {
     <button mat-menu-item [routerLink]="['/admin']">Admin</button>
   }
   <button mat-menu-item (click)="logout()">Logout</button>
 </mat-menu>
+@if (showPaymentMissing) {
+  <div class="status-banner warning">
+    Zahlung ausstehend
+    <button mat-stroked-button class="action">Zahlen</button>
+  </div>
+}
+@if (showPaymentReceived) {
+  <div class="status-banner success">
+    Zahlung eingegangen
+  </div>
+}
 
 <main>
   <router-outlet></router-outlet>

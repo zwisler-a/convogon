@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
 import {PersonaService} from '../../service/persona.service';
@@ -13,6 +13,7 @@ import {
   MatCardSubtitle,
   MatCardTitle
 } from '@angular/material/card';
+import {ConfirmDialogService} from '../../shell/confirm/confirm.service';
 
 @Component({
   selector: 'app-home',
@@ -38,8 +39,17 @@ export class Home {
 
   personas$;
 
-  constructor(private personaService: PersonaService) {
+  constructor(private personaService: PersonaService, private confirmService: ConfirmDialogService) {
     this.personas$ = this.personaService.getPersonas();
   }
 
+  delete(id: string) {
+    this.confirmService.confirm('').subscribe((confirm) => {
+      if (confirm) {
+        this.personaService.delete(id).subscribe(() => {
+          this.personas$ = this.personaService.getPersonas();
+        });
+      }
+    })
+  }
 }

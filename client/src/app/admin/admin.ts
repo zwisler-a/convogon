@@ -5,6 +5,7 @@ import {MatTableModule} from '@angular/material/table';
 import {AsyncPipe} from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
+import {ROUTES} from '../app.routes';
 
 @Component({
   selector: 'app-admin',
@@ -27,4 +28,5 @@ export class Admin {
     this.personas$ = this.personaService.getAllPersonas();
   }
 
+  protected readonly ROUTES = ROUTES;
 }

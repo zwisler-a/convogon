@@ -8,12 +8,15 @@ import {PersonaDetails} from './user/persona-details/persona-details';
 import {Admin} from './admin/admin';
 import {LoginSend} from './auth/login-send/login-send';
 import {AdminPersonaDetails} from './admin/admin-persona-details/admin-persona-details';
+import {AccountsView} from './admin/accounts-view/accounts-view';
 
 export const ROUTES = {
   LOGIN: 'login',
   LOGIN_SEND: 'login-send',
   HOME: 'home',
   ADMIN_PERSONA_VIEWS: 'admin/persona/:id',
+  ADMIN: 'admin',
+  ADMIN_USERS: 'admin/users',
 }
 
 export const routes: Routes = [
@@ -24,8 +27,9 @@ export const routes: Routes = [
       {path: ROUTES.HOME, component: Home},
       {path: 'add', component: Persona},
       {path: 'persona/:id', component: PersonaDetails},
-      {path: 'admin', component: Admin},
+      {path: ROUTES.ADMIN, component: Admin},
       {path: ROUTES.ADMIN_PERSONA_VIEWS, component: AdminPersonaDetails},
+      {path: ROUTES.ADMIN_USERS, component: AccountsView},
       {path: '**', redirectTo: 'home'},
     ], canActivate: [AuthGuard],
   }

@@ -1,8 +1,10 @@
 <div class="persona-wizard">
+  <button mat-button class="back-button" [routerLink]="'/' + ROUTES.HOME">
+    <mat-icon>arrow_back</mat-icon>
+    Zurück
+  </button>
   <div class="wizard-header">
-    <div class="pixel_icon_wrapper">
-      <div class="pixel_icon"></div>
-    </div>
+    <img src="/fc1916.png" />
     <span class="heading">Person Hinzufügen</span>
   </div>
   @if (!type) {
@@ -11,26 +13,26 @@
 
     <mat-stepper [linear]="true">
       @if (type == 'nsc' || type == 'sc') {
-        <mat-step [formGroup]="otInfo">
+        <mat-step [stepControl]="otInfo">
           <app-ot-info [form]="otInfo"></app-ot-info>
         </mat-step>
 
-        <mat-step [formGroup]="itInfo">
+        <mat-step [stepControl]="itInfo">
           <app-it-info [form]="itInfo"></app-it-info>
         </mat-step>
       }
       @if (type == 'kid') {
-        <mat-step [formGroup]="kidInfo">
+        <mat-step [stepControl]="kidInfo">
           <app-kid-info [form]="kidInfo"></app-kid-info>
         </mat-step>
       }
       @if (type == 'nsc') {
-        <mat-step [formGroup]="npcInfo">
+        <mat-step [stepControl]="npcInfo">
           <app-nsc-info [form]="npcInfo"></app-nsc-info>
         </mat-step>
       }
       @if (type == 'sc') {
-        <mat-step [formGroup]="playerCharInfo">
+        <mat-step [stepControl]="playerCharInfo">
           <app-sc-info [form]="playerCharInfo"></app-sc-info>
         </mat-step>
       }

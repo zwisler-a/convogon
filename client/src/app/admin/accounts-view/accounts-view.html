@@ -1,0 +1,35 @@
+<button mat-button [routerLink]="'/' + ROUTES.ADMIN">
+  <mat-icon>arrow_back</mat-icon>
+  Zurück
+</button>
+<table mat-table [dataSource]="users$" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="mail">
+    <th mat-header-cell *matHeaderCellDef> E-Mail</th>
+    <td mat-cell *matCellDef="let element"> {{ element.email }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="payed">
+    <th mat-header-cell *matHeaderCellDef> Bezahlt</th>
+    <td mat-cell *matCellDef="let element"> {{ element.payed ? 'Ja' : 'Nein' }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="shouldPay">
+    <th mat-header-cell *matHeaderCellDef> Soll Bezahlen</th>
+    <td mat-cell *matCellDef="let element"> {{ element.shouldPay ? 'Ja' : 'Nein' }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-flat-button (click)="shouldPay(element)">Soll Bezahlen</button>
+      <button mat-flat-button (click)="payed(element)">Bezahlt</button>
+      <button mat-flat-button>Anzeigen</button>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

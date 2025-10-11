@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {TypeSelection} from './type-selection/type-selection';
 import {ItInfo} from './it-info/it-info';
 import {KidInfo} from './kid-info/kid-info';
@@ -16,8 +16,10 @@ import {OtInfo} from './ot-info/ot-info';
 import {MatButton} from '@angular/material/button';
 import {JsonPipe} from '@angular/common';
 import {Review} from './review/review';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatIconModule} from '@angular/material/icon';
+import {ROUTES} from '../../app.routes';
 
 @Component({
   selector: 'app-add-persona',
@@ -32,8 +34,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     ReactiveFormsModule,
     OtInfo,
     MatButton,
-    JsonPipe,
     Review,
+    MatIconModule,
+    RouterLink,
   ],
   templateUrl: './persona.html',
   styleUrl: './persona.css',
@@ -54,6 +57,7 @@ export class Persona {
       address: ['', Validators.required],
       mobileNumber: ['', Validators.required],
       diet: ['', Validators.required],
+      dietOther: [''],
       accommodation: ['', Validators.required],
       travellingWithGroup: [false, Validators.required],
       groupName: [''],
@@ -61,8 +65,8 @@ export class Persona {
       departure: ['', Validators.required],
     });
     this.itInfo = this.fb.group({
-      characterName: [''],
-      characterClass: [''],
+      characterName: ['', Validators.required],
+      characterClass: ['', Validators.required],
       skills: [''],
       fighter: [false],
     });
@@ -104,4 +108,54 @@ export class Persona {
       }
     })
   }
+
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardShortcut(event: KeyboardEvent) {
+    if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'f') {
+      this.fillWithFake();
+    }
+  }
+
+
+  fillWithFake() {
+    this.itInfo.setValue({
+      characterName: 'Thorin Oakenshield',
+      characterClass: 'Warrior',
+      skills: 'Leadership, Axe fighting',
+      fighter: true,
+    });
+    this.otInfo.setValue({
+      firstName: 'John',
+      lastName: 'Doe',
+      address: '123 Main St, Rivertown',
+      mobileNumber: '5551234567',
+      diet: 'nothing',
+      dietOther: 'Norway',
+      accommodation: 'hut',
+      travellingWithGroup: true,
+      groupName: 'Fellowship of the Ring',
+      arrival: '2025-10-10',
+      departure: '2025-10-15',
+    });
+    this.kidInfo.setValue({
+      firstName: 'Tommy',
+      lastName: 'Doe',
+      age: 12,
+      other: 'Likes dragons',
+    });
+    this.playerCharInfo.setValue({
+      importantInfoForGM: 'Has secret royal bloodline.',
+      mostImportantForCharacter: 'Protect his people.',
+      infoAboutFriends: 'Loyal to his guildmates.',
+      storyLore: 'Descendant of a long line of warriors.',
+    });
+    this.npcInfo.setValue({
+      interests: 'Trade, diplomacy',
+    });
+    this.snackBar.open('Form filled with fake data', 'OK', {duration: 2000});
+
+  }
+
+  protected readonly ROUTES = ROUTES;
 }

@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {AuthService} from '../auth/auth.service';
 import {MatButton, MatButtonModule} from '@angular/material/button';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDivider} from '@angular/material/divider';
+import {HttpClient} from '@angular/common/http';
+import {interval, startWith, switchMap} from 'rxjs';
 
 @Component({
   selector: 'app-shell',
@@ -12,9 +15,9 @@ import {MatIconModule} from '@angular/material/icon';
     RouterOutlet,
     MatButtonModule,
     RouterLink,
-    MatToolbar,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatDivider
   ],
   templateUrl: './shell.html',
   styleUrl: './shell.css'
@@ -22,10 +25,22 @@ import {MatIconModule} from '@angular/material/icon';
 export class Shell {
   mail!: string;
   isAdmin = false;
-  constructor(private authService: AuthService) {
+  showPaymentMissing = false;
+  showPaymentReceived = false;
+
+  constructor(private authService: AuthService, private http: HttpClient) {
     this.mail = authService.getUserInfo().email;
     this.isAdmin = authService.isAdmin();
+    interval(10000).pipe(
+      startWith(''),
+      switchMap(() => this.http.get('/api/user/status'))
+    ).subscribe((res: any) => {
+      this.showPaymentMissing = res.shouldPay && !res.payed;
+      this.showPaymentReceived = res.shouldPay && res.payed;
+    });
+
   }
+
   logout() {
     this.authService.logout()
   }

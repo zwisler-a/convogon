@@ -8,6 +8,7 @@ import {MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
+import {COMMA, ENTER, SEMICOLON} from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-it-info',
@@ -60,4 +61,8 @@ export class ItInfo {
     // Clear the input value
     event.chipInput!.clear();
   }
+
+  protected readonly COMMA = COMMA;
+  protected readonly ENTER = ENTER;
+  protected readonly SEMICOLON = SEMICOLON;
 }

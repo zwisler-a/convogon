@@ -25,27 +25,46 @@
         <input matInput formControlName="mobileNumber" type="tel"/>
       </mat-form-field>
 
+
       <mat-form-field appearance="fill">
         <mat-label>Verpflegung</mat-label>
-        <input matInput formControlName="diet"/>
+        <mat-select formControlName="diet">
+          <mat-option [value]="'nothing'">Keine Besonderheiten</mat-option>
+          <mat-option [value]="'vegetarian'">Vegetarisch</mat-option>
+          <mat-option [value]="'vegan'">Vegan</mat-option>
+          <mat-option [value]="'other'">Allergien oder Sonstiges</mat-option>
+        </mat-select>
+        @if (form.get('diet')?.value == 'other') {
+          <mat-hint>Bitte "Verpflegungsbesonderheiten" ausfüllen</mat-hint>
+        }
       </mat-form-field>
+
+      @if (form.get('diet')?.value == 'other') {
+        <mat-form-field>
+          <mat-label>Verpflegungsbesonderheiten</mat-label>
+          <textarea matInput formControlName="dietOther"></textarea>
+        </mat-form-field>
+      }
 
       <mat-form-field appearance="fill">
         <mat-label>Unterbringung</mat-label>
-        <input matInput formControlName="accommodation"/>
+        <mat-select formControlName="accommodation">
+          <mat-option [value]="'hut'">Ich möchte in einer Hütte übernachten</mat-option>
+          <mat-option [value]="'tent'">Ich möchte im meinem Zelt / Van übernachten</mat-option>
+          <mat-option [value]="'outside'">Ich übernachte außerhalb</mat-option>
+        </mat-select>
       </mat-form-field>
 
-      <mat-checkbox formControlName="travellingWithGroup"
-      >Reist du mit einer Gruppe an?
-      </mat-checkbox
-      >
+      <mat-checkbox formControlName="travellingWithGroup">
+        Reist du mit einer Gruppe an?
+      </mat-checkbox>
 
-      <!-- //TODO: Make these fields conditionally required and visible -->
-      <mat-form-field appearance="fill">
-        <mat-label>Gruppenname</mat-label>
-        <input matInput formControlName="groupName"/>
-      </mat-form-field>
-
+      @if (form.get('travellingWithGroup')?.value) {
+        <mat-form-field appearance="fill">
+          <mat-label>Gruppenname</mat-label>
+          <input matInput formControlName="groupName"/>
+        </mat-form-field>
+      }
       <mat-form-field>
         <mat-label>Zeitpunkt Anreise</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="arrival">

@@ -4,7 +4,8 @@ import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {JsonPipe} from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {PersonaOverview} from '../persona-overview/persona-overview';
-import {MatCard, MatCardContent} from '@angular/material/card';
+import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-add-persona-details',
@@ -14,7 +15,11 @@ import {MatCard, MatCardContent} from '@angular/material/card';
     RouterLink,
     PersonaOverview,
     MatCard,
-    MatCardContent
+    MatCardContent,
+    MatIconModule,
+    MatCardHeader,
+    MatCardSubtitle,
+    MatCardTitle
   ],
   templateUrl: './persona-details.html',
   styleUrl: './persona-details.css'

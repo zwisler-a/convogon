@@ -43,4 +43,12 @@ export class UserService {
     async getUserOrFail(id: string) {
         return this.userRepo.findOneOrFail({where: {id}});
     }
+
+    async getAll() {
+        return this.userRepo.find();
+    }
+
+    save(user: UserEntity) {
+        return this.userRepo.save(user);
+    }
 }

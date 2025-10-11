@@ -1,5 +1,23 @@
-<button mat-raised-button [routerLink]="['/user']">Zurück</button>
+<button class="back-button" mat-raised-button [routerLink]="['/user']">
+  <mat-icon>arrow_back</mat-icon>
+  Zurück
+</button>
+<div class="heading">
+  <div class="avatar">
+    @if (persona.type == 'nsc') {
+      <img src="/fc2079.png"/>
+    }
+    @if (persona.type == 'sc') {
+      <img src="/fc1916.png"/>
+    }
+    @if (persona.type == 'kid') {
+      <img src="/fc1957.png"/>
+    }
+  </div>
+  <div>{{ persona.firstName }} {{ persona.lastName }}</div>
+</div>
 <mat-card>
+
   <mat-card-content>
     <app-persona-overview [persona]="persona"></app-persona-overview>
   </mat-card-content>

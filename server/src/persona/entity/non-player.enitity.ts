@@ -15,6 +15,9 @@ export class NonPlayerCharacter extends Persona {
     diet!: string;
 
     @Column({ type: 'text', default: '' })
+    dietOther!: string;
+
+    @Column({ type: 'text', default: '' })
     arrival!: string;
 
     @Column({ type: 'boolean', default: false })

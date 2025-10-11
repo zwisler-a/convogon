@@ -8,6 +8,7 @@ import {jwtSecret} from "../constants";
 import {MailService} from "./mail.service";
 import {AuthGuard} from "./auth.guard";
 import {AdminAuthGuard} from "./admin-auth.guard";
+import {UserController} from "./user.controller";
 
 
 @Module({
@@ -15,7 +16,7 @@ import {AdminAuthGuard} from "./admin-auth.guard";
         TypeOrmModule.forFeature([UserEntity]),
         JwtModule.register({secret: jwtSecret})
     ],
-    controllers: [AuthController],
+    controllers: [AuthController, UserController],
     providers: [UserService, MailService, AuthGuard, AdminAuthGuard],
     exports: [AuthGuard, UserService, AdminAuthGuard]
 })
