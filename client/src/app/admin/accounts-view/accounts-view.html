@@ -24,7 +24,7 @@
     <td mat-cell *matCellDef="let element">
       <button mat-flat-button (click)="shouldPay(element)">Soll Bezahlen</button>
       <button mat-flat-button (click)="payed(element)">Bezahlt</button>
-      <button mat-flat-button>Anzeigen</button>
+      <button mat-flat-button [routerLink]="'/' + ROUTES.ADMIN_USER.replace(':id', element.id)">Anzeigen</button>
     </td>
   </ng-container>
 

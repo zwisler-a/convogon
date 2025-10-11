@@ -1,0 +1,9 @@
+<button mat-button [routerLink]="'/' + ROUTES.ADMIN_USER.replace(':id', persona.user.id)">
+  <mat-icon>arrow_back</mat-icon>
+  Zurück
+</button>
+<mat-card>
+  <mat-card-content>
+    <app-persona-overview [persona]="persona"></app-persona-overview>
+  </mat-card-content>
+</mat-card>

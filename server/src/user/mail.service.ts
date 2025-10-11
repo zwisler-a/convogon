@@ -7,6 +7,7 @@ export class MailService {
     private logger: Logger = new Logger('MailService');
     constructor() {
         this.transporter = nodemailer.createTransport({
+            service: process.env.MAIL_SERVICE,
             host: process.env.MAIL_HOST || '127.0.0.1',
             port: parseInt(process.env.MAIL_PORT || '1025'),
             secure: false,
@@ -27,6 +28,7 @@ export class MailService {
             to,
             subject,
             text,
+            html
         });
         console.log(info);
     }

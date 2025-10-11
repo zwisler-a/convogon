@@ -6,6 +6,7 @@ import {JwtService} from '@nestjs/jwt';
 import {UserEntity} from "./user.entity";
 import {JwtPayloadDto} from "./jwt-payload.dto";
 import {MailService} from "./mail.service";
+import {mailTemplate} from "../constants";
 
 @Injectable()
 export class UserService {
@@ -24,7 +25,10 @@ export class UserService {
             email: user.email
         };
         const token = this.jwtService.sign(payload);
-        this.mailService.sendMail(user.email, `Login`, `Open: http://localhost:4200/home?token=${token}`);
+        this.mailService.sendMail(user.email, `Login für ConVogon`,
+            mailTemplate(`http://localhost:4200/home?token=${token}`),
+            mailTemplate(`http://localhost:4200/home?token=${token}`)
+        );
     }
 
 
@@ -41,7 +45,7 @@ export class UserService {
     }
 
     async getUserOrFail(id: string) {
-        return this.userRepo.findOneOrFail({where: {id}});
+        return this.userRepo.findOneOrFail({where: {id}, relations: {persona: true}});
     }
 
     async getAll() {

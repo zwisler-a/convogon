@@ -5,8 +5,8 @@
   justify-content: center;
 }
 
-.mat-card {
-  width: 500px;
+.mdc-card {
+  width: 100%;
 }
 
 img {
@@ -25,4 +25,13 @@ img {
   padding-top: 20vh;
   height: 100%;
   gap: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: "Jacquard 12", system-ui;
+  font-size: 4rem;
 }

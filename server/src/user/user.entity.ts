@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany} from 'typeorm';
+import {Persona} from "../persona/entity/persona.entity";
 
 @Entity()
 export class UserEntity {
@@ -19,6 +20,9 @@ export class UserEntity {
 
     @Column({default: false})
     shouldPay: boolean;
+
+    @OneToMany(type => Persona, (user) => user.user)
+    persona: Persona[];
 
     @CreateDateColumn()
     createdAt: Date;

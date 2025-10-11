@@ -9,6 +9,7 @@ import {Admin} from './admin/admin';
 import {LoginSend} from './auth/login-send/login-send';
 import {AdminPersonaDetails} from './admin/admin-persona-details/admin-persona-details';
 import {AccountsView} from './admin/accounts-view/accounts-view';
+import {AccountView} from './admin/account-view/account-view';
 
 export const ROUTES = {
   LOGIN: 'login',
@@ -17,6 +18,7 @@ export const ROUTES = {
   ADMIN_PERSONA_VIEWS: 'admin/persona/:id',
   ADMIN: 'admin',
   ADMIN_USERS: 'admin/users',
+  ADMIN_USER: 'admin/user/:id',
 }
 
 export const routes: Routes = [
@@ -30,6 +32,7 @@ export const routes: Routes = [
       {path: ROUTES.ADMIN, component: Admin},
       {path: ROUTES.ADMIN_PERSONA_VIEWS, component: AdminPersonaDetails},
       {path: ROUTES.ADMIN_USERS, component: AccountsView},
+      {path: ROUTES.ADMIN_USER, component: AccountView},
       {path: '**', redirectTo: 'home'},
     ], canActivate: [AuthGuard],
   }

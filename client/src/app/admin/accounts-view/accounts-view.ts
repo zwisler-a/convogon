@@ -13,6 +13,7 @@ import {HttpClient} from '@angular/common/http';
 import {RouterLink} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {ROUTES} from '../../app.routes';
+import {AccountService} from '../account.service';
 
 @Component({
   selector: 'app-accounts-view',
@@ -39,21 +40,21 @@ export class AccountsView {
   displayedColumns: string[] = ['mail', 'shouldPay', 'payed', 'actions'];
   users$;
 
-  constructor(private http: HttpClient) {
-    this.users$ = this.http.get<any[]>('/api/user/list');
+  constructor(private http: HttpClient, private accountService: AccountService) {
+    this.users$ = this.accountService.getAccounts();
   }
 
   protected readonly ROUTES = ROUTES;
 
   shouldPay(account: any) {
-    this.http.post<any[]>('/api/user/payment', {shouldPay: !account.shouldPay, userId: account.id}).subscribe(data => {
-      this.users$ = this.http.get<any[]>('/api/user/list');
+    this.accountService.toggleShouldPay(account).subscribe(data => {
+
     });
   }
 
   payed(account: any) {
-    this.http.post<any[]>('/api/user/payment', {payed: !account.payed, userId: account.id}).subscribe(data => {
-      this.users$ = this.http.get<any[]>('/api/user/list');
+    this.accountService.togglePayed(account).subscribe(data => {
+
     });
   }
 }

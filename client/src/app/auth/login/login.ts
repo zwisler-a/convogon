@@ -37,15 +37,21 @@ export class Login {
 
   onSubmit() {
     if (this.form.invalid) return;
-    this.authService.login(this.form.get('email')?.value).subscribe((res: any) => {
-      this.router.navigate(['/' + ROUTES.LOGIN_SEND]);
+    this.authService.login(this.form.get('email')?.value).subscribe({
+      next: (res: any) => {
+        this.router.navigate(['/' + ROUTES.LOGIN_SEND]);
+      },
+      error: (res: any) => {
+        this.snackBar.open("Es existiert kein Benutzer mit dieser EMail Adresse", 'error');
+      }
     })
   }
 
   register(ev: any) {
     ev.preventDefault();
     this.authService.register(this.form.get('email')?.value).subscribe((res: any) => {
-      this.snackBar.open("Account was registered", 'OK', {})
+      this.snackBar.open("Account wurde registriert", 'OK', {})
+      this.router.navigate(['/' + ROUTES.LOGIN_SEND]);
     })
   }
 }

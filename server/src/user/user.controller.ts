@@ -1,4 +1,14 @@
-import {Body, Controller, Get, NotFoundException, Post, Req, UnauthorizedException, UseGuards} from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Get,
+    NotFoundException,
+    Param,
+    Post,
+    Req,
+    UnauthorizedException,
+    UseGuards
+} from '@nestjs/common';
 import {UserService} from './user.service';
 import {AuthGuard} from "./auth.guard";
 import {AdminAuthGuard} from "./admin-auth.guard";
@@ -31,10 +41,19 @@ export class UserController {
         return users;
     }
 
+    @UseGuards(AdminAuthGuard)
+    @Get(':id')
+    async user(@Param('id') id: string) {
+        const user = await this.userService.getUserOrFail(id);
+        if (!user) {
+            throw new UnauthorizedException();
+        }
+        return user;
+    }
 
     @UseGuards(AdminAuthGuard)
     @Post('payment')
-    async payment(@Body() payment: {userId: string, shouldPay: boolean, payed: boolean}) {
+    async payment(@Body() payment: { userId: string, shouldPay: boolean, payed: boolean }) {
         const user = await this.userService.getUserOrFail(payment.userId);
         if (!user) {
             throw new NotFoundException();
