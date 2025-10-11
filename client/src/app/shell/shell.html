@@ -1,11 +1,19 @@
 <nav>
-  <span [routerLink]="['/']">ConZentration</span>
-  {{ mail }}
-  @if (isAdmin) {
-    <button mat-raised-button [routerLink]="['/admin']">Admin</button>
-  }
-  <button mat-raised-button (click)="logout()">Logout</button>
+  <img src="/convogon.png" class="logo"/>
+  <span class="title" [routerLink]="['/']">ConZentration</span>
+  <span class="spacer"></span>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <span>{{ mail }}</span>
+    <mat-icon>account_circle</mat-icon>
+  </button>
 </nav>
+<mat-menu #menu="matMenu">
+  @if (isAdmin) {
+    <button mat-menu-item [routerLink]="['/admin']">Admin</button>
+  }
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
+
 <main>
   <router-outlet></router-outlet>
 </main>

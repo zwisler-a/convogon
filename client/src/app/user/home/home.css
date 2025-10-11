@@ -1,0 +1,56 @@
+.persona-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.persona-card {
+  flex: 1 1 280px
+}
+
+
+.pixel_icon_nsc {
+  width: 24px;
+  height: 24px;
+  background-image: url('/pixel_icons.png');
+  background-position: -220px -172px;
+  transform: scale(3);
+  image-rendering: pixelated;
+  background-repeat: no-repeat;
+  object-fit: contain;
+}
+
+
+.pixel_icon_sc {
+  width: 24px;
+  height: 24px;
+  background-image: url('/pixel_icons.png');
+  background-position: -243px -172px;
+  transform: scale(3);
+  image-rendering: pixelated;
+  background-repeat: no-repeat;
+  object-fit: contain;
+}
+
+
+.pixel_icon_kid {
+  width: 24px;
+  height: 24px;
+  background-image: url('/pixel_icons.png');
+  background-position: -267px -172px;
+  transform: scale(3);
+  image-rendering: pixelated;
+  background-repeat: no-repeat;
+  object-fit: contain;
+}
+
+
+.pixel_icon_wrapper {
+  width: 50px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

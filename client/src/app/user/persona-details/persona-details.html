@@ -1,2 +1,6 @@
 <button mat-raised-button [routerLink]="['/user']">Zurück</button>
-<pre>{{ persona | json }}</pre>
+<mat-card>
+  <mat-card-content>
+    <app-persona-overview [persona]="persona"></app-persona-overview>
+  </mat-card-content>
+</mat-card>

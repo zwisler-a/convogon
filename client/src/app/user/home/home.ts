@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
-import {MatButton} from '@angular/material/button';
+import {MatButton, MatIconButton} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
 import {PersonaService} from '../../service/persona.service';
 import {MatList, MatListItem} from '@angular/material/list';
 import {AsyncPipe} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
+import {
+  MatCard,
+  MatCardActions,
+  MatCardContent,
+  MatCardHeader,
+  MatCardSubtitle,
+  MatCardTitle
+} from '@angular/material/card';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +22,14 @@ import {MatIconModule} from '@angular/material/icon';
     MatList,
     AsyncPipe,
     MatListItem,
-    MatIconModule
+    MatIconModule,
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
+    MatCardActions,
+    MatIconButton,
+    MatCardSubtitle
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'

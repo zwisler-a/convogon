@@ -1,8 +1,18 @@
 .row {
   display: flex;
   flex-direction: row;
+  margin: 5px;
 }
+
 .row .label {
   font-weight: bold;
   min-width: 200px;
+}
+
+.row.long .label {
+  margin-bottom: 5px;
+}
+
+.row.long {
+  flex-direction: column;
 }

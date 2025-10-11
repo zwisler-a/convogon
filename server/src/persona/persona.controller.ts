@@ -37,7 +37,7 @@ export class PersonaController {
     @UseGuards(AdminAuthGuard)
     @Get('')
     public async findAllAdmin(@Req() req: any): Promise<Persona[]> {
-        return this.personaRepository.find();
+        return this.personaRepository.find({loadEagerRelations: true, relations: {user: true}});
     }
 
     @UseGuards(AuthGuard)

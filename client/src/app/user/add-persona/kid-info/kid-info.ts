@@ -1,10 +1,10 @@
 import {Component, Input} from '@angular/core';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
-import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {MatInput, MatInputModule, MatLabel} from '@angular/material/input';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
-import {MatStepperNext} from '@angular/material/stepper';
+import {MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
 
 @Component({
   selector: 'app-kid-info',
@@ -18,7 +18,9 @@ import {MatStepperNext} from '@angular/material/stepper';
     MatInput,
     MatLabel,
     MatStepperNext,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardActions,
+    MatStepperPrevious
   ],
   templateUrl: './kid-info.html',
   styleUrl: './kid-info.css'

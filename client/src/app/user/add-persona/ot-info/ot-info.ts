@@ -1,11 +1,17 @@
 import {Component, Inject, Input} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
-import {MatStepperNext} from '@angular/material/stepper';
+import {MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
 import { MatCheckbox } from '@angular/material/checkbox';
+import {
+  MatDatepicker,
+  MatDatepickerInput,
+  MatDatepickerModule,
+  MatDatepickerToggle
+} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-ot-info',
@@ -19,7 +25,10 @@ import { MatCheckbox } from '@angular/material/checkbox';
     MatSliderModule,
     MatCheckbox,
     MatButtonModule,
-    MatStepperNext
+    MatStepperNext,
+    MatDatepickerModule,
+    MatCardActions,
+    MatStepperPrevious
   ],
   templateUrl: './ot-info.html',
   styleUrl: './ot-info.css'

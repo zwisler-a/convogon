@@ -1,11 +1,13 @@
-import {Component, Inject, Input} from '@angular/core';
+import {Component, inject, Inject, Input, signal} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
-import {MatStepperNext} from '@angular/material/stepper';
-import { MatCheckbox } from '@angular/material/checkbox';
+import {MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
+import {MatCheckbox} from '@angular/material/checkbox';
+import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-it-info',
@@ -19,7 +21,11 @@ import { MatCheckbox } from '@angular/material/checkbox';
     MatSliderModule,
     MatCheckbox,
     MatButtonModule,
-    MatStepperNext
+    MatStepperNext,
+    MatChipsModule,
+    MatIconModule,
+    MatCardActions,
+    MatStepperPrevious
   ],
   templateUrl: './it-info.html',
   styleUrl: './it-info.css'
@@ -28,8 +34,30 @@ export class ItInfo {
 
   @Input()
   form!: FormGroup;
+  readonly skills = signal<string[]>([]);
 
-  constructor(private fb: FormBuilder) {
 
+  removeReactiveKeyword(keyword: string) {
+    this.skills.update(keywords => {
+      const index = keywords.indexOf(keyword);
+      if (index < 0) {
+        return keywords;
+      }
+
+      keywords.splice(index, 1);
+      return [...keywords];
+    });
+  }
+
+  addReactiveKeyword(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our keyword
+    if (value) {
+      this.skills.update(keywords => [...keywords, value]);
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
   }
 }

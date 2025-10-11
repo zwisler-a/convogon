@@ -1,60 +1,69 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title> OT-Informationen </mat-card-title>
+    <mat-card-title> OT-Informationen</mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
     <form [formGroup]="form" class="player-info-form">
       <mat-form-field appearance="fill">
         <mat-label>Vorname</mat-label>
-        <input matInput formControlName="firstName" />
+        <input matInput formControlName="firstName"/>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Nachname</mat-label>
-        <input matInput formControlName="lastName" />
+        <input matInput formControlName="lastName"/>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Adresse</mat-label>
-        <input matInput formControlName="address" />
+        <input matInput formControlName="address"/>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Mobilnummer</mat-label>
-        <input matInput formControlName="mobileNumber" type="tel" />
+        <input matInput formControlName="mobileNumber" type="tel"/>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Verpflegung</mat-label>
-        <input matInput formControlName="diet" />
+        <input matInput formControlName="diet"/>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Unterbringung</mat-label>
-        <input matInput formControlName="accommodation" />
+        <input matInput formControlName="accommodation"/>
       </mat-form-field>
 
       <mat-checkbox formControlName="travellingWithGroup"
-        >Reist du mit einer Gruppe an?</mat-checkbox
+      >Reist du mit einer Gruppe an?
+      </mat-checkbox
       >
 
       <!-- //TODO: Make these fields conditionally required and visible -->
       <mat-form-field appearance="fill">
         <mat-label>Gruppenname</mat-label>
-        <input matInput formControlName="groupName" />
+        <input matInput formControlName="groupName"/>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+      <mat-form-field>
         <mat-label>Zeitpunkt Anreise</mat-label>
-        <input matInput formControlName="arrival" />
+        <input matInput [matDatepicker]="picker" formControlName="arrival">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+
+      <mat-form-field>
         <mat-label>Zeitpunkt Abreise</mat-label>
-        <input matInput formControlName="departure" />
+        <input matInput [matDatepicker]="pickerdep" formControlName="departure">
+        <mat-datepicker-toggle matIconSuffix [for]="pickerdep"></mat-datepicker-toggle>
+        <mat-datepicker #pickerdep></mat-datepicker>
       </mat-form-field>
+
     </form>
-    <button mat-raised-button matStepperNext color="primary">Weiter</button>
   </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button matStepperNext>Weiter</button>
+  </mat-card-actions>
 </mat-card>

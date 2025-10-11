@@ -1,11 +1,38 @@
-<mat-list>
+<div class="persona-grid">
   @for (persona of (personas$ | async); track persona.id) {
-    <mat-list-item
+    <mat-card
+      class="persona-card"
       [routerLink]="['/persona/' + persona.id]">
-      {{ persona.firstName }} {{ persona.lastName }}
-      <mat-icon matListItemIcon>account_circle</mat-icon>
-    </mat-list-item>
-  }
-</mat-list>
+      <mat-card-header>
+        <div mat-card-avatar class="pixel_icon_wrapper">
+          @if (persona.type == 'nsc') {
+            <div class="pixel_icon_nsc"></div>
+          }
+          @if (persona.type == 'sc') {
+            <div class="pixel_icon_sc"></div>
+          }
+          @if (persona.type == 'kid') {
+            <div class="pixel_icon_kid"></div>
+          }
+        </div>
+        <mat-card-title>{{ persona.firstName }} {{ persona.lastName }}</mat-card-title>
+        <mat-card-subtitle>
+          {{ persona.type == 'nsc' ? 'Nicht Spieler Character' : '' }}
+          {{ persona.type == 'sc' ? 'Spieler Character' : '' }}
+          {{ persona.type == 'kid' ? 'Kind' : '' }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
 
-<button mat-raised-button [routerLink]="['/add']">Neue Person anmelden</button>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>Ansehen</button>
+        <button mat-button>Entfernen</button>
+      </mat-card-actions>
+    </mat-card>
+  }
+</div>
+<br>
+<mat-card>
+  <button mat-button [routerLink]="['/add']">Neue Person anmelden</button>
+</mat-card>

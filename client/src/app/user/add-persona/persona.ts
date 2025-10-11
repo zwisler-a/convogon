@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
-import { TypeSelection } from './type-selection/type-selection';
-import { ItInfo } from './it-info/it-info';
-import { KidInfo } from './kid-info/kid-info';
-import { NscInfo } from './nsc-info/nsc-info';
-import { ScInfo } from './sc-info/sc-info';
-import { PersonaService } from '../../service/persona.service';
-import { MatStep, MatStepper } from '@angular/material/stepper';
+import {Component} from '@angular/core';
+import {TypeSelection} from './type-selection/type-selection';
+import {ItInfo} from './it-info/it-info';
+import {KidInfo} from './kid-info/kid-info';
+import {NscInfo} from './nsc-info/nsc-info';
+import {ScInfo} from './sc-info/sc-info';
+import {PersonaService} from '../../service/persona.service';
+import {MatStep, MatStepper} from '@angular/material/stepper';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { OtInfo } from './ot-info/ot-info';
+import {OtInfo} from './ot-info/ot-info';
 import {MatButton} from '@angular/material/button';
 import {JsonPipe} from '@angular/common';
+import {Review} from './review/review';
+import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-persona',
@@ -30,6 +33,7 @@ import {JsonPipe} from '@angular/common';
     OtInfo,
     MatButton,
     JsonPipe,
+    Review,
   ],
   templateUrl: './persona.html',
   styleUrl: './persona.css',
@@ -43,7 +47,7 @@ export class Persona {
   npcInfo: FormGroup;
   playerCharInfo: FormGroup;
 
-  constructor(public personaService: PersonaService, private fb: FormBuilder) {
+  constructor(public personaService: PersonaService, private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.otInfo = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -91,6 +95,13 @@ export class Persona {
   }
 
   createPersona() {
-    this.personaService.createPersona(this.getPersonFromForm()).subscribe()
+    this.personaService.createPersona(this.getPersonFromForm()).subscribe({
+      next: (result) => {
+        this.router.navigate(['/home']);
+      },
+      error: err => {
+        this.snackBar.open("Persona konnte leider nicht erstellt werden...", 'Ok');
+      }
+    })
   }
 }

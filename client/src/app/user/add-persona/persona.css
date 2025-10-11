@@ -1,0 +1,33 @@
+.persona-wizard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wizard-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.wizard-header .heading {
+  font-family: "Jacquard 12", system-ui;
+  font-size: 1.5rem;
+}
+
+.pixel_icon {
+  width: 24px;
+  height: 24px;
+  background-image: url('/pixel_icons.png');
+  background-position: -243px -172px;
+  transform: scale(3);
+  image-rendering: pixelated;
+  background-repeat: no-repeat;
+  object-fit: contain;
+}
+
+.pixel_icon_wrapper {
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -5,10 +5,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup} from '@angular/forms';
-import {NgIf} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {AuthService} from '../auth.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {ROUTES} from '../../app.routes';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterLink,
   ],
   templateUrl: './login.html',
   styleUrl: './login.css'
@@ -30,7 +29,7 @@ export class Login {
 
   isMailSend = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
     });
@@ -39,7 +38,7 @@ export class Login {
   onSubmit() {
     if (this.form.invalid) return;
     this.authService.login(this.form.get('email')?.value).subscribe((res: any) => {
-      this.isMailSend = true;
+      this.router.navigate(['/' + ROUTES.LOGIN_SEND]);
     })
   }
 

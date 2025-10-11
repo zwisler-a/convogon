@@ -11,26 +11,28 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Folgendes sollte die SL über meinen Charakter wissen</mat-label>
-        <input matInput formControlName="importantInfoForGM">
+        <textarea matInput formControlName="importantInfoForGM"></textarea>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Was ist für deinen Charakter das Wichtigste</mat-label>
-        <input matInput formControlName="mostImportantForCharacter">
+        <textarea matInput formControlName="mostImportantForCharacter"></textarea>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Hast du wichtige Informationen über die Charaktere DEINER FREUNDE, damit die Spielleitung einen möglichst individuellen Plot zusammenstellen kann? :)</mat-label>
-        <input matInput formControlName="infoAboutFriends">
+        <textarea matInput formControlName="infoAboutFriends"></textarea>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Story/Lore (kurze Zusammenfassung!!)</mat-label>
-        <input matInput formControlName="storyLore">
+        <textarea matInput formControlName="storyLore"></textarea>
       </mat-form-field>
 
     </form>
-    <button mat-raised-button matStepperNext color="primary">Weiter</button>
   </mat-card-content>
-
+  <mat-card-actions>
+    <button mat-button matStepperPrevious>Zurück</button>
+    <button mat-flat-button matStepperNext>Weiter</button>
+  </mat-card-actions>
 </mat-card>

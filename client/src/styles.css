@@ -4,22 +4,28 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: linear-gradient(135deg, hsl(240 10% 3.9%), hsl(263 70% 20%));
+  /*background: linear-gradient(135deg, hsl(240 10% 3.9%), hsl(128, 71%, 20%));*/
 }
 
 form {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+  margin-top: 1rem;
+  gap: 1rem;
 }
 
-.gradient-card {
-  background: linear-gradient(180deg, hsl(240 8% 10%), hsl(240 8% 6%));
+.mat-mdc-card.mdc-card {
+  border: solid 1px rgb(110, 109, 109);
+  padding: 0.8rem;
 }
 
-.gradient-hero {
-  background: linear-gradient(135deg, hsl(240 10% 3.9%), hsl(263 70% 20%));
+.mat-horizontal-stepper-wrapper {
+  display: flex;
+  gap: 1rem;
 }
+
