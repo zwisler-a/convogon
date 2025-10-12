@@ -19,6 +19,8 @@ COPY --from=clientbuilder /app/client/dist/client/browser ./client
 
 FROM node:22-alpine
 WORKDIR /app
+
+COPY --from=clientbuilder /app/client/dist/client/browser ./client
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package* ./
 RUN npm install --omit=dev
