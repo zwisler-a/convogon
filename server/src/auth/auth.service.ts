@@ -25,8 +25,8 @@ export class AuthService {
         };
         const token = this.jwtService.sign(payload);
         await this.mailService.sendMail(user.email, `Login für ConVogon`,
-            mailTemplate(`http://localhost:4200/home?token=${token}`),
-            mailTemplate(`http://localhost:4200/home?token=${token}`)
+            mailTemplate(`${process.env.URL}/home?token=${token}`),
+            mailTemplate(`${process.env.URL}/home?token=${token}`)
         );
     }
 
