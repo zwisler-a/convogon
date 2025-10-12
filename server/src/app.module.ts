@@ -1,25 +1,31 @@
 import {Module} from '@nestjs/common';
-import {AppController} from './app.controller';
-import {AppService} from './app.service';
-import {UserModule} from "./user/user.module";
+import {AuthModule} from "./auth/auth.module";
 import {JwtModule} from "@nestjs/jwt";
 import {jwtSecret} from "./constants";
 import {PersonaModule} from "./persona/persona.module";
 import {TypeOrmModule} from "@nestjs/typeorm";
+import {AccountModule} from "./account/account.module";
+import {join} from "path";
+import {ServeStaticModule} from "@nestjs/serve-static";
 
 @Module({
     imports: [
-        UserModule,
+        AuthModule,
         JwtModule.register({secret: jwtSecret}),
         PersonaModule,
+        AccountModule,
         TypeOrmModule.forRoot({
             type: 'sqlite',
             database: 'db.sqlite',
             autoLoadEntities: true,
             synchronize: true,
-        }),],
-    controllers: [AppController],
-    providers: [AppService],
+        }),
+        ServeStaticModule.forRoot({
+            rootPath: join(__dirname, '..', 'client'),
+        }),
+    ],
+    controllers: [],
+    providers: [],
 })
 export class AppModule {
 }

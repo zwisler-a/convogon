@@ -3,12 +3,18 @@
   Zurück
 </button>
 
-<div>
-  <div>{{ account.email }}</div>
-  <div>{{ account.payed ? 'Bezahlt' : 'Nicht Bezahlt' }}</div>
-  <div>{{ account.shoudlPay ? 'Soll Bezahlen' : 'Muss noch nicht bezahlen' }}</div>
+<div class="basic-info">
+  <div class="account">{{ account.email }}</div>
+  <div><mat-chip>{{ account.payed ? 'Bezahlt' : 'Nicht Bezahlt' }}</mat-chip></div>
+  <div><mat-chip>{{ account.shouldPay ? 'Soll Bezahlen' : 'Muss noch nicht bezahlen' }}</mat-chip></div>
 </div>
-<table mat-table [dataSource]="account.persona" class="mat-elevation-z8">
+
+<div class="actions">
+  <button mat-flat-button (click)="shouldPay(account)">Soll Bezahlen</button>
+  <button mat-flat-button (click)="payed(account)">Bezahlt</button>
+</div>
+
+<table mat-table [dataSource]="account.personas" class="mat-elevation-z8">
 
   <ng-container matColumnDef="firstName">
     <th mat-header-cell *matHeaderCellDef> Vorname</th>

@@ -1,7 +1,7 @@
 import {Routes} from '@angular/router';
 import {Login} from './auth/login/login';
 import {AuthGuard} from './auth/auth.guard';
-import {Shell} from './shell/shell';
+import {Shell} from './core/shell/shell';
 import {Home} from './user/home/home';
 import {Persona} from './user/add-persona/persona';
 import {PersonaDetails} from './user/persona-details/persona-details';
@@ -10,15 +10,17 @@ import {LoginSend} from './auth/login-send/login-send';
 import {AdminPersonaDetails} from './admin/admin-persona-details/admin-persona-details';
 import {AccountsView} from './admin/accounts-view/accounts-view';
 import {AccountView} from './admin/account-view/account-view';
+import {Pay} from './user/pay/pay';
 
 export const ROUTES = {
   LOGIN: 'login',
   LOGIN_SEND: 'login-send',
   HOME: 'home',
+  PAY: 'pay',
   ADMIN_PERSONA_VIEWS: 'admin/persona/:id',
   ADMIN: 'admin',
   ADMIN_USERS: 'admin/users',
-  ADMIN_USER: 'admin/user/:id',
+  ADMIN_USER: 'admin/auth/:id',
 }
 
 export const routes: Routes = [
@@ -30,6 +32,7 @@ export const routes: Routes = [
       {path: 'add', component: Persona},
       {path: 'persona/:id', component: PersonaDetails},
       {path: ROUTES.ADMIN, component: Admin},
+      {path: ROUTES.PAY, component: Pay},
       {path: ROUTES.ADMIN_PERSONA_VIEWS, component: AdminPersonaDetails},
       {path: ROUTES.ADMIN_USERS, component: AccountsView},
       {path: ROUTES.ADMIN_USER, component: AccountView},

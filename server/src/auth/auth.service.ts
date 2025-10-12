@@ -1,17 +1,16 @@
-import * as bcrypt from 'bcryptjs';
 import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import {Repository} from 'typeorm';
 import {InjectRepository} from '@nestjs/typeorm';
 import {JwtService} from '@nestjs/jwt';
-import {UserEntity} from "./user.entity";
+import {AccountEntity} from "../account/account.entity";
 import {JwtPayloadDto} from "./jwt-payload.dto";
-import {MailService} from "./mail.service";
+import {MailService} from "../mail/mail.service";
 import {mailTemplate} from "../constants";
 
 @Injectable()
-export class UserService {
+export class AuthService {
     constructor(
-        @InjectRepository(UserEntity) private userRepo: Repository<UserEntity>,
+        @InjectRepository(AccountEntity) private userRepo: Repository<AccountEntity>,
         private jwtService: JwtService,
         private mailService: MailService,
     ) {
@@ -25,7 +24,7 @@ export class UserService {
             email: user.email
         };
         const token = this.jwtService.sign(payload);
-        this.mailService.sendMail(user.email, `Login für ConVogon`,
+        await this.mailService.sendMail(user.email, `Login für ConVogon`,
             mailTemplate(`http://localhost:4200/home?token=${token}`),
             mailTemplate(`http://localhost:4200/home?token=${token}`)
         );
@@ -40,19 +39,11 @@ export class UserService {
 
         const user = this.userRepo.create({email: mail});
         await this.userRepo.save(user);
-        this.signIn(mail);
+        await this.signIn(mail);
         return {id: user.id};
     }
 
     async getUserOrFail(id: string) {
-        return this.userRepo.findOneOrFail({where: {id}, relations: {persona: true}});
-    }
-
-    async getAll() {
-        return this.userRepo.find();
-    }
-
-    save(user: UserEntity) {
-        return this.userRepo.save(user);
+        return this.userRepo.findOneOrFail({where: {id}, relations: {personas: true}});
     }
 }

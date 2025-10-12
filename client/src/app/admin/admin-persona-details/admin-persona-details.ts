@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {PersonaService} from '../../service/persona.service';
-import {PersonaOverview} from '../../user/persona-overview/persona-overview';
+import {PersonaOverview} from '../../shared/persona-overview/persona-overview';
 import {MatCard, MatCardContent} from '@angular/material/card';
 import {MatButton} from '@angular/material/button';
 import {ROUTES} from '../../app.routes';

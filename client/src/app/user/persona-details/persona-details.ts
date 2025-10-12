@@ -3,7 +3,7 @@ import {PersonaService} from '../../service/persona.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {JsonPipe} from '@angular/common';
 import {MatButton} from '@angular/material/button';
-import {PersonaOverview} from '../persona-overview/persona-overview';
+import {PersonaOverview} from '../../shared/persona-overview/persona-overview';
 import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 

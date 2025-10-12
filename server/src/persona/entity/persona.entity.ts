@@ -1,6 +1,6 @@
-// server/src/add-persona/add-persona.base.ts
 import {Entity, PrimaryGeneratedColumn, Column, TableInheritance, ManyToOne} from 'typeorm';
-import {UserEntity} from "../../user/user.entity";
+import {AccountEntity} from "../../account/account.entity";
+import {ApiProperty} from '@nestjs/swagger';
 
 export enum PersonaType {
     SC = 'sc',
@@ -9,21 +9,26 @@ export enum PersonaType {
 }
 
 @Entity('personas')
-@TableInheritance({ column: { type: 'varchar', name: 'type' } })
+@TableInheritance({column: {type: 'varchar', name: 'type'}})
 export class Persona {
+    @ApiProperty({description: 'Unique identifier of the persona', example: 'uuid-string'})
     @PrimaryGeneratedColumn('uuid')
     id!: string;
 
-    @ManyToOne(type => UserEntity, user => user.id)
-    user!: UserEntity;
+    @ApiProperty({description: 'User that owns this persona', type: () => AccountEntity})
+    @ManyToOne(type => AccountEntity, user => user.id)
+    user!: AccountEntity;
 
-    @Column({ type: 'varchar' })
+    @ApiProperty({description: 'Type of persona', enum: PersonaType})
+    @Column({type: 'varchar'})
     type!: string;
 
-    @Column({ type: 'text' })
+    @ApiProperty({description: 'First name of the persona', example: 'John'})
+    @Column({type: 'text'})
     firstName!: string;
 
-    @Column({ type: 'text', default: '' })
+    @ApiProperty({description: 'Last name of the persona', example: 'Doe', default: ''})
+    @Column({type: 'text', default: ''})
     lastName!: string;
 
 }

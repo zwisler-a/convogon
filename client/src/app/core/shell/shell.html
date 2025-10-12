@@ -17,7 +17,7 @@
 @if (showPaymentMissing) {
   <div class="status-banner warning">
     Zahlung ausstehend
-    <button mat-stroked-button class="action">Zahlen</button>
+    <button mat-stroked-button [routerLink]="['/' + ROUTES.PAY]" class="action">Zahlen</button>
   </div>
 }
 @if (showPaymentReceived) {

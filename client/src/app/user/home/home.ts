@@ -13,7 +13,7 @@ import {
   MatCardSubtitle,
   MatCardTitle
 } from '@angular/material/card';
-import {ConfirmDialogService} from '../../shell/confirm/confirm.service';
+import {ConfirmDialogService} from '../../core/confirm/confirm.service';
 
 @Component({
   selector: 'app-home',
