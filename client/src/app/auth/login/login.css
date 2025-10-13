@@ -29,9 +29,13 @@ img {
 
 .header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.headline {
   font-family: "Jacquard 12", system-ui;
   font-size: 4rem;
+  margin: 1.5rem;
 }

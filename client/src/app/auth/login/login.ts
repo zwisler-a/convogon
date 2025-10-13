@@ -42,7 +42,7 @@ export class Login {
         this.router.navigate(['/' + ROUTES.LOGIN_SEND]);
       },
       error: (res: any) => {
-        this.snackBar.open("Es existiert kein Benutzer mit dieser EMail Adresse", 'error');
+        this.snackBar.open("Es existiert kein Benutzer mit dieser E-Mail Adresse", 'error');
       }
     })
   }
