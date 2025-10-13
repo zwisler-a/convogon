@@ -16,7 +16,7 @@ import {ServeStaticModule} from "@nestjs/serve-static";
         AccountModule,
         TypeOrmModule.forRoot({
             type: 'sqlite',
-            database: 'db.sqlite',
+            database: 'db/db.sqlite',
             autoLoadEntities: true,
             synchronize: true,
         }),
