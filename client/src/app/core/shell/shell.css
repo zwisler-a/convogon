@@ -46,9 +46,12 @@ main {
 .logo {
   width: 2rem;
   height: 2rem;
+  cursor: pointer;
 }
 
 .title {
   font-family: "Jacquard 12", system-ui;
   font-size: 2.5rem;
+  cursor: pointer;
+  user-select: none;
 }

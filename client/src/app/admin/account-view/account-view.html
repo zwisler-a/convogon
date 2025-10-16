@@ -5,12 +5,9 @@
 
 <div class="basic-info">
   <div class="account">{{ account.email }}</div>
-  <div><mat-chip>{{ account.payed ? 'Bezahlt' : 'Nicht Bezahlt' }}</mat-chip></div>
-  <div><mat-chip>{{ account.shouldPay ? 'Soll Bezahlen' : 'Muss noch nicht bezahlen' }}</mat-chip></div>
 </div>
 
 <div class="actions">
-  <button mat-flat-button (click)="shouldPay(account)">Soll Bezahlen</button>
   <button mat-flat-button (click)="payed(account)">Bezahlt</button>
 </div>
 
@@ -25,6 +22,11 @@
   <ng-container matColumnDef="lastName">
     <th mat-header-cell *matHeaderCellDef> Nachname</th>
     <td mat-cell *matCellDef="let element"> {{ element.lastName }}</td>
+  </ng-container>
+
+    <ng-container matColumnDef="paid">
+    <th mat-header-cell *matHeaderCellDef>paid</th>
+    <td mat-cell *matCellDef="let element"> {{ element.paid }}</td>
   </ng-container>
 
 

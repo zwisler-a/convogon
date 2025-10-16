@@ -9,12 +9,12 @@ links:
 ## Features
 - Login
 - Spieler hinzufügen, einsehen, bearbeiten
-    - OT Infos inkl. Unterkunft und Zahlungsstatus
+    - OT Infos inkl. Unterkunft und Spendenstatus
     - IT Infos
 - Admin Spieler Verwaltung
     - Einsehen
     - Zuordnung Unterkunft
-    - Zahlung bestätigen
+    - Spende bestätigen
 - Spieler vor Ort einchecken (z.B. via QR-Code)
 - Infoseite / FAQ
 - Optional: Newspage

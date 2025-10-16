@@ -8,7 +8,7 @@ import {PersonaController} from "./persona.controller";
 import {AuthModule} from "../auth/auth.module";
 import {JwtModule} from "@nestjs/jwt";
 import {jwtSecret} from "../constants";
-import {AccountModule} from "../account/account.module";
+import { PersonaService } from './persona.service';
 
 @Module({
     imports: [
@@ -16,7 +16,8 @@ import {AccountModule} from "../account/account.module";
         AuthModule,
         JwtModule.register({secret: jwtSecret})],
     controllers: [PersonaController],
-    providers: [],
+    providers: [PersonaService],
+    exports: [PersonaService]
 })
 export class PersonaModule {
 }

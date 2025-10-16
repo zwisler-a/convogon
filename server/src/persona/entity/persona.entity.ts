@@ -31,4 +31,12 @@ export class Persona {
     @Column({type: 'text', default: ''})
     lastName!: string;
 
+    @ApiProperty({description: 'Payment status', example: false, default: false})
+    @Column({default: false})
+    paid!: boolean;
+
+    @ApiProperty({description: 'Payment timestamp', example: null, default: null, nullable: true})
+    @Column({type: 'timestamp', nullable: true, default: null})
+    paymentTimestamp!: Date | null;
+
 }

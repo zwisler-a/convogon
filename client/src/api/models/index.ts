@@ -19,6 +19,10 @@ export interface Persona {
     firstName: string;
     /** Last name of the persona */
     lastName: string;
+    /** Payment status */
+    paid: boolean;
+    /** Payment timestamp */
+    paymentTimestamp: Record<string, unknown>;
 }
 
 export interface AccountEntity {
@@ -35,7 +39,7 @@ export interface AccountEntity {
     /** Indicates whether the user should pay */
     shouldPay: boolean;
     /** List of personas linked to this account */
-    persona: Array<Persona>;
+    personas: Array<Persona>;
     /** Date the account was created */
     createdAt: Date;
     /** Date the account was last updated */

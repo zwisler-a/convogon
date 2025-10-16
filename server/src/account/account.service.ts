@@ -2,10 +2,11 @@ import {Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {AccountEntity} from "./account.entity";
 import {Repository} from "typeorm";
+import { PersonaService } from "src/persona/persona.service";
 
 @Injectable()
 export class AccountService {
-    constructor(@InjectRepository(AccountEntity) private accountRepo: Repository<AccountEntity>) {
+    constructor(@InjectRepository(AccountEntity) private accountRepo: Repository<AccountEntity>, private personaService: PersonaService) {
     }
 
     async getUserOrFail(id: string) {
@@ -17,7 +18,8 @@ export class AccountService {
         return this.accountRepo.find({relations: {personas: true}, loadEagerRelations: true});
     }
 
-    save(accountEntity: AccountEntity) {
+    async save(accountEntity: AccountEntity) {
+        await Promise.all(accountEntity.personas.map(persona => this.personaService.save(persona)));
         return this.accountRepo.save(accountEntity);
     }
 }

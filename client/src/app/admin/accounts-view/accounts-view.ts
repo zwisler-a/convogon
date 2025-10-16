@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MatButton} from "@angular/material/button";
+import { Component } from '@angular/core';
+import { MatButton } from '@angular/material/button';
 import {
   MatCell,
   MatCellDef,
@@ -7,17 +7,28 @@ import {
   MatHeaderCell,
   MatHeaderRow,
   MatHeaderRowDef,
-  MatRow, MatRowDef, MatTable, MatTableModule
-} from "@angular/material/table";
-import {HttpClient} from '@angular/common/http';
-import {RouterLink} from '@angular/router';
-import {MatIconModule} from '@angular/material/icon';
-import {ROUTES} from '../../app.routes';
-import {AdminAccountService} from '../admin-account.service';
-import {MatFormField, MatHint, MatLabel} from '@angular/material/form-field';
-import {MatInput} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
-import {BehaviorSubject, combineLatestWith, map, tap, withLatestFrom, zip, zipWith} from 'rxjs';
+  MatRow,
+  MatRowDef,
+  MatTable,
+  MatTableModule,
+} from '@angular/material/table';
+import { HttpClient } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { ROUTES } from '../../app.routes';
+import { AdminAccountService } from '../admin-account.service';
+import { MatFormField, MatHint, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import {
+  BehaviorSubject,
+  combineLatestWith,
+  map,
+  tap,
+  withLatestFrom,
+  zip,
+  zipWith,
+} from 'rxjs';
 
 @Component({
   selector: 'app-accounts-view',
@@ -42,11 +53,10 @@ import {BehaviorSubject, combineLatestWith, map, tap, withLatestFrom, zip, zipWi
     MatHint,
   ],
   templateUrl: './accounts-view.html',
-  styleUrl: './accounts-view.css'
+  styleUrl: './accounts-view.css',
 })
 export class AccountsView {
-
-  displayedColumns: string[] = ['mail', 'shouldPay', 'payed', 'actions'];
+  displayedColumns: string[] = ['mail', 'payed', 'actions'];
   users$;
   searchQuery$ = new BehaviorSubject('');
   filteredUsers$;
@@ -61,27 +71,26 @@ export class AccountsView {
     return this._searchQuery;
   }
 
-
   constructor(private accountService: AdminAccountService) {
     this.users$ = this.accountService.getAccounts();
     this.filteredUsers$ = this.users$.pipe(
       combineLatestWith(this.searchQuery$),
-      map(([users, searchQuery]) => users.filter(user => JSON.stringify(user).includes(searchQuery))),
+      map(([users, searchQuery]) =>
+        users.filter((user) => JSON.stringify(user).includes(searchQuery))
+      ),
       tap(console.log)
     );
   }
 
   protected readonly ROUTES = ROUTES;
 
-  shouldPay(account: any) {
-    this.accountService.toggleShouldPay(account).subscribe(data => {
-
-    });
+  payed(account: any) {
+    this.accountService.togglePayed(account).subscribe((data) => {});
   }
 
-  payed(account: any) {
-    this.accountService.togglePayed(account).subscribe(data => {
-
-    });
+  getPaymentStatus(account: any) {
+    if (!account.personas.length) return 'N/A';
+    if (account.personas.some((p: any) => !p.paid)) return 'Nicht Bezahlt';
+    return 'Bezahlt';
   }
 }

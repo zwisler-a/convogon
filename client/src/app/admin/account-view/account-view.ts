@@ -39,7 +39,7 @@ import {MatChip} from '@angular/material/chips';
 })
 export class AccountView {
   account!: any;
-  displayedColumns: string[] = ['firstName', 'lastName', 'actions'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'paid','actions'];
   id!: string;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private accountService: AdminAccountService) {

@@ -1,5 +1,10 @@
 @if (persona.type == 'sc' || persona.type == 'nsc') {
 <div>
+  <div class="row">
+    <span class="label">Spendenstatus</span>
+    <span>{{ persona.paid }}</span>
+    <span>{{ persona.paymentTimestamp }}</span>
+  </div>
   <h3>OT-Info</h3>
   <div class="row">
     <span class="label">Vorname</span>

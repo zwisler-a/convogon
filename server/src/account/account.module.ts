@@ -4,12 +4,14 @@ import {AccountEntity} from "./account.entity";
 import {AccountController} from "./account.controller";
 import {AuthModule} from "../auth/auth.module";
 import {AccountService} from "./account.service";
+import { PersonaModule } from "src/persona/persona.module";
 
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([AccountEntity]),
-        AuthModule
+        AuthModule,
+        PersonaModule
     ],
     controllers: [AccountController],
     providers: [AccountService],

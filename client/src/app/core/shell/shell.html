@@ -6,7 +6,6 @@
     <mat-icon>account_circle</mat-icon>
   </button>
 </nav>
-<hr>
 <mat-menu #menu="matMenu">
   <button mat-menu-item><span>{{ mail }}</span></button>
   <mat-divider></mat-divider>
@@ -17,13 +16,13 @@
 </mat-menu>
 @if (showPaymentMissing) {
   <div class="status-banner warning">
-    Zahlung ausstehend
-    <button mat-stroked-button [routerLink]="['/' + ROUTES.PAY]" class="action">Zahlen</button>
+    Spende ausstehend
+    <button mat-stroked-button [routerLink]="['/' + ROUTES.PAY]" class="action">Spenden</button>
   </div>
 }
 @if (showPaymentReceived) {
   <div class="status-banner success">
-    Zahlung eingegangen
+    Spende eingegangen
   </div>
 }
 
