@@ -1,7 +1,13 @@
-<div>
-  <p>Nordmannen e.V. päsentiert: ConFrontation - Zwei Seiten, keine Wahrheit</p>
-  <p>Info Box inserted here</p>
-  <p>FAQ Page optional</p>
+<div class="content-heading">
+  <div>
+    <h2>
+      Nordmannen e.V. päsentiert: ConFrontation - Zwei Seiten, keine Wahrheit
+    </h2>
+    <p>Info Box inserted here</p>
+    <p>FAQ Page optional</p>
+  </div>
+
+  <button mat-flat-button [routerLink]="['/add']">+ Neue Person anmelden</button>
 </div>
 
 <div class="persona-grid">
@@ -37,7 +43,3 @@
   </mat-card>
   }
 </div>
-<br />
-<mat-card>
-  <button mat-button [routerLink]="['/add']">Neue Person anmelden</button>
-</mat-card>
