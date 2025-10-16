@@ -10,6 +10,18 @@
   justify-content: space-between;
   margin-top: 2rem;
   margin-bottom: 3rem;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .content-heading {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .content-heading button {
+    align-self: center;
+  }
 }
 
 .avatar img {

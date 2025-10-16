@@ -6,7 +6,6 @@ nav {
   padding: 1rem 2rem;
 }
 
-
 .status-banner {
   width: 100%;
   padding: 1rem;
@@ -16,8 +15,7 @@ nav {
   justify-content: space-between;
   box-sizing: border-box;
 }
-.status-banner .action {
-}
+
 .status-banner.warning {
   background: #600101;
   font-weight: bolder;
@@ -30,13 +28,13 @@ nav {
 }
 
 main {
-  padding: 1rem ;
+  padding: 1rem 2rem;
   box-sizing: border-box;
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
   align-items: stretch;
-  margin: auto;
+  margin: 0 auto;
   max-width: 1280px;
   width: 100%;
 }
