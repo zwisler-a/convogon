@@ -36,7 +36,7 @@ export class Persona {
     paid!: boolean;
 
     @ApiProperty({description: 'Payment timestamp', example: null, default: null, nullable: true})
-    @Column({type: 'timestamp', nullable: true, default: null})
+    @Column({type: 'date', nullable: true, default: null})
     paymentTimestamp!: Date | null;
 
 }
