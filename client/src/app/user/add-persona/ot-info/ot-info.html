@@ -7,24 +7,23 @@
     <form [formGroup]="form" class="player-info-form">
       <mat-form-field appearance="fill">
         <mat-label>Vorname</mat-label>
-        <input matInput formControlName="firstName"/>
+        <input matInput formControlName="firstName" />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Nachname</mat-label>
-        <input matInput formControlName="lastName"/>
+        <input matInput formControlName="lastName" />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Adresse</mat-label>
-        <input matInput formControlName="address"/>
+        <input matInput formControlName="address" />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Mobilnummer</mat-label>
-        <input matInput formControlName="mobileNumber" type="tel"/>
+        <input matInput formControlName="mobileNumber" type="tel" />
       </mat-form-field>
-
 
       <mat-form-field appearance="fill">
         <mat-label>Verpflegung</mat-label>
@@ -35,22 +34,26 @@
           <mat-option [value]="'other'">Allergien oder Sonstiges</mat-option>
         </mat-select>
         @if (form.get('diet')?.value == 'other') {
-          <mat-hint>Bitte "Verpflegungsbesonderheiten" ausfüllen</mat-hint>
+        <mat-hint>Bitte "Verpflegungsbesonderheiten" ausfüllen</mat-hint>
         }
       </mat-form-field>
 
       @if (form.get('diet')?.value == 'other') {
-        <mat-form-field>
-          <mat-label>Verpflegungsbesonderheiten</mat-label>
-          <textarea matInput formControlName="dietOther"></textarea>
-        </mat-form-field>
+      <mat-form-field>
+        <mat-label>Verpflegungsbesonderheiten</mat-label>
+        <textarea matInput formControlName="dietOther"></textarea>
+      </mat-form-field>
       }
 
       <mat-form-field appearance="fill">
         <mat-label>Unterbringung</mat-label>
         <mat-select formControlName="accommodation">
-          <mat-option [value]="'hut'">Ich möchte in einer Hütte übernachten</mat-option>
-          <mat-option [value]="'tent'">Ich möchte im meinem Zelt / Van übernachten</mat-option>
+          <mat-option [value]="'hut'"
+            >Ich möchte in einer Hütte übernachten</mat-option
+          >
+          <mat-option [value]="'tent'"
+            >Ich möchte im meinem Zelt / Van übernachten</mat-option
+          >
           <mat-option [value]="'outside'">Ich übernachte außerhalb</mat-option>
         </mat-select>
       </mat-form-field>
@@ -60,26 +63,20 @@
       </mat-checkbox>
 
       @if (form.get('travellingWithGroup')?.value) {
-        <mat-form-field appearance="fill">
-          <mat-label>Gruppenname</mat-label>
-          <input matInput formControlName="groupName"/>
-        </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Gruppenname</mat-label>
+        <input matInput formControlName="groupName" />
+      </mat-form-field>
       }
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>Zeitpunkt Anreise</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="arrival">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <input matInput formControlName="arrival" />
       </mat-form-field>
 
-
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>Zeitpunkt Abreise</mat-label>
-        <input matInput [matDatepicker]="pickerdep" formControlName="departure">
-        <mat-datepicker-toggle matIconSuffix [for]="pickerdep"></mat-datepicker-toggle>
-        <mat-datepicker #pickerdep></mat-datepicker>
+        <input matInput formControlName="departure" />
       </mat-form-field>
-
     </form>
   </mat-card-content>
   <mat-card-actions>

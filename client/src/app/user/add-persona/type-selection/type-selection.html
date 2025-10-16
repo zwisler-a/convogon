@@ -1,10 +1,5 @@
 <mat-card>
-  <mat-card-header>
-    <mat-card-title>Neue Person anmelden</mat-card-title>
-  </mat-card-header>
   <mat-card-content>
-    <div>Bitte jede Person einzeln anmelden, auch Kleinkinder. Danke!</div>
-
     <div class="types">
       <div class="type" (click)="type.emit('sc')">
         <img src="/fc1916.png" />
@@ -17,7 +12,6 @@
         <div>NSC</div>
         <div>Nicht-Spieler:in-Charakter</div>
       </div>
-
 
       <div class="type" (click)="type.emit('kid')">
         <img src="/fc1957.png" />

@@ -26,7 +26,7 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class PersonaDetails {
 
-  persona: any = {}
+  persona: any;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private personaService: PersonaService) {
     this.activatedRoute.params.subscribe(params => {
