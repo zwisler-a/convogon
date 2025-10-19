@@ -1,9 +1,11 @@
 .back-button {
   margin-bottom: 1rem;
 }
-.avatar img{
+
+.avatar img {
   width: 48px;
 }
+
 .heading {
   display: flex;
   flex-direction: row;

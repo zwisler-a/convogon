@@ -1,0 +1,38 @@
+.site-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.site-header h1 {
+  font-size: clamp(2rem, 2rem + 1.2vw, 2.6rem);
+  margin: 0 0 0.5rem;
+}
+.lead {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.5rem 0.75rem;
+  padding: 0;
+  margin: 1rem 0 1.5rem;
+  list-style: none;
+  color: gray;
+}
+.highlights li::before {
+  content: "★";
+  color: var(--brand-2);
+  margin-right: 0.5rem;
+}
+
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+h3 {
+  color: gray;
+  margin-bottom: 0;
+}

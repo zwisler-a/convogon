@@ -1,45 +1,48 @@
-<div class="content-heading">
+<app-site-header></app-site-header>
+
+<div class="container">
   <div>
-    <h2>
-      Nordmannen e.V. päsentiert: ConFrontation - Zwei Seiten, keine Wahrheit
-    </h2>
-    <p>Info Box inserted here</p>
-    <p>FAQ Page optional</p>
+    <button mat-button [routerLink]="['/faq']">Klicke hier für mehr Infos</button>
   </div>
 
-  <button mat-flat-button [routerLink]="['/add']">+ Neue Person anmelden</button>
-</div>
+  <div class="content-heading">
+    <h1>Deine angemeldeten Personen</h1>
+    <button mat-flat-button [routerLink]="['/add']">
+      + Neue Person anmelden
+    </button>
+  </div>
 
-<div class="persona-grid">
-  @for (persona of (personas$ | async); track persona.id) {
-  <mat-card class="persona-card">
-    <mat-card-header>
-      <div mat-card-avatar class="avatar">
-        @if (persona.type == 'nsc') {
-        <img src="/fc2015.png" />
-        } @if (persona.type == 'sc') {
-        <img src="/fc1916.png" />
-        } @if (persona.type == 'kid') {
-        <img src="/fc1957.png" />
-        }
-      </div>
-      <mat-card-title
-        >{{ persona.firstName }} {{ persona.lastName }}</mat-card-title
-      >
-      <mat-card-subtitle>
-        {{ persona.type == "nsc" ? "Nicht Spieler Character" : "" }}
-        {{ persona.type == "sc" ? "Spieler Character" : "" }}
-        {{ persona.type == "kid" ? "Kind" : "" }}
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content> </mat-card-content>
-    <mat-card-actions>
-      <button mat-button [routerLink]="['/persona/' + persona.id]">
-        <mat-icon>visibility</mat-icon>
-        Ansehen
-      </button>
-      <button mat-button (click)="delete(persona.id)">Entfernen</button>
-    </mat-card-actions>
-  </mat-card>
-  }
+  <div class="persona-grid">
+    @for (persona of (personas$ | async); track persona.id) {
+    <mat-card class="persona-card">
+      <mat-card-header>
+        <div mat-card-avatar class="avatar">
+          @if (persona.type == 'nsc') {
+          <img src="/fc2015.png" />
+          } @if (persona.type == 'sc') {
+          <img src="/fc1916.png" />
+          } @if (persona.type == 'kid') {
+          <img src="/fc1957.png" />
+          }
+        </div>
+        <mat-card-title
+          >{{ persona.firstName }} {{ persona.lastName }}</mat-card-title
+        >
+        <mat-card-subtitle>
+          {{ persona.type == "nsc" ? "Nicht Spieler Character" : "" }}
+          {{ persona.type == "sc" ? "Spieler Character" : "" }}
+          {{ persona.type == "kid" ? "Kind" : "" }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content> </mat-card-content>
+      <mat-card-actions>
+        <button mat-button [routerLink]="['/persona/' + persona.id]">
+          <mat-icon>visibility</mat-icon>
+          Ansehen
+        </button>
+        <button mat-button (click)="delete(persona.id)">Entfernen</button>
+      </mat-card-actions>
+    </mat-card>
+    }
+  </div>
 </div>

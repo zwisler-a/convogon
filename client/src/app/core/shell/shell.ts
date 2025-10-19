@@ -10,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 import {interval, startWith, switchMap} from 'rxjs';
 import {AccountService} from '../../../api';
 import {ROUTES} from '../../app.routes';
+import { Footer } from '../../shared/footer/footer';
 
 @Component({
   selector: 'app-shell',
@@ -19,7 +20,8 @@ import {ROUTES} from '../../app.routes';
     RouterLink,
     MatMenuModule,
     MatIconModule,
-    MatDivider
+    MatDivider,
+    Footer
   ],
   templateUrl: './shell.html',
   styleUrl: './shell.css'

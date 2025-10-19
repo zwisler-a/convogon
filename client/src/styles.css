@@ -8,7 +8,12 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  /*background: linear-gradient(135deg, hsl(240 10% 3.9%), hsl(128, 71%, 20%));*/
+  line-height: 1.6;
+}
+
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
 }
 
 form {
@@ -28,4 +33,3 @@ form {
   display: flex;
   gap: 1rem;
 }
-

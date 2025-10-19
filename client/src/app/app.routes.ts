@@ -11,12 +11,14 @@ import {AdminPersonaDetails} from './admin/admin-persona-details/admin-persona-d
 import {AccountsView} from './admin/accounts-view/accounts-view';
 import {AccountView} from './admin/account-view/account-view';
 import {Pay} from './user/pay/pay';
+import { Faq } from './user/faq/faq';
 
 export const ROUTES = {
   LOGIN: 'login',
   LOGIN_SEND: 'login-send',
   HOME: 'home',
   PAY: 'pay',
+  FAQ: 'faq',
   ADMIN_PERSONA_VIEWS: 'admin/persona/:id',
   ADMIN: 'admin',
   ADMIN_USERS: 'admin/users',
@@ -33,6 +35,7 @@ export const routes: Routes = [
       {path: 'persona/:id', component: PersonaDetails},
       {path: ROUTES.ADMIN, component: Admin},
       {path: ROUTES.PAY, component: Pay},
+      {path: ROUTES.FAQ, component: Faq},
       {path: ROUTES.ADMIN_PERSONA_VIEWS, component: AdminPersonaDetails},
       {path: ROUTES.ADMIN_USERS, component: AccountsView},
       {path: ROUTES.ADMIN_USER, component: AccountView},

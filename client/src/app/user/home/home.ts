@@ -14,10 +14,12 @@ import {
   MatCardTitle
 } from '@angular/material/card';
 import {ConfirmDialogService} from '../../core/confirm/confirm.service';
+import { SiteHeader } from '../../shared/site-header/site-header';
 
 @Component({
   selector: 'app-home',
   imports: [
+    SiteHeader,
     MatButton,
     RouterLink,
     MatList,
