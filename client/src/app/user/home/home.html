@@ -2,7 +2,9 @@
 
 <div class="container">
   <div>
-    <button mat-button [routerLink]="['/faq']">Klicke hier für mehr Infos</button>
+    <button mat-button [routerLink]="['/faq']">
+      Klicke hier für mehr Infos
+    </button>
   </div>
 
   <div class="content-heading">
@@ -11,6 +13,10 @@
       + Neue Person anmelden
     </button>
   </div>
+
+  @if (!(personas$ | async)?.length) {
+  <p class="no-player">Es sind noch keine Personen angemeldet.</p>
+  }
 
   <div class="persona-grid">
     @for (persona of (personas$ | async); track persona.id) {

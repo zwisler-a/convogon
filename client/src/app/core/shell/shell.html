@@ -1,5 +1,5 @@
 <nav>
-  <img src="/convogon.png" class="logo"/>
+  <img src="/convogon.png" class="logo" />
   <span class="title" [routerLink]="['/']">ConVogon</span>
   <span class="spacer"></span>
   <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -7,23 +7,22 @@
   </button>
 </nav>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item><span>{{ mail }}</span></button>
-  <mat-divider></mat-divider>
+  <button mat-menu-item [routerLink]="['/home']">{{ mail }}</button>
   @if (isAdmin) {
-    <button mat-menu-item [routerLink]="['/admin']">Admin</button>
+  <button mat-menu-item [routerLink]="['/admin']">Admin</button>
   }
+  <mat-divider></mat-divider>
   <button mat-menu-item (click)="logout()">Logout</button>
 </mat-menu>
 @if (showPaymentMissing) {
-  <div class="status-banner warning">
-    Spende ausstehend
-    <button mat-stroked-button [routerLink]="['/' + ROUTES.PAY]" class="action">Spenden</button>
-  </div>
-}
-@if (showPaymentReceived) {
-  <div class="status-banner success">
-    Spende eingegangen
-  </div>
+<div class="status-banner warning">
+  Spende ausstehend
+  <button mat-stroked-button [routerLink]="['/' + ROUTES.PAY]" class="action">
+    Spenden
+  </button>
+</div>
+} @if (showPaymentReceived) {
+<div class="status-banner success">Spende eingegangen</div>
 }
 
 <main>

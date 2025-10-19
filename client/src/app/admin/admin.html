@@ -1,2 +1,15 @@
-
-<button mat-raised-button [routerLink]="'/' + ROUTES.ADMIN_USERS">Accounts</button>
+<div class="container">
+  <h1>Admin-Bereich</h1>
+  <div class="card-container">
+    <mat-card
+      mat-raised-button
+      [routerLink]="'/' + ROUTES.ADMIN_USERS"
+      class="clickable-card"
+    >
+      <mat-card-title> Accounts verwalten </mat-card-title>
+    </mat-card>
+    <mat-card class="clickable-card">
+      <mat-card-title> Spieler verwalten </mat-card-title>
+    </mat-card>
+  </div>
+</div>

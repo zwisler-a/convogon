@@ -15,10 +15,13 @@ img {
 }
 
 .wizard-header .heading {
-  font-family: "Jacquard 12", system-ui;
   font-size: 1.5rem;
 }
 
 .back-button {
   align-self: flex-start;
+}
+
+.subtitle {
+  color: gray;
 }

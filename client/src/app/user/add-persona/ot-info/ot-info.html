@@ -48,12 +48,8 @@
       <mat-form-field appearance="fill">
         <mat-label>Unterbringung</mat-label>
         <mat-select formControlName="accommodation">
-          <mat-option [value]="'hut'"
-            >Ich möchte in einer Hütte übernachten</mat-option
-          >
-          <mat-option [value]="'tent'"
-            >Ich möchte im meinem Zelt / Van übernachten</mat-option
-          >
+          <mat-option [value]="'hut'">Hütte</mat-option>
+          <mat-option [value]="'tent'">Mein Zelt / Van</mat-option>
           <mat-option [value]="'outside'">Ich übernachte außerhalb</mat-option>
         </mat-select>
       </mat-form-field>
@@ -69,12 +65,12 @@
       </mat-form-field>
       }
       <mat-form-field appearance="fill">
-        <mat-label>Zeitpunkt Anreise</mat-label>
+        <mat-label>Zeitpunkt Anreise (Tag, ungefähre Uhrzeit)</mat-label>
         <input matInput formControlName="arrival" />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Zeitpunkt Abreise</mat-label>
+        <mat-label>Zeitpunkt Abreise (Tag, ungefähre Uhrzeit)</mat-label>
         <input matInput formControlName="departure" />
       </mat-form-field>
     </form>

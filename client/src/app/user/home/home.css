@@ -43,3 +43,7 @@ mat-card-subtitle {
   color: gray;
   font-size: 0.9rem;
 }
+
+.no-player {
+  color: gray;
+}

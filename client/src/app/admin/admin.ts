@@ -6,6 +6,7 @@ import {AsyncPipe} from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
 import {ROUTES} from '../app.routes';
+import { MatCard, MatCardTitle } from '@angular/material/card';
 
 @Component({
   selector: 'app-admin',
@@ -14,7 +15,9 @@ import {ROUTES} from '../app.routes';
     MatTableModule,
     AsyncPipe,
     MatButton,
-    RouterLink
+    RouterLink,
+    MatCard,
+    MatCardTitle
   ],
   templateUrl: './admin.html',
   styleUrl: './admin.css'
