@@ -108,7 +108,7 @@ links:
 ### Ticket & Spendenbeitrag
 - Kosten
     - Dies ist eine Privatveranstaltung unter Freunden nach dem Solidarprinzip. Wir versuchen diese Veranstaltung für alle möglich zu machen. Deshalb: Beitrag als freiwillige Spende nach Selbsteinschätzung. 
-	- Da es den Wunsch nach Orientierung gab: Eine teilnehmende Person kostet an Übernachtung 60 €, die Verpflegung ist mit ca. 35 € pro Person veranschlagt. Dazu kommen die Kosten der Con als solches (Verbrauchsmaterial, Requisite, ect. ) und die geförderte Teilnahme von Menschen. Unser Vorschlag liegt somit bei 125€ pro Person.
+	- Da es den Wunsch nach Orientierung gab: Eine teilnehmende Person kostet an Übernachtung 60 €, die Verpflegung ist mit ca. 50 € pro Person veranschlagt. Dazu kommen die Kosten der Con als solches (Verbrauchsmaterial, Requisite, ect. ) und die geförderte Teilnahme von Menschen. Unser Vorschlag liegt somit bei 150 € pro Person.
     - **Teilnahmebeitrag bis zum 15. April überweisen an:**
         - **Susanne Ey**
         - **DE83500105175442012302**
