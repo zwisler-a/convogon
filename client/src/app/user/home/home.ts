@@ -46,12 +46,12 @@ export class Home {
   }
 
   delete(id: string) {
-    this.confirmService.confirm('').subscribe((confirm) => {
+    this.confirmService.confirm('Person löschen', 'Möchtest du diese:n Spieler:in wirklich löschen?').subscribe((confirm) => {
       if (confirm) {
         this.personaService.delete(id).subscribe(() => {
           this.personas$ = this.personaService.getPersonas();
         });
       }
-    })
+    });
   }
 }

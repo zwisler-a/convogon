@@ -16,4 +16,5 @@ import {MatButton} from '@angular/material/button';
 })
 export class Confirm {
   message!: string;
+  title!: string;
 }

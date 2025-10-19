@@ -28,17 +28,22 @@ export class AdminAccountService {
   }
 
   togglePayed(account: any) {
-    return this.confirm.confirm('Confirm').pipe(
-      switchMap((confirmed) => {
-        if (confirmed) {
-          return this.accountService
-            .updateAccountStatus({ payed: true, userId: account.id })
-            .pipe(tap((res) => this.reload$.next(void 0)));
-        } else {
-          throw new Error('Not confirmed');
-        }
-      })
-    );
+    return this.confirm
+      .confirm(
+        'Spendeneingang',
+        'Möchtest du den Spendenstatus auf eingegangen setzen?'
+      )
+      .pipe(
+        switchMap((confirmed) => {
+          if (confirmed) {
+            return this.accountService
+              .updateAccountStatus({ payed: true, userId: account.id })
+              .pipe(tap((res) => this.reload$.next(void 0)));
+          } else {
+            throw new Error('Not confirmed');
+          }
+        })
+      );
   }
 
   getAccounts() {

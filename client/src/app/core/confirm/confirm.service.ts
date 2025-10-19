@@ -8,11 +8,12 @@ export class ConfirmDialogService {
   constructor(private dialog: MatDialog) {
   }
 
-  confirm(message: string, p0?: string): Observable<boolean> {
+  confirm(title: string, message: string, p0?: string): Observable<boolean> {
     const dialogRef: MatDialogRef<Confirm> = this.dialog.open(Confirm, {
       width: '300px',
-      data: {message}
+      data: {title, message}
     });
+    dialogRef.componentInstance.title = title;
     dialogRef.componentInstance.message = message;
     return dialogRef.afterClosed().pipe(map(result => !!result));
   }

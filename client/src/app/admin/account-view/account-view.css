@@ -1,8 +1,8 @@
 .basic-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
   padding: 1rem;
   gap: 0.5rem;
 }
@@ -11,10 +11,17 @@
   font-size: 1.2rem;
   margin: 1rem 0;
 }
+
 .actions {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
   justify-content: flex-end;
+}
+
+.hoverable-rows tr:hover {
+  background-color: rgb(42, 42, 42);
+  color: white;
+  cursor: pointer;
 }

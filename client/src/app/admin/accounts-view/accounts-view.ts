@@ -56,7 +56,7 @@ import {
   styleUrl: './accounts-view.css',
 })
 export class AccountsView {
-  displayedColumns: string[] = ['mail', 'payed', 'actions'];
+  displayedColumns: string[] = ['mail', 'payed', 'playerCount'];
   users$;
   searchQuery$ = new BehaviorSubject('');
   filteredUsers$;
@@ -90,7 +90,11 @@ export class AccountsView {
 
   getPaymentStatus(account: any) {
     if (!account.personas.length) return 'N/A';
-    if (account.personas.some((p: any) => !p.paid)) return 'Nicht Bezahlt';
-    return 'Bezahlt';
+    if (account.personas.some((p: any) => !p.paid)) return 'ausstehend';
+    return 'eingegangen';
+  }
+
+  getPlayerCount(account: any): number {
+    return account.personas ? account.personas.length : 0;
   }
 }
