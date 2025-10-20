@@ -12,7 +12,6 @@ body {
 }
 
 .container {
-  width: min(1100px, 92vw);
   margin: 0 auto;
 }
 
