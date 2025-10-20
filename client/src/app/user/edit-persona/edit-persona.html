@@ -1,0 +1,41 @@
+<div class="persona-wizard">
+  <button mat-button class="back-button" [routerLink]="'/' + ROUTES.HOME">
+    <mat-icon>arrow_back</mat-icon>
+    Zurück
+  </button>
+  <div class="wizard-header">
+    <span class="heading">Person editieren</span>
+  </div>
+
+  <mat-stepper [linear]="true">
+    @if (type == 'nsc' || type == 'sc') {
+      <mat-step [stepControl]="otInfo">
+        <app-ot-info [form]="otInfo"></app-ot-info>
+      </mat-step>
+
+      <mat-step [stepControl]="itInfo">
+        <app-it-info [form]="itInfo"></app-it-info>
+      </mat-step>
+    }
+    @if (type == 'kid') {
+      <mat-step [stepControl]="kidInfo">
+        <app-kid-info [form]="kidInfo"></app-kid-info>
+      </mat-step>
+    }
+    @if (type == 'nsc') {
+      <mat-step [stepControl]="npcInfo">
+        <app-nsc-info [form]="npcInfo"></app-nsc-info>
+      </mat-step>
+    }
+    @if (type == 'sc') {
+      <mat-step [stepControl]="playerCharInfo">
+        <app-sc-info [form]="playerCharInfo"></app-sc-info>
+      </mat-step>
+    }
+    <mat-step>
+      <app-review [data]="getPersonFromForm()"></app-review>
+      <br>
+      <button mat-flat-button (click)="createPersona()">Speichern</button>
+    </mat-step>
+  </mat-stepper>
+</div>

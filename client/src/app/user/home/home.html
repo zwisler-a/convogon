@@ -46,6 +46,10 @@
           <mat-icon>visibility</mat-icon>
           Ansehen
         </button>
+        <button mat-button [routerLink]="['/edit/persona/' + persona.id]">
+          <mat-icon>edit</mat-icon>
+          Bearbeiten
+        </button>
         <button mat-button (click)="delete(persona.id)">Entfernen</button>
       </mat-card-actions>
     </mat-card>

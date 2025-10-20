@@ -57,6 +57,22 @@ export class PersonaService {
         return this.httpClient.post(url, persona, requestOptions);
     }
 
+    personaControllerUpdate(persona: Persona, observe?: 'body', options?: RequestOptions<'json'>): Observable<any>;
+    personaControllerUpdate(persona: Persona, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<any>>;
+    personaControllerUpdate(persona: Persona, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<any>>;
+    personaControllerUpdate(persona: Persona, observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
+        const url = `${this.basePath}/api/persona`;
+
+        const requestOptions: any = {
+            observe: observe as any,
+            reportProgress: options?.reportProgress,
+            withCredentials: options?.withCredentials,
+            context: this.createContextWithClientId(options?.context)
+        };
+
+        return this.httpClient.put(url, persona, requestOptions);
+    }
+
     personaControllerFindOne(id: string, observe?: 'body', options?: RequestOptions<'json'>): Observable<PersonaDto>;
     personaControllerFindOne(id: string, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<PersonaDto>>;
     personaControllerFindOne(id: string, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<PersonaDto>>;

@@ -7,7 +7,7 @@ import {
     UseGuards,
     Param,
     NotFoundException,
-    ForbiddenException, Delete
+    ForbiddenException, Delete, Put
 } from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Persona} from "./entity/persona.entity";
@@ -28,6 +28,20 @@ export class PersonaController {
     public async create(@Body() persona: Persona, @Req() req: any): Promise<Persona> {
         const userId = req.user.id;
         return this.personaRepository.save(this.personaRepository.create({...persona, user: {id: userId}}));
+    }
+
+    @ApiBearerAuth()
+    @UseGuards(AuthGuard)
+    @Put()
+    public async update(@Body() persona: Persona, @Req() req: any): Promise<Persona> {
+        const userId = req.user.id;
+        const personaId = persona.id;
+        if (!personaId) {
+            throw new NotFoundException("personaId is required");
+        }
+        const oldPersona = await this.personaRepository.findOneOrFail({where: {id: personaId, user: {id: userId}}});
+        const newPersona = {...oldPersona, ...persona, ...{id: personaId}};
+        return this.personaRepository.save(newPersona);
     }
 
     @ApiBearerAuth()

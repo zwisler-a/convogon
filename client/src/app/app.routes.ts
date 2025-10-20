@@ -12,6 +12,7 @@ import {AccountsView} from './admin/accounts-view/accounts-view';
 import {AccountView} from './admin/account-view/account-view';
 import {Pay} from './user/pay/pay';
 import { Faq } from './user/faq/faq';
+import {EditPersona} from './user/edit-persona/edit-persona';
 
 export const ROUTES = {
   LOGIN: 'login',
@@ -33,6 +34,7 @@ export const routes: Routes = [
       {path: ROUTES.HOME, component: Home},
       {path: 'add', component: Persona},
       {path: 'persona/:id', component: PersonaDetails},
+      {path: 'edit/persona/:id', component: EditPersona},
       {path: ROUTES.ADMIN, component: Admin},
       {path: ROUTES.PAY, component: Pay},
       {path: ROUTES.FAQ, component: Faq},
