@@ -35,22 +35,21 @@
           >{{ persona.firstName }} {{ persona.lastName }}</mat-card-title
         >
         <mat-card-subtitle>
-          {{ persona.type == "nsc" ? "Nicht Spieler Character" : "" }}
-          {{ persona.type == "sc" ? "Spieler Character" : "" }}
+          {{ persona.type == "nsc" ? "Nicht Spieler Charakter" : "" }}
+          {{ persona.type == "sc" ? "Spieler Charakter" : "" }}
           {{ persona.type == "kid" ? "Kind" : "" }}
         </mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content> </mat-card-content>
       <mat-card-actions>
         <button mat-button [routerLink]="['/persona/' + persona.id]">
           <mat-icon>visibility</mat-icon>
-          Ansehen
         </button>
         <button mat-button [routerLink]="['/edit/persona/' + persona.id]">
           <mat-icon>edit</mat-icon>
-          Bearbeiten
         </button>
-        <button mat-button (click)="delete(persona.id)">Entfernen</button>
+        <button mat-button (click)="delete(persona.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-card-actions>
     </mat-card>
     }

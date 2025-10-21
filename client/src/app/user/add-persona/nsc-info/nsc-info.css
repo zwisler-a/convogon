@@ -1,0 +1,6 @@
+@media (max-width: 768px) {
+  mat-form-field mat-label {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+}

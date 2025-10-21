@@ -1,121 +1,146 @@
-@if (persona.type == 'sc' || persona.type == 'nsc') {
-<div>
-  <div class="row">
-    <span class="label">Spendenstatus</span>
-    <span>{{ persona.paid }}</span>
-    <span>{{ persona.paymentTimestamp }}</span>
-  </div>
-  <h3>OT-Info</h3>
-  <div class="row">
-    <span class="label">Vorname</span>
-    <span>{{ persona.firstName }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Nachname</span>
-    <span>{{ persona.lastName }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Adresse</span>
-    <span>{{ persona.address }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Mobilnummer</span>
-    <span>{{ persona.mobileNumber }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Verpflegung</span>
-    <span>{{ getDietDisplayString(persona.diet) }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Unterbringung</span>
-    <span>{{ getAccommodationDisplayString(persona.accommodation) }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Reist mit Gruppe an</span>
-    <span>{{ persona.travellingWithGroup ? "Ja" : "Nein" }}</span>
-  </div>
-  @if (persona.travellingWithGroup) {
-  <div class="row">
-    <span class="label">Gruppenname</span>
-    <span>{{ persona.groupName }}</span>
-  </div>
+<div class="persona-summary" role="region" aria-label="Persona Zusammenfassung">
+  @if (persona.type == 'sc' || persona.type == 'nsc') {
+    <!-- SPENDENSTATUS OBEN -->
+    <div class="donation-status">
+      <span class="label">Spendenstatus:</span>
+      <span class="badge" [class.badge--success]="persona.paid" [class.badge--muted]="!persona.paid">
+        {{ persona.paid ? 'Eingangen' : 'Ausstehend' }}
+      </span>
+      <span class="subtle" *ngIf="persona.paymentTimestamp">
+        • {{ persona.paymentTimestamp | date:'medium' }}
+      </span>
+    </div>
+
+    <!-- OT INFO -->
+    <section class="section">
+      <h2 class="section-title">OT-Info</h2>
+      <div class="fields">
+        <div class="row">
+          <span class="label">Vorname</span>
+          <span class="value">{{ persona.firstName ?? '—' }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Nachname</span>
+          <span class="value">{{ persona.lastName ?? '—' }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Adresse</span>
+          <span class="value">{{ persona.address ?? '—' }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Mobilnummer</span>
+          <span class="value">{{ persona.mobileNumber ?? '—' }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Verpflegung</span>
+          <span class="value">{{ getDietDisplayString(persona.diet) }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Unterbringung</span>
+          <span class="value">{{ getAccommodationDisplayString(persona.accommodation) }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Reist mit Gruppe an</span>
+          <span class="value">{{ persona.travellingWithGroup ? 'Ja' : 'Nein' }}</span>
+        </div>
+        @if (persona.travellingWithGroup) {
+          <div class="row">
+            <span class="label">Gruppenname</span>
+            <span class="value">{{ persona.groupName }}</span>
+          </div>
+        }
+        <div class="row">
+          <span class="label">Anreise</span>
+          <span class="value">{{ persona.arrival | date:'short' }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Abreise</span>
+          <span class="value">{{ persona.departure | date:'short' }}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- IT INFO -->
+    <section class="section">
+      <h2 class="section-title">IT-Info</h2>
+      <div class="fields">
+        <div class="row">
+          <span class="label">Charaktername</span>
+          <span class="value">{{ persona.characterName }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Klasse</span>
+          <span class="value">{{ persona.characterClass }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Fähigkeiten</span>
+          <span class="value">{{ persona.skills }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Kämpfer</span>
+          <span class="value">{{ persona.fighter ? "Ja" : "Nein" }}</span>
+        </div>
+      </div>
+    </section>
   }
-  <div class="row">
-    <span class="label">Zeitpunkt Anreise</span>
-    <span>{{ persona.arrival }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Zeitpunkt Abreise</span>
-    <span>{{ persona.departure  }}</span>
-  </div>
+
+  @if (persona.type == 'sc') {
+    <section class="section">
+      <h2 class="section-title">SC-Details</h2>
+      <div class="fields">
+        <div class="row long">
+          <span class="label">Wichtig für die SL</span>
+          <span class="value prewrap">{{ persona.importantInfoForGM }}</span>
+        </div>
+        <div class="row long">
+          <span class="label">Größte Priorität</span>
+          <span class="value prewrap">{{ persona.mostImportantForCharacter }}</span>
+        </div>
+        <div class="row long">
+          <span class="label">Infos zu Freundes-Chars</span>
+          <span class="value prewrap">{{ persona.infoAboutFriends }}</span>
+        </div>
+        <div class="row long">
+          <span class="label">Story / Lore</span>
+          <span class="value prewrap">{{ persona.storyLore }}</span>
+        </div>
+      </div>
+    </section>
+  }
+
+  @if (persona.type == 'nsc') {
+    <section class="section">
+      <h2 class="section-title">NSC-Info</h2>
+      <div class="fields">
+        <div class="row long">
+          <span class="label">NSC Interessen</span>
+          <span class="value prewrap">{{ persona.interests }}</span>
+        </div>
+      </div>
+    </section>
+  }
+
+  @if (persona.type == 'kid') {
+    <section class="section">
+      <h2 class="section-title">Kind-Info</h2>
+      <div class="fields">
+        <div class="row">
+          <span class="label">Vorname</span>
+          <span class="value">{{ persona.firstName }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Nachname</span>
+          <span class="value">{{ persona.lastName }}</span>
+        </div>
+        <div class="row">
+          <span class="label">Alter</span>
+          <span class="value">{{ persona.age }}</span>
+        </div>
+        <div class="row long">
+          <span class="label">Sonstiges</span>
+          <span class="value prewrap">{{ persona.other }}</span>
+        </div>
+      </div>
+    </section>
+  }
 </div>
-<div>
-  <!-- IT --->
-  <h3>IT-Info</h3>
-  <div class="row">
-    <span class="label">Charaktername</span>
-    <span>{{ persona.characterName }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Klasse</span>
-    <span>{{ persona.characterClass }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Fähigkeiten</span>
-    <span>{{ persona.skills }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Kämpfer</span>
-    <span>{{ persona.fighter ? "Ja" : "Nein" }}</span>
-  </div>
-</div>
-} @if (persona.type == 'sc') {
-<div>
-  <!-- SC -->
-  <div class="row long">
-    <span class="label">Infos über meinen Character</span>
-    <span>{{ persona.importantInfoForGM }}</span>
-  </div>
-  <div class="row long">
-    <span class="label">Wichtige Infos über meinen Character</span>
-    <span>{{ persona.mostImportantForCharacter }}</span>
-  </div>
-  <div class="row long">
-    <span class="label">Wichtige Infos über meine Freunde</span>
-    <span>{{ persona.infoAboutFriends }}</span>
-  </div>
-  <div class="row long">
-    <span class="label">Story</span>
-    <span>{{ persona.storyLore }}</span>
-  </div>
-</div>
-} @if (persona.type == 'nsc') {
-<div>
-  <!-- NSC -->
-  <h3>NSC-Info</h3>
-  <div class="row">
-    <span class="label">NSC Intressen</span>
-    <span>{{ persona.interests }}</span>
-  </div>
-</div>
-} @if (persona.type == 'kid') {
-<div>
-  <!-- KID -->
-  <div class="row">
-    <span class="label">Vorname</span>
-    <span>{{ persona.firstName }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Nachname</span>
-    <span>{{ persona.lastName }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Alter</span>
-    <span>{{ persona.age }}</span>
-  </div>
-  <div class="row">
-    <span class="label">Sonstiges</span>
-    <span>{{ persona.other }}</span>
-  </div>
-</div>
-}

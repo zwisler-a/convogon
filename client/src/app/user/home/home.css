@@ -44,6 +44,11 @@ mat-card-subtitle {
   font-size: 0.9rem;
 }
 
+mat-card-actions {
+  justify-content: center;
+  align-items: center;
+}
+
 .no-player {
   color: gray;
 }

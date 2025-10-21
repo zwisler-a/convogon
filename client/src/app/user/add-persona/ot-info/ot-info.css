@@ -2,3 +2,10 @@ form {
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width: 768px) {
+  mat-form-field mat-label {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+}
