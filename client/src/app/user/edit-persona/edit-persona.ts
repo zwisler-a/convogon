@@ -14,6 +14,7 @@ import {PersonaService} from '../../service/persona.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ROUTES} from '../../app.routes';
+import {Persona} from '../../../api';
 
 @Component({
   selector: 'app-edit-persona',

@@ -1,12 +1,6 @@
 <app-site-header></app-site-header>
 
 <div class="container">
-  <div>
-    <button mat-button [routerLink]="['/faq']">
-      Klicke hier für mehr Infos
-    </button>
-  </div>
-
   <div class="content-heading">
     <h1>Deine angemeldeten Personen</h1>
     <button mat-flat-button [routerLink]="['/add']">
@@ -41,13 +35,13 @@
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions>
-        <button mat-button [routerLink]="['/persona/' + persona.id]">
+        <button mat-icon-button matTooltip="Ansehen" [routerLink]="['/persona/' + persona.id]">
           <mat-icon>visibility</mat-icon>
         </button>
-        <button mat-button [routerLink]="['/edit/persona/' + persona.id]">
+        <button mat-icon-button matTooltip="Bearbeiten" [routerLink]="['/edit/persona/' + persona.id]">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-button (click)="delete(persona.id)">
+        <button mat-icon-button matTooltip="Löschen" (click)="delete(persona.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-card-actions>

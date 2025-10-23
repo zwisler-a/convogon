@@ -17,7 +17,7 @@
 
       <mat-form-field>
         <mat-label>Fähigkeiten</mat-label>
-        <mat-chip-grid #reactiveChipGrid aria-label="Enter reactive form keywords" formControlName="skills">
+        <mat-chip-grid #reactiveChipGrid aria-label="Enter form keywords" formControlName="skills">
           @for (keyword of skills(); track keyword) {
             <mat-chip-row (removed)="removeReactiveKeyword(keyword)">
               {{ keyword }}

@@ -1,4 +1,4 @@
-import {Component, inject, Inject, Input, signal} from '@angular/core';
+import {Component, inject, Inject, Input, OnChanges, signal, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
@@ -31,12 +31,22 @@ import {COMMA, ENTER, SEMICOLON} from '@angular/cdk/keycodes';
   templateUrl: './it-info.html',
   styleUrl: './it-info.css'
 })
-export class ItInfo {
+export class ItInfo implements OnChanges {
+
 
   @Input()
   form!: FormGroup;
+
   readonly skills = signal<string[]>([]);
 
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['form']) {
+      const skillsVal = this.form.get('skills')?.value;
+      if(!skillsVal) return;
+      this.skills.set(skillsVal);
+    }
+  }
 
   removeReactiveKeyword(keyword: string) {
     this.skills.update(keywords => {

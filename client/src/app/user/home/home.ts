@@ -15,6 +15,7 @@ import {
 } from '@angular/material/card';
 import {ConfirmDialogService} from '../../core/confirm/confirm.service';
 import { SiteHeader } from '../../shared/site-header/site-header';
+import {MatTooltip} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,8 @@ import { SiteHeader } from '../../shared/site-header/site-header';
     MatCardContent,
     MatCardActions,
     MatIconButton,
-    MatCardSubtitle
+    MatCardSubtitle,
+    MatTooltip
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'

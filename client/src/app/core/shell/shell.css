@@ -1,3 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 nav {
   display: flex;
   flex-direction: row;
@@ -21,6 +27,7 @@ nav {
   font-weight: bolder;
   font-size: 1.1rem;
 }
+
 .status-banner.success {
   background: #046001;
   font-weight: bolder;
@@ -30,12 +37,12 @@ nav {
 main {
   padding: 1rem 2rem;
   box-sizing: border-box;
+  flex: 1 1 auto;
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
   align-items: stretch;
   margin: 0 auto;
-  margin-bottom: 10rem;
   max-width: 1280px;
   width: 100%;
 }

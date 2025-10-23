@@ -5,7 +5,7 @@ import {JwtService} from '@nestjs/jwt';
 import {AccountEntity} from "../account/account.entity";
 import {JwtPayloadDto} from "./jwt-payload.dto";
 import {MailService} from "../mail/mail.service";
-import {mailTemplate} from "../constants";
+import {mailTemplateHtml, mailTemplateText} from "../constants";
 
 @Injectable()
 export class AuthService {
@@ -25,8 +25,8 @@ export class AuthService {
         };
         const token = this.jwtService.sign(payload);
         await this.mailService.sendMail(user.email, `Login für ConVogon`,
-            mailTemplate(`${process.env.URL}/home?token=${token}`),
-            mailTemplate(`${process.env.URL}/home?token=${token}`)
+            mailTemplateText(`${process.env.URL ?? 'http://localhost:4200'}/home?token=${token}`),
+            mailTemplateHtml(`${process.env.URL ?? 'http://localhost:4200'}/home?token=${token}`)
         );
     }
 
