@@ -73,6 +73,26 @@
         <mat-label>Zeitpunkt Abreise (Tag, ungefähre Uhrzeit)</mat-label>
         <input matInput formControlName="departure" />
       </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Unterstützung</mat-label>
+        <mat-select formControlName="support">
+          <mat-option [value]="'yes'">Ja, jederzeit</mat-option>
+          <mat-option [value]="'other'">Ja, aber...</mat-option>
+          <mat-option [value]="'no'">Eher nicht</mat-option>
+        </mat-select>
+        <mat-hint
+          >Wärst du bereit nebenbei etwas zu unterstützen, z.B. in der Küche,
+          bei den sanitären Anlagen etc. (wird IT ausgespielt)?
+        </mat-hint>
+      </mat-form-field>
+
+      @if (form.get('support')?.value == 'other') {
+      <mat-form-field>
+        <mat-label>Einschränkung Unterstützung</mat-label>
+        <textarea matInput formControlName="supportOther"></textarea>
+      </mat-form-field>
+      }
     </form>
   </mat-card-content>
   <mat-card-actions>

@@ -21,6 +21,14 @@ export class NonPlayerCharacter extends Persona {
     @Column({ type: 'text', default: '' })
     dietOther!: string;
 
+    @ApiProperty()
+    @Column({ type: 'text', default: '' })
+    support!: string;
+
+    @ApiProperty()
+    @Column({ type: 'text', default: '' })
+    supportOther!: string;
+
     @ApiProperty({ description: 'Arrival details of the non-player character', example: '2025-10-10 18:00' })
     @Column({ type: 'text', default: '' })
     arrival!: string;

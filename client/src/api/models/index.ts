@@ -75,6 +75,10 @@ export interface PersonaDto {
     departure?: string;
     /** Accommodation */
     accommodation?: string;
+    /** Support */
+    support?: string;
+    /** Other support details */
+    supportOther?: string;
     /** Character name */
     characterName?: string;
     /** Character class */

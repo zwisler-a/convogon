@@ -25,6 +25,18 @@ export class PersonaOverview {
     }
   }
 
+    getSupportDisplayString(support: any): string {
+    if (support == 'yes') {
+      return 'Ja, jederzeit';
+    } else if (support == 'no') {
+      return 'Eher nicht';
+    } else if (support == 'other') {
+      return this.persona.supportOther;
+    } else {
+      return 'Unbekannt';
+    }
+  }
+
   getAccommodationDisplayString(accommodation: any): string {
     if (accommodation == 'hut') {
       return 'Hütte';

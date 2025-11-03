@@ -60,6 +60,8 @@ export class EditPersona {
       groupName: [''],
       arrival: ['', Validators.required],
       departure: ['', Validators.required],
+      support: ['', Validators.required],
+      supportOther: [''],
     });
     this.itInfo = this.fb.group({
       characterName: ['', Validators.required],

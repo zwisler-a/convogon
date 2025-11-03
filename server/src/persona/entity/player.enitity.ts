@@ -21,6 +21,14 @@ export class PlayerCharacter extends Persona {
     @Column({ type: 'text', default: '' })
     dietOther!: string;
 
+    @ApiProperty({ description: 'Support preferences', example: 'Yes' })
+    @Column({ type: 'text', default: '' })
+    support!: string;
+
+    @ApiProperty({ description: 'Other support details', example: 'Only on Friday' })
+    @Column({ type: 'text', default: '' })
+    supportOther!: string;
+
     @ApiProperty({ description: 'Arrival details', example: '2025-10-10 18:00' })
     @Column({ type: 'text', default: '' })
     arrival!: string;

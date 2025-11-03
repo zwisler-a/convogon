@@ -48,6 +48,12 @@ export class PersonaDto {
     @ApiPropertyOptional({description: 'Departure details', example: '2025-10-12 14:00'})
     departure?: string;
 
+    @ApiPropertyOptional({description: 'Support', example: 'Yes'})
+    support?: string;
+
+    @ApiPropertyOptional({description: 'Other support details', example: 'Only on Friday'})
+    supportOther?: string;
+
     @ApiPropertyOptional({description: 'Accommodation', example: 'Inn of the Crescent Moon'})
     accommodation?: string;
 
