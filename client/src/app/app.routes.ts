@@ -14,6 +14,7 @@ import {Pay} from './user/pay/pay';
 import { Faq } from './user/faq/faq';
 import {EditPersona} from './user/edit-persona/edit-persona';
 import {DataProtection} from './shared/data-protection/data-protection';
+import {CodeOfConduct} from './shared/code-of-conduct/code-of-conduct';
 
 export const ROUTES = {
   LOGIN: 'login',
@@ -24,7 +25,8 @@ export const ROUTES = {
   ADMIN_PERSONA_VIEWS: 'admin/persona/:id',
   ADMIN: 'admin',
   ADMIN_USERS: 'admin/users',
-  DATA: 'data',
+  DATA: 'data-protection',
+  CONDUCT: 'code-of-conduct',
   ADMIN_USER: 'admin/auth/:id',
 }
 
@@ -41,6 +43,7 @@ export const routes: Routes = [
       {path: ROUTES.PAY, component: Pay},
       {path: ROUTES.FAQ, component: Faq},
       {path: ROUTES.DATA, component: DataProtection},
+      {path: ROUTES.CONDUCT, component: CodeOfConduct},
       {path: ROUTES.ADMIN_PERSONA_VIEWS, component: AdminPersonaDetails},
       {path: ROUTES.ADMIN_USERS, component: AccountsView},
       {path: ROUTES.ADMIN_USER, component: AccountView},
