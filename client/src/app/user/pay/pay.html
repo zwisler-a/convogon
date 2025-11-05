@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="./pay.css">
+<link rel="stylesheet" href="./pay.css" />
+
+<button mat-raised-button type="button" [routerLink]="'/' + ROUTES.HOME">
+  <mat-icon>arrow_back</mat-icon>
+  Zurück
+</button>
 
 <div class="transfer">
   <div>
@@ -9,13 +14,13 @@
     Da es den Wunsch nach Orientierung gab: Eine teilnehmende Person kostet an
     Übernachtung 60 €, die Verpflegung ist mit ca. 50 € pro Person veranschlagt.
     Dazu kommen die Kosten der Con als solches (Verbrauchsmaterial, Requisite,
-    ect.) und die geförderte Teilnahme von Menschen. Unser Vorschlag liegt
-    somit bei 150 € .
+    ect.) und die geförderte Teilnahme von Menschen. Unser Vorschlag liegt somit
+    bei 150 € .
   </div>
   <h3>Spendenbeitrag überweisen an</h3>
   <address>
     <strong>Susanne Ey</strong><br />
-    IBAN: <code>DE83 5001 0517 5442 0123 02</code><br />
+    <code>DE83 5001 0517 5442 0123 02</code><br />
     Betreff: <em>Nordmannen e.V. ConFusion</em>
   </address>
 </div>
