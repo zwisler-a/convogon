@@ -28,4 +28,8 @@ import {ROUTES} from '../../app.routes';
 })
 export class CodeOfConduct {
   protected readonly ROUTES = ROUTES;
+
+  navigateBack() {
+    window.history.back();
+  }
 }

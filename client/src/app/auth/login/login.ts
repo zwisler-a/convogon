@@ -20,6 +20,7 @@ import {ROUTES} from '../../app.routes';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterLink,
   ],
   templateUrl: './login.html',
   styleUrl: './login.css'
@@ -47,11 +48,5 @@ export class Login {
     })
   }
 
-  register(ev: any) {
-    ev.preventDefault();
-    this.authService.register(this.form.get('email')?.value).subscribe((res: any) => {
-      this.snackBar.open("Account wurde registriert", 'OK', {})
-      this.router.navigate(['/' + ROUTES.LOGIN_SEND]);
-    })
-  }
+  protected readonly ROUTES = ROUTES;
 }

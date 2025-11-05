@@ -4,7 +4,20 @@
     Zurück
   </button>
   <div class="wizard-header">
-    <span class="heading">Neue Person anmelden</span>
+    <span class="heading">
+      Neue Person anmelden
+      @if (type) {
+        @if (type == 'nsc') {
+          (Spieler:in-Charakter)
+        }
+        @if (type == 'sc') {
+          (Nicht-Spieler:in-Charakter)
+        }
+        @if (type == 'kid') {
+          (Nicht-Spieler:in / Kind)
+        }
+      }
+    </span>
   </div>
   @if (!type) {
     <app-type-selection (type)="type = $event"></app-type-selection>

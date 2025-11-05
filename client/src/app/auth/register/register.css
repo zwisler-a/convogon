@@ -1,0 +1,58 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  gap: 0;
+}
+
+.mdc-card {
+  width: 100%;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
+
+.centered {
+  max-width: 640px;
+  width: 80vw;
+  min-width: 360px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20vh;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.headline {
+  font-family: "Jacquard 12", system-ui;
+  font-size: 4rem;
+  margin: 1.5rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.subheadline {
+  font-size: 1rem;
+  color: gray;
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+
+p {
+  text-align: center;
+  margin: 0;
+}

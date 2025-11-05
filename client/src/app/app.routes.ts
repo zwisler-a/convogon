@@ -15,9 +15,11 @@ import { Faq } from './user/faq/faq';
 import {EditPersona} from './user/edit-persona/edit-persona';
 import {DataProtection} from './shared/data-protection/data-protection';
 import {CodeOfConduct} from './shared/code-of-conduct/code-of-conduct';
+import {Register} from './auth/register/register';
 
 export const ROUTES = {
   LOGIN: 'login',
+  REGISTER: 'register',
   LOGIN_SEND: 'login-send',
   HOME: 'home',
   PAY: 'pay',
@@ -32,7 +34,10 @@ export const ROUTES = {
 
 export const routes: Routes = [
   {path: ROUTES.LOGIN, component: Login},
+  {path: ROUTES.REGISTER, component: Register},
   {path: ROUTES.LOGIN_SEND, component: LoginSend},
+  {path: ROUTES.DATA, component: DataProtection},
+  {path: ROUTES.CONDUCT, component: CodeOfConduct},
   {
     path: '', component: Shell, children: [
       {path: ROUTES.HOME, component: Home},
@@ -42,8 +47,6 @@ export const routes: Routes = [
       {path: ROUTES.ADMIN, component: Admin},
       {path: ROUTES.PAY, component: Pay},
       {path: ROUTES.FAQ, component: Faq},
-      {path: ROUTES.DATA, component: DataProtection},
-      {path: ROUTES.CONDUCT, component: CodeOfConduct},
       {path: ROUTES.ADMIN_PERSONA_VIEWS, component: AdminPersonaDetails},
       {path: ROUTES.ADMIN_USERS, component: AccountsView},
       {path: ROUTES.ADMIN_USER, component: AccountView},
