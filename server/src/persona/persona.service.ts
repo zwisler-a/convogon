@@ -21,7 +21,6 @@ export class PersonaService {
 
     @Cron('0 * * * * *')
     async handlePersona() {
-        console.log('a')
         this.personaCountGauge.set(await this.personaRepository.count());
     }
 
