@@ -7,16 +7,24 @@ import {NonPlayerCharacter} from "./entity/non-player.enitity";
 import {PersonaController} from "./persona.controller";
 import {AuthModule} from "../auth/auth.module";
 import {JwtModule} from "@nestjs/jwt";
-import {jwtSecret} from "../constants";
-import { PersonaService } from './persona.service';
+import {jwtSecret, METRICS} from "../constants";
+import {PersonaService} from './persona.service';
+import {makeGaugeProvider} from "@willsoto/nestjs-prometheus";
+import {ScheduleModule} from "@nestjs/schedule";
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([Persona, Kid, PlayerCharacter, NonPlayerCharacter]),
         AuthModule,
-        JwtModule.register({secret: jwtSecret})],
+        JwtModule.register({secret: jwtSecret})
+    ],
     controllers: [PersonaController],
-    providers: [PersonaService],
+    providers: [PersonaService,
+        makeGaugeProvider({
+            name: METRICS.PERSONAS,
+            help: "number of personas in the database",
+        })
+    ],
     exports: [PersonaService]
 })
 export class PersonaModule {

@@ -1,11 +1,17 @@
 import {Injectable, Logger} from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
+import {InjectMetric} from "@willsoto/nestjs-prometheus";
+import {Gauge} from "prom-client";
+import {METRICS} from "../constants";
 
 @Injectable()
 export class MailService {
     private transporter: nodemailer.Transporter;
     private logger: Logger = new Logger('MailService');
-    constructor() {
+
+    constructor(
+        @InjectMetric(METRICS.MAIL_SEND) public mailSentCounter: Gauge<string>
+    ) {
         this.transporter = nodemailer.createTransport({
             service: process.env.MAIL_SERVICE,
             host: process.env.MAIL_HOST || '127.0.0.1',
@@ -30,6 +36,6 @@ export class MailService {
             text,
             html
         });
-        console.log(info);
+        this.mailSentCounter.inc({successful: info.accepted.length > 0 ? 'true' : 'false'}, 1);
     }
 }

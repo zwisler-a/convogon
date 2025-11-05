@@ -39,3 +39,9 @@ export const mailTemplateHtml = (link: string)=> `
 </body>
 </html>
 `;
+
+
+export const METRICS = {
+    PERSONAS:"persona_count",
+    MAIL_SEND: "mail_sent",
+}
