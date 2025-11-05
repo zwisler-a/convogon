@@ -14,7 +14,7 @@ import {ScheduleModule} from "@nestjs/schedule";
     imports: [
         AuthModule,
         PrometheusModule.register({
-            customMetricPrefix: 'convogon_',
+            customMetricPrefix: 'convogon',
         }),
         JwtModule.register({secret: jwtSecret}),
         PersonaModule,
