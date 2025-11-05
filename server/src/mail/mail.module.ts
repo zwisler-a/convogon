@@ -12,6 +12,7 @@ import {METRICS} from "../constants";
         makeCounterProvider({
             name: METRICS.MAIL_SEND,
             help: "Number of mails sent",
+            labelNames: ['successful']
         }),
     ],
     exports: [MailService]
