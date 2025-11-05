@@ -38,4 +38,18 @@ img {
   font-family: "Jacquard 12", system-ui;
   font-size: 4rem;
   margin: 1.5rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.subheadline {
+  font-size: 1rem;
+  color: gray;
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+
+p {
+  text-align: center;
+  margin: 0;
 }
