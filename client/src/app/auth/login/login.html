@@ -22,7 +22,7 @@
           }
         </mat-form-field>
 
-        <button mat-flat-button color="primary" type="submit">
+        <button mat-flat-button color="primary" type="submit" [disabled]="disableLogin">
           {{ 'Login' }}
         </button>
         <button mat-raised-button [routerLink]="['/' + ROUTES.REGISTER]">

@@ -8,7 +8,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router, RouterLink} from '@angular/router';
 import {ROUTES} from '../../app.routes';
 import {MatFormField} from '@angular/material/form-field';
-import {MatSlideToggle} from '@angular/material/slide-toggle';
 import {MatCheckbox} from '@angular/material/checkbox';
 
 @Component({
@@ -25,7 +24,6 @@ import {MatCheckbox} from '@angular/material/checkbox';
     MatInput,
     MatLabel,
     ReactiveFormsModule,
-    MatSlideToggle,
     MatCheckbox,
     RouterLink
   ],
@@ -35,7 +33,7 @@ import {MatCheckbox} from '@angular/material/checkbox';
 export class Register {
   form: FormGroup;
 
-  isMailSend = false;
+  disableRegister = false;
 
   constructor(
     private fb: FormBuilder,
@@ -45,29 +43,18 @@ export class Register {
   ) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      data: [false, [Validators.required, (control:FormControl) => control.value]],
-      coc: [false, [Validators.required, (control:FormControl) => control.value]],
+      data: [false, [Validators.required, (control: FormControl) => control.value]],
+      coc: [false, [Validators.required, (control: FormControl) => control.value]],
     });
-  }
-
-  onSubmit() {
-    if (this.form.invalid) return;
-    this.authService.login(this.form.get('email')?.value).subscribe({
-      next: (res: any) => {
-        this.router.navigate(['/' + ROUTES.LOGIN_SEND]);
-      },
-      error: (res: any) => {
-        this.snackBar.open("Es existiert kein Benutzer mit dieser E-Mail Adresse", 'error');
-      }
-    })
   }
 
   register(ev: any) {
     ev.preventDefault();
+    this.disableRegister = true;
     this.authService.register(this.form.get('email')?.value).subscribe((res: any) => {
       this.snackBar.open("Account wurde registriert", 'OK', {})
       this.router.navigate(['/' + ROUTES.LOGIN_SEND]);
-    })
+    }, (err) => this.disableRegister = false, () => this.disableRegister = false);
   }
 
   protected readonly ROUTES = ROUTES;

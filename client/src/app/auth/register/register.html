@@ -28,7 +28,7 @@
           Ich habe den <a [routerLink]="['/' + ROUTES.CONDUCT]">Code of Conduct</a> gelesen und verpflichte mich, ihn einzuhalten.
         </mat-checkbox>
         <br />
-        <button mat-flat-button [disabled]="!data.checked || !coc.checked">
+        <button mat-flat-button [disabled]="!data.checked || !coc.checked || disableRegister">
           {{ 'Registrieren' }}
         </button>
         <br />

@@ -29,6 +29,7 @@ export class Login {
   form: FormGroup;
 
   isMailSend = false;
+  disableLogin = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
@@ -38,13 +39,16 @@ export class Login {
 
   onSubmit() {
     if (this.form.invalid) return;
+    this.disableLogin = true;
     this.authService.login(this.form.get('email')?.value).subscribe({
       next: (res: any) => {
         this.router.navigate(['/' + ROUTES.LOGIN_SEND]);
       },
       error: (res: any) => {
         this.snackBar.open("Es existiert kein Benutzer mit dieser E-Mail Adresse", 'error');
-      }
+        this.disableLogin = false;
+      },
+      complete: () => this.disableLogin = false
     })
   }
 
