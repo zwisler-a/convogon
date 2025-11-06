@@ -6,10 +6,14 @@ import {ApiProperty} from "@nestjs/swagger";
 export class Kid extends Persona {
 
     @ApiProperty()
-    @Column({type: 'integer', nullable: true})
-    age?: number;
+    @Column({type: 'date', nullable: true})
+    birthday?: Date;
 
     @ApiProperty()
     @Column({type: 'text', nullable: true})
     other?: string;
+
+    @ApiProperty()
+    @Column({type: 'text', nullable: true})
+    kidCharacterInfo?: string;
 }

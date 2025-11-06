@@ -72,8 +72,9 @@ export class EditPersona {
     this.kidInfo = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      age: ['', Validators.required],
+      birthday: ['', Validators.required],
       other: [''],
+      kidCharacterInfo: [''],
     });
     this.playerCharInfo = this.fb.group({
       importantInfoForGM: [''],

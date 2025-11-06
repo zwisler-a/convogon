@@ -73,12 +73,12 @@ export interface PersonaDto {
     groupName?: Record<string, unknown>;
     /** Departure details */
     departure?: string;
-    /** Accommodation */
-    accommodation?: string;
     /** Support */
     support?: string;
     /** Other support details */
     supportOther?: string;
+    /** Accommodation */
+    accommodation?: string;
     /** Character name */
     characterName?: string;
     /** Character class */

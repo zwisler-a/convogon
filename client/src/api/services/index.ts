@@ -11,3 +11,4 @@ export { AccountService } from "./account.service";
 export { AppService } from "./app.service";
 export { AuthService } from "./auth.service";
 export { PersonaService } from "./persona.service";
+export { PrometheusService } from "./prometheus.service";

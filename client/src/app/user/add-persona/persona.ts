@@ -75,9 +75,9 @@ export class Persona {
     this.kidInfo = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      age: ['', Validators.required],
       other: [''],
       birthday: ['', Validators.required],
+      kidCharacterInfo: [''],
     });
     this.playerCharInfo = this.fb.group({
       importantInfoForGM: [''],
@@ -149,6 +149,7 @@ export class Persona {
       age: 12,
       other: 'Likes dragons',
       birthday: new Date(),
+      kidCharacterInfo: '',
     });
     this.playerCharInfo.setValue({
       importantInfoForGM: 'Has secret royal bloodline.',

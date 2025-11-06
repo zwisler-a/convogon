@@ -26,8 +26,15 @@
         <mat-label>Sonstiges</mat-label>
         <input matInput formControlName="other"/>
       </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Charakter Information</mat-label>
+        <input maxlength="1000" matInput formControlName="kidCharacterInfo"/>
+        <mat-hint>Falls dein Kind einen eigenen Charakter spielen will, können hier Informationen dazu gegeben werden.</mat-hint>
+      </mat-form-field>
     </form>
   </mat-card-content>
+  <br />
   <mat-card-actions>
     <button mat-flat-button matStepperNext>Weiter</button>
   </mat-card-actions>

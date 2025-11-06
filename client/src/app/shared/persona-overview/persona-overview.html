@@ -147,12 +147,16 @@
           <span class="value">{{ persona.lastName }}</span>
         </div>
         <div class="row">
-          <span class="label">Alter</span>
-          <span class="value">{{ persona.age }}</span>
+          <span class="label">Geburtstag</span>
+          <span class="value">{{ persona.birthday | date: 'dd.MM.yyyy' }}</span>
         </div>
         <div class="row long">
           <span class="label">Sonstiges</span>
           <span class="value prewrap">{{ persona.other }}</span>
+        </div>
+        <div class="row long">
+          <span class="label">Charakter Information</span>
+          <span class="value prewrap">{{ persona.kidCharacterInfo }}</span>
         </div>
       </div>
     </section>
