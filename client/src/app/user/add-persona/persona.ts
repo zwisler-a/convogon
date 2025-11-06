@@ -77,6 +77,7 @@ export class Persona {
       lastName: ['', Validators.required],
       age: ['', Validators.required],
       other: [''],
+      birthday: ['', Validators.required],
     });
     this.playerCharInfo = this.fb.group({
       importantInfoForGM: [''],
@@ -121,10 +122,10 @@ export class Persona {
 
 
   fillWithFake() {
-    this.itInfo.setValue({
+    this.itInfo.patchValue({
       characterName: 'Thorin Oakenshield',
       characterClass: 'Warrior',
-      skills: 'Leadership, Axe fighting',
+      skills: ['Leadership', 'Axe fighting'],
       fighter: true,
     });
     this.otInfo.setValue({
@@ -147,6 +148,7 @@ export class Persona {
       lastName: 'Doe',
       age: 12,
       other: 'Likes dragons',
+      birthday: new Date(),
     });
     this.playerCharInfo.setValue({
       importantInfoForGM: 'Has secret royal bloodline.',
@@ -162,4 +164,24 @@ export class Persona {
   }
 
   protected readonly ROUTES = ROUTES;
+
+  changeType(type: string) {
+    this.type = type;
+    if (this.type == 'nsc') {
+      this.itInfo = this.fb.group({
+        characterName: [''],
+        characterClass: [''],
+        skills: [''],
+        fighter: [false],
+      });
+    }
+    if (this.type == 'sc') {
+      this.itInfo = this.fb.group({
+        characterName: ['', Validators.required],
+        characterClass: ['', Validators.required],
+        skills: [''],
+        fighter: [false],
+      });
+    }
+  }
 }

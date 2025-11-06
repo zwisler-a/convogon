@@ -4,17 +4,17 @@
 </button>
 <div class="heading">
   <div class="avatar">
-    @if (persona.type == 'nsc') {
+    @if (persona?.type == 'nsc') {
       <img src="/fc2015.png"/>
     }
-    @if (persona.type == 'sc') {
+    @if (persona?.type == 'sc') {
       <img src="/fc1916.png"/>
     }
-    @if (persona.type == 'kid') {
+    @if (persona?.type == 'kid') {
       <img src="/fc1957.png"/>
     }
   </div>
-  <div>{{ persona.firstName }} {{ persona.lastName }}</div>
+  <div>{{ persona?.firstName }} {{ persona?.lastName }}</div>
 </div>
 <mat-card>
 

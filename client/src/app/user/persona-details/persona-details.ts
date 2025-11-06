@@ -1,32 +1,28 @@
 import {Component} from '@angular/core';
 import {PersonaService} from '../../service/persona.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {JsonPipe} from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {PersonaOverview} from '../../shared/persona-overview/persona-overview';
-import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
+import {MatCard, MatCardContent} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import {Persona} from '../../../api';
 
 @Component({
   selector: 'app-add-persona-details',
   imports: [
-    JsonPipe,
     MatButton,
     RouterLink,
     PersonaOverview,
     MatCard,
     MatCardContent,
-    MatIconModule,
-    MatCardHeader,
-    MatCardSubtitle,
-    MatCardTitle
+    MatIconModule
   ],
   templateUrl: './persona-details.html',
   styleUrl: './persona-details.css'
 })
 export class PersonaDetails {
 
-  persona: any;
+  persona!: Persona;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private personaService: PersonaService) {
     this.activatedRoute.params.subscribe(params => {

@@ -96,9 +96,26 @@ export class EditPersona {
     })
   }
 
-  private applyPersonaToForms(persona: any): void {
+  private applyPersonaToForms(persona: Persona): void {
     // Ensure the component type is aligned with the incoming persona
     this.type = persona?.type;
+
+    if (this.type == 'nsc') {
+      this.itInfo = this.fb.group({
+        characterName: [''],
+        characterClass: [''],
+        skills: [''],
+        fighter: [false],
+      });
+    }
+    if (this.type == 'sc') {
+      this.itInfo = this.fb.group({
+        characterName: ['', Validators.required],
+        characterClass: ['', Validators.required],
+        skills: [''],
+        fighter: [false],
+      });
+    }
 
     // Only fill the relevant form groups based on the type
     if (this.type === 'nsc' || this.type === 'sc') {
