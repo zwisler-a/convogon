@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {RouterLink} from '@angular/router';
 import {ROUTES} from '../../app.routes';
+import {ObfuscatedMail} from '../obfuscated-mail';
 
 @Component({
   selector: 'app-data-protection',
@@ -21,6 +22,7 @@ import {ROUTES} from '../../app.routes';
     MatIconModule,
     MatButtonModule,
     RouterLink,
+    ObfuscatedMail,
   ],
   templateUrl: './data-protection.html',
   styleUrl: './data-protection.css',
