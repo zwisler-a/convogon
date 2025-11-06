@@ -5,6 +5,7 @@ import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} fr
 import {MatInput, MatInputModule, MatLabel} from '@angular/material/input';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 import {MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
+import {MatDatepickerInput, MatDatepickerModule} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-kid-info',
@@ -20,7 +21,7 @@ import {MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
     MatStepperNext,
     ReactiveFormsModule,
     MatCardActions,
-    MatStepperPrevious
+    MatDatepickerModule
   ],
   templateUrl: './kid-info.html',
   styleUrl: './kid-info.css'
