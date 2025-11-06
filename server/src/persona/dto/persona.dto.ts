@@ -1,4 +1,5 @@
 import {ApiProperty, ApiPropertyOptional} from '@nestjs/swagger';
+import {Column} from "typeorm";
 
 export enum PersonaType {
     SC = 'sc',
@@ -92,9 +93,13 @@ export class PersonaDto {
     interests?: string[] | null;
 
     // Kid-only
-    @ApiPropertyOptional({description: 'Age', example: 9, nullable: true})
-    age?: number | null;
+    @ApiPropertyOptional({description: 'Birthday', nullable: true})
+    birthday?: Date | null;
 
     @ApiPropertyOptional({description: 'Other', example: 'Likes dragons', nullable: true})
     other?: string | null;
+
+    @ApiPropertyOptional()
+    kidCharacterInfo?: string;
+
 }

@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, switchMap, tap } from 'rxjs';
-import { AccountService } from '../../api';
-import { Confirm } from '../core/confirm/confirm';
-import { ConfirmDialogService } from '../core/confirm/confirm.service';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, switchMap, tap} from 'rxjs';
+import {AccountService} from '../../api';
+import {Confirm} from '../core/confirm/confirm';
+import {ConfirmDialogService} from '../core/confirm/confirm.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class AdminAccountService {
   private reload$ = new BehaviorSubject(void 0);
   private account$ = this.reload$.pipe(
@@ -13,10 +13,10 @@ export class AdminAccountService {
   );
 
   constructor(
-    private http: HttpClient,
     private accountService: AccountService,
     private confirm: ConfirmDialogService
-  ) {}
+  ) {
+  }
 
   toggleShouldPay(account: any) {
     return this.accountService
@@ -37,7 +37,7 @@ export class AdminAccountService {
         switchMap((confirmed) => {
           if (confirmed) {
             return this.accountService
-              .updateAccountStatus({ payed: true, userId: account.id })
+              .updateAccountStatus({payed: true, userId: account.id})
               .pipe(tap((res) => this.reload$.next(void 0)));
           } else {
             throw new Error('Not confirmed');

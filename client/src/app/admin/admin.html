@@ -6,11 +6,10 @@
       [routerLink]="'/' + ROUTES.ADMIN_USERS"
       class="clickable-card"
     >
-      <mat-card-title> Accounts verwalten </mat-card-title>
+      <mat-card-title> Accounts verwalten</mat-card-title>
     </mat-card>
-    <mat-card class="clickable-card">
-      <mat-card-title> Spieler verwalten </mat-card-title>
-      <div>coming soon</div>
+    <mat-card class="clickable-card" [routerLink]="['/' + ROUTES.ADMIN_PERSONAS_VIEW]">
+      <mat-card-title> Spieler verwalten</mat-card-title>
     </mat-card>
   </div>
 </div>

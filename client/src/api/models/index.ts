@@ -97,10 +97,11 @@ export interface PersonaDto {
     storyLore?: Record<string, unknown>;
     /** Interests */
     interests?: Array<string>;
-    /** Age */
-    age?: Record<string, unknown>;
+    /** Birthday */
+    birthday?: Record<string, unknown>;
     /** Other */
     other?: Record<string, unknown>;
+    kidCharacterInfo?: string;
 }
 
 export interface AccountStatusDto {

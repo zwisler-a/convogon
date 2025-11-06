@@ -1,0 +1,44 @@
+<div class="container">
+  <button mat-button [routerLink]="'/' + ROUTES.ADMIN">
+    <mat-icon>arrow_back</mat-icon>
+    Zurück
+  </button>
+  <h2>Registrierte Personen</h2>
+
+  <button mat-stroked-button (click)="csvDownload()">Download CSV</button>
+  <table
+    mat-table
+    [dataSource]="personas$"
+    class="mat-elevation-z8 hoverable-rows"
+  >
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>Vorname</th>
+      <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Nachname</th>
+      <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Typ</th>
+      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="payed">
+      <th mat-header-cell *matHeaderCellDef>Spendenstatus</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.payed ? 'Bezahlt' : 'Ausstehend' }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      [routerLink]="'/' + ROUTES.ADMIN_USER.replace(':id', row.id)"
+      style="cursor: pointer"
+    ></tr>
+  </table>
+</div>

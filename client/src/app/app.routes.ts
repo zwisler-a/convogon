@@ -16,6 +16,7 @@ import {EditPersona} from './user/edit-persona/edit-persona';
 import {DataProtection} from './shared/data-protection/data-protection';
 import {CodeOfConduct} from './shared/code-of-conduct/code-of-conduct';
 import {Register} from './auth/register/register';
+import {PersonasView} from './admin/personas-view/personas-view';
 
 export const ROUTES = {
   LOGIN: 'login',
@@ -25,6 +26,7 @@ export const ROUTES = {
   PAY: 'pay',
   FAQ: 'faq',
   ADMIN_PERSONA_VIEWS: 'admin/persona/:id',
+  ADMIN_PERSONAS_VIEW: 'admin/personas',
   ADMIN: 'admin',
   ADMIN_USERS: 'admin/users',
   DATA: 'data-protection',
@@ -47,6 +49,7 @@ export const routes: Routes = [
       {path: ROUTES.ADMIN, component: Admin},
       {path: ROUTES.PAY, component: Pay},
       {path: ROUTES.FAQ, component: Faq},
+      {path: ROUTES.ADMIN_PERSONAS_VIEW, component: PersonasView},
       {path: ROUTES.ADMIN_PERSONA_VIEWS, component: AdminPersonaDetails},
       {path: ROUTES.ADMIN_USERS, component: AccountsView},
       {path: ROUTES.ADMIN_USER, component: AccountView},
