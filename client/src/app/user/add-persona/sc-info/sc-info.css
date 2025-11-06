@@ -2,48 +2,4 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-  }
-
-  .mat-mdc-form-field { width: 100%; }
-
-  /* Label lesbar machen und Mehrzeiler erlauben (MDC) */
-  .mat-mdc-form-field .mdc-floating-label {
-    white-space: normal;         /* bricht lange Labels um */
-    line-height: 1.25;
-    letter-spacing: .2px;
-    overflow-wrap: anywhere;
-  }
-
-  /* Größen je nach Gerät – lieber größer als zu klein */
-  @media (max-width: 768px) {
-    .mat-mdc-form-field .mdc-floating-label { font-size: 1rem; }        /* ~16px mobile */
-  }
-  @media (min-width: 769px) {
-    .mat-mdc-form-field .mdc-floating-label { font-size: 0.9875rem; }   /* ~15.8px desktop */
-  }
-
-  /* Bessere Lesbarkeit im Fokus/filled State */
-  .mat-mdc-form-field.mat-focused .mdc-floating-label,
-  .mat-mdc-form-field.mat-form-field-can-float .mdc-floating-label--float-above {
-    opacity: .95;
-  }
-
-  /* Füllfläche und Text für Kontrast (optional, je nach Theme) */
-  .mat-mdc-text-field-wrapper.mdc-text-field--filled {
-    background: var(--mat-form-fill, #fafafa);
-  }
-  textarea[matInput] {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  /* Hints besser lesbar, aber subtiler als Labels */
-  .mat-mdc-form-field-hint {
-    font-size: 0.9rem;
-    line-height: 1.3;
-    opacity: .9;
-  }
 }
