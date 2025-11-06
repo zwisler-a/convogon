@@ -23,6 +23,12 @@ h1 {
   margin-right: 8px;
 }
 
+.finish-registration {
+  position: fixed;
+  right: 2rem;
+  bottom: 3rem;
+}
+
 mat-card-subtitle {
   color: gray;
   font-size: 0.9rem;

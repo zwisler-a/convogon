@@ -7,6 +7,7 @@
   margin: 0 0 0.5rem;
 }
 .lead {
+  color: var(--muted);
   font-size: 1.05rem;
   margin-bottom: 1rem;
 }
@@ -21,6 +22,7 @@
 }
 .highlights li::before {
   content: "★";
+  color: var(--brand-2);
   margin-right: 0.5rem;
 }
 
