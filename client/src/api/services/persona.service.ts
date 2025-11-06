@@ -12,7 +12,7 @@ import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { BASE_PATH_DEFAULT, CLIENT_CONTEXT_TOKEN_DEFAULT } from "../tokens";
 import { HttpParamsBuilder } from "../utils/http-params-builder";
-import { RequestOptions, PersonaDto, Persona } from "../models";
+import { RequestOptions, PersonaDto } from "../models";
 
 @Injectable({ providedIn: "root" })
 export class PersonaService {
@@ -25,10 +25,11 @@ export class PersonaService {
         return context.set(this.clientContextToken, 'default');
     }
 
-    personaControllerFindAllAdmin(observe?: 'body', options?: RequestOptions<'json'>): Observable<Array<PersonaDto>>;
-    personaControllerFindAllAdmin(observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<Array<PersonaDto>>>;
-    personaControllerFindAllAdmin(observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<Array<PersonaDto>>>;
-    personaControllerFindAllAdmin(observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
+    getAllPersonas(observe?: 'body', options?: RequestOptions<'json'>): Observable<Array<PersonaDto>>;
+    getAllPersonas(observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<Array<PersonaDto>>>;
+    getAllPersonas(observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<Array<PersonaDto>>>;
+    /** Returns all personas with user relation. Requires admin role. */
+    getAllPersonas(observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
         const url = `${this.basePath}/api/persona`;
 
         const requestOptions: any = {
@@ -41,10 +42,11 @@ export class PersonaService {
         return this.httpClient.get(url, requestOptions);
     }
 
-    personaControllerCreate(persona: Persona, observe?: 'body', options?: RequestOptions<'json'>): Observable<any>;
-    personaControllerCreate(persona: Persona, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<any>>;
-    personaControllerCreate(persona: Persona, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<any>>;
-    personaControllerCreate(persona: Persona, observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
+    createPersona(personaDto: PersonaDto, observe?: 'body', options?: RequestOptions<'json'>): Observable<PersonaDto>;
+    createPersona(personaDto: PersonaDto, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<PersonaDto>>;
+    createPersona(personaDto: PersonaDto, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<PersonaDto>>;
+    /** Creates a new persona owned by the authenticated user. */
+    createPersona(personaDto: PersonaDto, observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
         const url = `${this.basePath}/api/persona`;
 
         const requestOptions: any = {
@@ -54,13 +56,14 @@ export class PersonaService {
             context: this.createContextWithClientId(options?.context)
         };
 
-        return this.httpClient.post(url, persona, requestOptions);
+        return this.httpClient.post(url, personaDto, requestOptions);
     }
 
-    personaControllerUpdate(persona: Persona, observe?: 'body', options?: RequestOptions<'json'>): Observable<any>;
-    personaControllerUpdate(persona: Persona, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<any>>;
-    personaControllerUpdate(persona: Persona, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<any>>;
-    personaControllerUpdate(persona: Persona, observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
+    updatePersona(personaDto: PersonaDto, observe?: 'body', options?: RequestOptions<'json'>): Observable<PersonaDto>;
+    updatePersona(personaDto: PersonaDto, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<PersonaDto>>;
+    updatePersona(personaDto: PersonaDto, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<PersonaDto>>;
+    /** Updates an existing persona belonging to the authenticated user. */
+    updatePersona(personaDto: PersonaDto, observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
         const url = `${this.basePath}/api/persona`;
 
         const requestOptions: any = {
@@ -70,13 +73,14 @@ export class PersonaService {
             context: this.createContextWithClientId(options?.context)
         };
 
-        return this.httpClient.put(url, persona, requestOptions);
+        return this.httpClient.put(url, personaDto, requestOptions);
     }
 
-    personaControllerFindOne(id: string, observe?: 'body', options?: RequestOptions<'json'>): Observable<PersonaDto>;
-    personaControllerFindOne(id: string, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<PersonaDto>>;
-    personaControllerFindOne(id: string, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<PersonaDto>>;
-    personaControllerFindOne(id: string, observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
+    getPersona(id: string, observe?: 'body', options?: RequestOptions<'json'>): Observable<PersonaDto>;
+    getPersona(id: string, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<PersonaDto>>;
+    getPersona(id: string, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<PersonaDto>>;
+    /** Returns one persona by id if requester is the owner or an admin. */
+    getPersona(id: string, observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
         const url = `${this.basePath}/api/persona/${id}`;
 
         const requestOptions: any = {
@@ -89,10 +93,11 @@ export class PersonaService {
         return this.httpClient.get(url, requestOptions);
     }
 
-    personaControllerDelete(id: string, observe?: 'body', options?: RequestOptions<'json'>): Observable<any>;
-    personaControllerDelete(id: string, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<any>>;
-    personaControllerDelete(id: string, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<any>>;
-    personaControllerDelete(id: string, observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
+    deletePersona(id: string, observe?: 'body', options?: RequestOptions<'json'>): Observable<any>;
+    deletePersona(id: string, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<any>>;
+    deletePersona(id: string, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<any>>;
+    /** Deletes a persona by id if it belongs to the authenticated user. */
+    deletePersona(id: string, observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
         const url = `${this.basePath}/api/persona/${id}`;
 
         const requestOptions: any = {
@@ -105,10 +110,11 @@ export class PersonaService {
         return this.httpClient.delete(url, requestOptions);
     }
 
-    personaControllerFindAll(observe?: 'body', options?: RequestOptions<'json'>): Observable<Array<PersonaDto>>;
-    personaControllerFindAll(observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<Array<PersonaDto>>>;
-    personaControllerFindAll(observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<Array<PersonaDto>>>;
-    personaControllerFindAll(observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
+    getOwnPersonas(observe?: 'body', options?: RequestOptions<'json'>): Observable<Array<PersonaDto>>;
+    getOwnPersonas(observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<Array<PersonaDto>>>;
+    getOwnPersonas(observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<Array<PersonaDto>>>;
+    /** Returns all personas owned by the authenticated user. */
+    getOwnPersonas(observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
         const url = `${this.basePath}/api/persona/own`;
 
         const requestOptions: any = {

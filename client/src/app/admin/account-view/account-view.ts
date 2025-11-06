@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { PersonaService } from '../../service/persona.service';
-import { AdminAccountService } from '../admin-account.service';
-import { MatButton } from '@angular/material/button';
+import {Component} from '@angular/core';
+import {ActivatedRoute, RouterLink} from '@angular/router';
+import {AdminAccountService} from '../admin-account.service';
+import {MatButton} from '@angular/material/button';
 import {
   MatCell,
   MatCellDef,
@@ -15,10 +14,9 @@ import {
   MatRowDef,
   MatTable,
 } from '@angular/material/table';
-import { ROUTES } from '../../app.routes';
-import { MatIconModule } from '@angular/material/icon';
-import { MatChip } from '@angular/material/chips';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import {ROUTES} from '../../app.routes';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-account-view',
@@ -36,7 +34,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatHeaderCellDef,
     RouterLink,
     MatIconModule,
-    MatChip,
     MatTooltipModule,
   ],
   templateUrl: './account-view.html',
@@ -49,7 +46,6 @@ export class AccountView {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private accountService: AdminAccountService
   ) {
     this.activatedRoute.params.subscribe((params) => {

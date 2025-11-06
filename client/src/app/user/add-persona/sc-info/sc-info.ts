@@ -3,7 +3,6 @@ import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {MatInput, MatInputModule, MatLabel} from '@angular/material/input';
-import {MatSlideToggle} from '@angular/material/slide-toggle';
 import {MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
 
 @Component({
@@ -17,7 +16,6 @@ import {MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
     MatInputModule,
     MatInput,
     MatLabel,
-    MatSlideToggle,
     MatStepperNext,
     ReactiveFormsModule,
     MatCardActions,

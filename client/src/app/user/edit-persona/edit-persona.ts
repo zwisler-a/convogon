@@ -10,11 +10,11 @@ import {Review} from "../add-persona/review/review";
 import {ScInfo} from "../add-persona/sc-info/sc-info";
 import {TypeSelection} from "../add-persona/type-selection/type-selection";
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {PersonaService} from '../../service/persona.service';
+import {PersonaStoreService} from '../../service/persona-store.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ROUTES} from '../../app.routes';
-import {Persona} from '../../../api';
+import {Persona, PersonaDto} from '../../../api';
 
 @Component({
   selector: 'app-edit-persona',
@@ -47,7 +47,7 @@ export class EditPersona {
   persona: any;
 
 
-  constructor(private activatedRoute: ActivatedRoute, public personaService: PersonaService, private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private activatedRoute: ActivatedRoute, public personaService: PersonaStoreService, private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.otInfo = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -97,7 +97,7 @@ export class EditPersona {
     })
   }
 
-  private applyPersonaToForms(persona: Persona): void {
+  private applyPersonaToForms(persona: PersonaDto): void {
     // Ensure the component type is aligned with the incoming persona
     this.type = persona?.type;
 

@@ -1,0 +1,24 @@
+.loader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  animation: fadein 0.5s linear 0.5s forwards;
+  opacity: 0;
+}
+
+.loader img {
+  max-width: 100px;
+  margin: auto;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

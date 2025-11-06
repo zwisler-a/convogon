@@ -2,7 +2,7 @@
   <button
     mat-button
     class="back-button"
-    [routerLink]="'/' + ROUTES.ADMIN_USERS"
+    [routerLink]="'/' + ROUTES.ADMIN_VIEW_USERS"
   >
     <mat-icon>arrow_back</mat-icon>
     Zurück
@@ -53,7 +53,7 @@
     <tr
       mat-row
       *matRowDef="let row; columns: displayedColumns"
-      [routerLink]="'/' + ROUTES.ADMIN_PERSONA_VIEWS.replace(':id', row.id)"
+      [routerLink]="'/' + ROUTES.ADMIN_VIEW_PERSONA.replace(':id', row.id)"
       style="cursor: pointer"
     ></tr>
   </table>

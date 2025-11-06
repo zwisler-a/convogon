@@ -4,34 +4,32 @@ import {AuthGuard} from './auth/auth.guard';
 import {Shell} from './core/shell/shell';
 import {Home} from './user/home/home';
 import {Persona} from './user/add-persona/persona';
-import {PersonaDetails} from './user/persona-details/persona-details';
-import {Admin} from './admin/admin';
+import {PersonaView} from './user/persona-view/persona-view';
 import {LoginSend} from './auth/login-send/login-send';
-import {AdminPersonaDetails} from './admin/admin-persona-details/admin-persona-details';
-import {AccountsView} from './admin/accounts-view/accounts-view';
-import {AccountView} from './admin/account-view/account-view';
 import {Pay} from './user/pay/pay';
-import { Faq } from './user/faq/faq';
+import {Faq} from './user/faq/faq';
 import {EditPersona} from './user/edit-persona/edit-persona';
 import {DataProtection} from './shared/data-protection/data-protection';
 import {CodeOfConduct} from './shared/code-of-conduct/code-of-conduct';
 import {Register} from './auth/register/register';
-import {PersonasView} from './admin/personas-view/personas-view';
 
 export const ROUTES = {
   LOGIN: 'login',
   REGISTER: 'register',
   LOGIN_SEND: 'login-send',
   HOME: 'home',
+  ADD_PERSONA: 'add',
+  VIEW_PERSONA: 'persona/:id',
+  EDIT_PERSONA: 'edit/persona/:id',
   PAY: 'pay',
   FAQ: 'faq',
-  ADMIN_PERSONA_VIEWS: 'admin/persona/:id',
-  ADMIN_PERSONAS_VIEW: 'admin/personas',
-  ADMIN: 'admin',
-  ADMIN_USERS: 'admin/users',
   DATA: 'data-protection',
   CONDUCT: 'code-of-conduct',
-  ADMIN_USER: 'admin/auth/:id',
+  ADMIN: 'admin',
+  ADMIN_VIEW_PERSONA: 'admin/persona/:id',
+  ADMIN_VIEW_PERSONAS: 'admin/personas',
+  ADMIN_VIEW_USERS: 'admin/users',
+  ADMIN_VIEW_USER: 'admin/auth/:id',
 }
 
 export const routes: Routes = [
@@ -43,17 +41,17 @@ export const routes: Routes = [
   {
     path: '', component: Shell, children: [
       {path: ROUTES.HOME, component: Home},
-      {path: 'add', component: Persona},
-      {path: 'persona/:id', component: PersonaDetails},
-      {path: 'edit/persona/:id', component: EditPersona},
-      {path: ROUTES.ADMIN, component: Admin},
+      {path: ROUTES.ADD_PERSONA, component: Persona},
+      {path: ROUTES.VIEW_PERSONA, component: PersonaView},
+      {path: ROUTES.EDIT_PERSONA, component: EditPersona},
       {path: ROUTES.PAY, component: Pay},
       {path: ROUTES.FAQ, component: Faq},
-      {path: ROUTES.ADMIN_PERSONAS_VIEW, component: PersonasView},
-      {path: ROUTES.ADMIN_PERSONA_VIEWS, component: AdminPersonaDetails},
-      {path: ROUTES.ADMIN_USERS, component: AccountsView},
-      {path: ROUTES.ADMIN_USER, component: AccountView},
-      {path: '**', redirectTo: 'home'},
+      {path: ROUTES.ADMIN, loadComponent: () => import(/* webpackChunkName: "admin" */ './admin/admin').then(m => m.Admin)},
+      {path: ROUTES.ADMIN_VIEW_PERSONAS, loadComponent: () => import(/* webpackChunkName: "admin" */ './admin/personas-view/personas-view').then(m => m.PersonasView)},
+      {path: ROUTES.ADMIN_VIEW_PERSONA, loadComponent: () => import(/* webpackChunkName: "admin" */ './admin/admin-persona-details/admin-persona-details').then(m => m.AdminPersonaDetails)},
+      {path: ROUTES.ADMIN_VIEW_USERS, loadComponent: () => import(/* webpackChunkName: "admin" */ './admin/accounts-view/accounts-view').then(m => m.AccountsView)},
+      {path: ROUTES.ADMIN_VIEW_USER, loadComponent: () => import(/* webpackChunkName: "admin" */ './admin/account-view/account-view').then(m => m.AccountView)},
+      {path: '**', redirectTo: ROUTES.HOME},
     ], canActivate: [AuthGuard],
   }
 ];

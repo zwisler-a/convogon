@@ -44,7 +44,7 @@
     <tr
       mat-row
       *matRowDef="let row; columns: displayedColumns"
-      [routerLink]="'/' + ROUTES.ADMIN_USER.replace(':id', row.id)"
+      [routerLink]="'/' + ROUTES.ADMIN_VIEW_USER.replace(':id', row.id)"
       style="cursor: pointer"
     ></tr>
   </table>

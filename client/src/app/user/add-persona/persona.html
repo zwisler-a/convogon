@@ -51,7 +51,7 @@
       <mat-step>
         <app-review [data]="getPersonFromForm()"></app-review>
         <br>
-        <button mat-flat-button (click)="createPersona()">Anmelden</button>
+        <button mat-flat-button (click)="createPersona()" [disabled]="loading">Anmelden</button>
       </mat-step>
     </mat-stepper>
 

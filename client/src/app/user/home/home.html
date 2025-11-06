@@ -3,49 +3,55 @@
 <div class="container">
   <div class="content-heading">
     <h1>Deine angemeldeten Personen</h1>
-    <button mat-flat-button [routerLink]="['/add']">
+    <button mat-flat-button [routerLink]="['/' + ROUTES.ADD_PERSONA]">
       + Neue Person anmelden
     </button>
   </div>
-
-  @if (!(personas$ | async)?.length) {
-  <p class="no-player">Es sind noch keine Personen angemeldet.</p>
-  }
-
-  <div class="persona-grid">
-    @for (persona of (personas$ | async); track persona.id) {
-    <mat-card class="persona-card">
-      <mat-card-header>
-        <div mat-card-avatar class="avatar">
-          @if (persona.type == 'nsc') {
-          <img src="/fc2015.png" />
-          } @if (persona.type == 'sc') {
-          <img src="/fc1916.png" />
-          } @if (persona.type == 'kid') {
-          <img src="/fc1957.png" />
-          }
-        </div>
-        <mat-card-title
-          >{{ persona.firstName }} {{ persona.lastName }}</mat-card-title
-        >
-        <mat-card-subtitle>
-          {{ persona.type == "nsc" ? "Nicht Spieler Charakter" : "" }}
-          {{ persona.type == "sc" ? "Spieler Charakter" : "" }}
-          {{ persona.type == "kid" ? "Kind" : "" }}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-actions>
-        <button mat-icon-button matTooltip="Ansehen" [routerLink]="['/persona/' + persona.id]">
-          <mat-icon>visibility</mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="Bearbeiten" [routerLink]="['/edit/persona/' + persona.id]">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="Löschen" (click)="delete(persona.id)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
+  <app-loading [loading]="personas$">
+    @if (!(personas$ | async)?.length) {
+      <p class="no-player">Es sind noch keine Personen angemeldet.</p>
     }
-  </div>
+
+    <div class="persona-grid">
+      @for (persona of (personas$ | async); track persona.id) {
+        <mat-card class="persona-card">
+          <mat-card-header>
+            <div mat-card-avatar class="avatar">
+              @if (persona.type == 'nsc') {
+                <img src="/fc2015.png"/>
+              }
+              @if (persona.type == 'sc') {
+                <img src="/fc1916.png"/>
+              }
+              @if (persona.type == 'kid') {
+                <img src="/fc1957.png"/>
+              }
+            </div>
+            <mat-card-title
+            >{{ persona.firstName }} {{ persona.lastName }}
+            </mat-card-title
+            >
+            <mat-card-subtitle>
+              {{ persona.type == "nsc" ? "Nicht Spieler Charakter" : "" }}
+              {{ persona.type == "sc" ? "Spieler Charakter" : "" }}
+              {{ persona.type == "kid" ? "Kind" : "" }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button mat-icon-button matTooltip="Ansehen"
+                    [routerLink]="['/' + ROUTES.VIEW_PERSONA.replace(':id', persona.id)]">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Bearbeiten"
+                    [routerLink]="['/' + ROUTES.EDIT_PERSONA.replace(':id', persona.id)]">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Löschen" (click)="delete(persona.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  </app-loading>
 </div>

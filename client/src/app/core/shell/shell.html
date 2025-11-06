@@ -7,9 +7,9 @@
   </button>
 </nav>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item [routerLink]="['/home']">{{ mail }}</button>
+  <button mat-menu-item [routerLink]="['/' + ROUTES.HOME]">{{ mail }}</button>
   @if (isAdmin) {
-  <button mat-menu-item [routerLink]="['/admin']">Admin</button>
+  <button mat-menu-item [routerLink]="['/' + ROUTES.ADMIN]">Admin</button>
   }
   <mat-divider></mat-divider>
   <button mat-menu-item (click)="logout()">Logout</button>

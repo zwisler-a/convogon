@@ -4,7 +4,7 @@ import {ItInfo} from './it-info/it-info';
 import {KidInfo} from './kid-info/kid-info';
 import {NscInfo} from './nsc-info/nsc-info';
 import {ScInfo} from './sc-info/sc-info';
-import {PersonaService} from '../../service/persona.service';
+import {PersonaStoreService} from '../../service/persona-store.service';
 import {MatStep, MatStepper} from '@angular/material/stepper';
 import {
   FormBuilder,
@@ -43,6 +43,7 @@ import {ROUTES} from '../../app.routes';
 })
 export class Persona {
   type?: string = undefined;
+  loading = false;
 
   itInfo: FormGroup;
   otInfo: FormGroup;
@@ -50,7 +51,7 @@ export class Persona {
   npcInfo: FormGroup;
   playerCharInfo: FormGroup;
 
-  constructor(public personaService: PersonaService, private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
+  constructor(public personaService: PersonaStoreService, private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.otInfo = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -102,9 +103,11 @@ export class Persona {
   }
 
   createPersona() {
+    this.loading = true;
     this.personaService.createPersona(this.getPersonFromForm()).subscribe({
       next: (result) => {
-        this.router.navigate(['/home']);
+        this.loading = false;
+        this.router.navigate(['/' + ROUTES.HOME]);
       },
       error: err => {
         this.snackBar.open("Persona konnte leider nicht erstellt werden...", 'Ok');
