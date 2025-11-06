@@ -1,8 +1,11 @@
-<button mat-raised-button type="button" (click)="navigateBack()" >
+<button mat-raised-button type="button" [routerLink]="'/' + ROUTES.HOME">
   <mat-icon>arrow_back</mat-icon>
+
   Zurück
 </button>
+
 <br />
+
 <br />
 
 <mat-card>
@@ -15,6 +18,7 @@
 
     <section>
       <h2>1. Geltungsbereich</h2>
+
       <p>
         Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für die Teilnahme an
         der LARP-Convention „ConFrontation – Zwei Seiten, keine Wahrheit“ sowie
@@ -28,27 +32,45 @@
 
     <section>
       <h2>2. Anmeldung und Rücktritt</h2>
+
       <mat-list>
         <p>
           Die Anmeldung erfolgt über das offizielle Anmeldeformular der
           Veranstalter (Orga).
         </p>
+
         <p>
-          Die Teilnahmegebühr wird als Spende zur Deckung der
-          Veranstaltungskosten behandelt.
+          Die Teilnahmegebühr wird als freiwillige Spende zur Deckung der
+          Veranstaltungskosten erhoben. Eine Rückerstattung ist nur nach den in
+          Punkt 2 beschriebenen Bedingungen möglich.
         </p>
+
         <p>
           Bei einer Absage weniger als 30 Tage vor Veranstaltungsbeginn besteht
           kein Anspruch auf Rückerstattung der Spende.
         </p>
+
         <p>
           Bei einer Absage mehr als 30 Tage vor Veranstaltungsbeginn kann die
           Spende nach Ermessen der Orga ganz oder teilweise zurückerstattet
           werden.
         </p>
+
         <p>
           Eine Übertragung des Teilnahmeplatzes auf eine andere Person ist nur
           nach vorheriger Absprache mit der Orga möglich.
+        </p>
+
+        <p>
+          Teilnehmer:innen unter 18 Jahren dürfen sich nicht selbst anmelden.
+          Die Anmeldung muss durch die gesetzlichen Erziehungsberechtigten
+          erfolgen. Anmeldungen durch andere Dritte sind ausgeschlossen.
+        </p>
+
+        <p>
+          Teilnehmer:innen ab 18 Jahren können sich selbst anmelden oder durch
+          Dritte (z. B. Gruppenleiter oder Freunde) anmelden lassen, solange die
+          angemeldete Person über die Datenverarbeitung informiert wurde.
         </p>
       </mat-list>
     </section>
@@ -57,29 +79,42 @@
 
     <section>
       <h2>3. Verantwortung und Haftung</h2>
+
       <mat-list>
         <p>
           Die Teilnahme erfolgt auf eigene Gefahr, insbesondere bei Kämpfen,
           Geländespielen oder ähnlichen Aktivitäten.
         </p>
+
+        <p>
+          Die Veranstalter übernehmen keine Haftung für Personen-, Sach- oder
+          Vermögensschäden, es sei denn, sie beruhen auf grober Fahrlässigkeit
+          oder Vorsatz durch die Orga.
+        </p>
+
         <p>
           Der Veranstaltungsort liegt auf dem Gelände einer Jugendfreizeitanlage
           in waldähnlichem Gebiet. Es besteht ein erhöhtes Risiko durch
-          Witterung, Unebenheiten oder Insektenstiche. Jede*r Teilnehmende
+          Witterung, Unebenheiten oder Insektenstiche. Jede:r Teilnehmende
           achtet selbst auf die eigene Sicherheit.
         </p>
-        <p>
-          Die Veranstalter haften nicht für Personen-, Sach- oder
-          Vermögensschäden.
-        </p>
+
         <p>
           Teilnehmende sind selbst für ausreichenden Schutz vor Sonne, Insekten,
           Allergenen und anderen Umweltfaktoren verantwortlich.
         </p>
+
+        <p>
+          Eltern bzw. Erziehungsberechtigte haften für die Aufsicht ihrer Kinder
+          während der gesamten Veranstaltung. Es wird keine offizielle
+          Kinderbetreuung angeboten.
+        </p>
+
         <p>
           Der Konsum legaler Substanzen (z. B. Nikotin, Alkohol, Cannabis) ist
           nur außerhalb der Sichtweite von Kindern gestattet.
         </p>
+
         <p>
           Der Besitz und Konsum illegaler Substanzen ist strikt untersagt und
           führt zum sofortigen Ausschluss von der Veranstaltung.
@@ -91,25 +126,30 @@
 
     <section>
       <h2>4. Kinder und Aufsichtspflicht</h2>
+
       <mat-list>
         <p>Kinder sind auf der Veranstaltung willkommen.</p>
+
         <p>
           Es gibt kein offizielles Betreuungsprogramm. Eltern oder
           Erziehungsberechtigte haften für ihre Kinder und bleiben für deren
           Aufsicht verantwortlich.
         </p>
+
         <p>
           Optionale Kinderaktivitäten entbinden Eltern nicht von ihrer
           Aufsichtspflicht.
         </p>
+
         <p>
           Wenn Eltern die Aufsicht unzureichend finden, müssen sie selbst bei
           ihrem Kind bleiben.
         </p>
+
         <p>
           Kinder dürfen nicht an Kämpfen oder Bedrohungsszenarien teilnehmen,
           außer bei ausdrücklich als sicher gekennzeichneten Aktivitäten unter
-          Aufsicht erfahrener Spieler*innen oder Pädagog*innen.
+          Aufsicht erfahrener Spieler:innen oder Pädagog:innen.
         </p>
       </mat-list>
     </section>
@@ -118,23 +158,28 @@
 
     <section>
       <h2>5. Awareness und Verhalten</h2>
+
       <mat-list>
         <p>
           Die Veranstaltung steht für ein respektvolles, inklusives und sicheres
           Miteinander.
         </p>
+
         <p>
           Rassismus, Sexismus, Homophobie, Transfeindlichkeit, Diskriminierung
           oder Gewalt werden nicht toleriert.
         </p>
+
         <p>
           Verstöße können zum sofortigen Ausschluss führen; in schweren Fällen
           wird Anzeige erstattet.
         </p>
+
         <p>
           Alle Teilnehmenden verpflichten sich, Grenzen anderer zu respektieren
           – sowohl im Spiel (In-Time) als auch außerhalb (Out-Time).
         </p>
+
         <p>
           Die Awareness-Regeln gelten auf dem gesamten Veranstaltungsgelände.
         </p>
@@ -144,45 +189,22 @@
     <mat-divider></mat-divider>
 
     <section>
-      <h2>6. Mediennutzung, Fotos und Videos</h2>
-      <p>
-        Während der Veranstaltung werden Fotos und Videos zur Dokumentation und
-        Erinnerung erstellt. Diese Aufnahmen werden ausschließlich den
-        Teilnehmenden über einen geschützten Google-Drive-Ordner bereitgestellt.
-        Der Ordner bleibt 3 Monate online und wird danach gelöscht.
-      </p>
-      <p>
-        Eine Veröffentlichung in sozialen Medien oder auf öffentlichen
-        Plattformen erfolgt nur mit ausdrücklicher Zustimmung der abgebildeten
-        Personen. Eine vollständige Ausgrenzung einzelner Personen aus Aufnahmen
-        ist organisatorisch nicht möglich. Wer nicht aufgenommen werden möchte,
-        sollte Kameraaufnahmen nach Möglichkeit vermeiden.
-      </p>
-    </section>
+      <h2>6. Datenschutz (gemäß DSGVO)</h2>
 
-    <mat-divider></mat-divider>
-
-    <section>
-      <h2>7. Datenschutz (gemäß DSGVO)</h2>
       <p>
         Verantwortlich für die Datenverarbeitung ist die Orga von ConFrontation
         – Zwei Seiten, keine Wahrheit. Personenbezogene Daten (z. B. Name,
         Kontakt, Notfallnummer, ggf. Gesundheitsangaben) werden ausschließlich
         zur Organisation und Durchführung der Veranstaltung verarbeitet.
+        Detaillierte Informationen zur Datenverarbeitung findest du in unserer
+        <a [routerLink]="['/' + ROUTES.DATA]">Datenschutzerklärung</a>.
       </p>
+
       <p>
-        Eine Weitergabe an Dritte erfolgt nur, soweit sie zur Durchführung
-        erforderlich ist (z. B. Unterkunft, Versicherung, Notfallversorgung).
-        Nach Abschluss der Veranstaltung werden personenbezogene Daten innerhalb
-        von 3 Monaten gelöscht, sofern keine gesetzlichen Aufbewahrungsfristen
-        bestehen.
-      </p>
-      <p>
-        Teilnehmende haben Rechte auf Auskunft, Berichtigung, Löschung und
-        Einschränkung der Verarbeitung gemäß Art. 15–18 DSGVO.<br />
         Kontakt zur Orga (Datenschutzanfragen):
-        <a [href]="'mailto:' + 'xxx' + '@' + 'gmx.net'">
-          {{ "xxx" + "@" + "gmx.net" }}</a
+
+        <a [href]="'mailto:' + 'x.xxxxx' + '@' + 'gmx.net'">
+          {{ "x.xxxxx" + "@" + "gmx.net" }}</a
         >
       </p>
     </section>
@@ -190,17 +212,20 @@
     <mat-divider></mat-divider>
 
     <section>
-      <h2>8. Einverständniserklärung für Minderjährige</h2>
+      <h2>7. Einverständniserklärung für Minderjährige</h2>
+
       <mat-list>
         <p>
           Teilnehmende unter 18 Jahren benötigen eine schriftliche
           Einverständniserklärung der Erziehungsberechtigten.
         </p>
+
         <p>
           Diese umfasst die Zustimmung zur Teilnahme, zur Speicherung
           personenbezogener Daten und zur Anfertigung von Fotos/Videos gemäß
           Punkt 6.
         </p>
+
         <p>
           Eine Kopie der unterschriebenen Einverständniserklärung ist bei
           Anreise vorzulegen. Ohne sie ist keine Teilnahme möglich.
@@ -211,7 +236,8 @@
     <mat-divider></mat-divider>
 
     <section>
-      <h2>9. Ausschluss von der Veranstaltung</h2>
+      <h2>8. Ausschluss von der Veranstaltung</h2>
+
       <p>
         Die Orga behält sich das Recht vor, Teilnehmende bei grobem
         Fehlverhalten, Gefahr für andere oder Verstoß gegen diese AGB von der
@@ -223,23 +249,29 @@
     <mat-divider></mat-divider>
 
     <section>
-      <h2>10. Schlussbestimmungen</h2>
+      <h2>9. Schlussbestimmungen</h2>
+
       <mat-list>
         <p>
           Änderungen oder Ergänzungen dieser AGB werden von der Orga
           bekanntgegeben und gelten mit Veröffentlichung als wirksam.
         </p>
+
         <p>
           Ist eine Bestimmung dieser AGB unwirksam, bleibt die Gültigkeit der
           übrigen Bestimmungen unberührt.
         </p>
+
         <p>
           Es gilt deutsches Recht. Gerichtsstand ist der Sitz der Veranstalter.
         </p>
       </mat-list>
     </section>
+
     <br />
+
     <br />
-    <mat-card-subtitle>Zuletzt aktualisiert: 03.11.2025</mat-card-subtitle>
+
+    <mat-card-subtitle>Zuletzt aktualisiert: 06.11.2025</mat-card-subtitle>
   </mat-card-content>
 </mat-card>

@@ -1,13 +1,18 @@
-<button mat-raised-button type="button" (click)="navigateBack()" >
+<button mat-raised-button type="button" [routerLink]="'/' + ROUTES.HOME">
   <mat-icon>arrow_back</mat-icon>
+
   Zurück
 </button>
+
 <br />
+
 <br />
+
 <mat-card>
   <mat-card-header>
     <h1>Datenschutzhinweise</h1>
   </mat-card-header>
+
   <mat-card-content>
     <p>
       Der Schutz deiner personenbezogenen Daten ist uns wichtig. Diese Hinweise
@@ -20,13 +25,17 @@
 
     <section>
       <h2>1. Verantwortliche Stelle</h2>
+
       <p>Verantwortlich im Sinne der DSGVO ist:</p>
+
       <ul class="plain-list">
         <li>Orga ConFrontation – Zwei Seiten, keine Wahrheit</li>
+
         <li>
           E-Mail:
-          <a [href]="'mailto:' + 'xxx' + '@' + 'gmx.net'">
-            {{ "xxx" + "@" + "gmx.net" }}</a
+
+          <a [href]="'mailto:' + 'x.xxxxx' + '@' + 'gmx.net'">
+            {{ "x.xxxxx" + "@" + "gmx.net" }}</a
           >
         </li>
       </ul>
@@ -36,7 +45,9 @@
 
     <section>
       <h2>2. Verarbeitete Daten und Zwecke</h2>
+
       <h3>Anmeldung & Teilnehmerverwaltung</h3>
+
       <p>
         Für die Registrierung zum Event verarbeiten wir die von euch angegebenen
         Daten (z.&nbsp;B. Name, E‑Mail‑Adresse, ggf. Organisation/Firma,
@@ -45,7 +56,9 @@
         Verwaltung von Wartelisten, Versand organisatorischer Informationen
         sowie zur Durchführung des Check‑ins vor Ort.
       </p>
+
       <h3>Kommunikation</h3>
+
       <p>
         Unsere Website wird bei der OVH GmbH, Christophstraße 19, 50670 Köln,
         Deutschland, gehostet. Die Datenverarbeitung erfolgt in Rechenzentren
@@ -58,26 +71,35 @@
 
     <section>
       <h2>3. Rechtsgrundlagen</h2>
+
       <mat-list>
         <mat-list-item>
           <mat-icon matListItemIcon>gavel</mat-icon>
+
           <div matListItemTitle>Art. 6 Abs. 1 lit. b DSGVO</div>
+
           <div matListItemLine>
             Durchführung vorvertraglicher Maßnahmen und Vertragserfüllung
             (Anmeldung/Teilnahme am Event).
           </div>
         </mat-list-item>
+
         <mat-list-item>
           <mat-icon matListItemIcon>thumb_up</mat-icon>
+
           <div matListItemTitle>Art. 6 Abs. 1 lit. a DSGVO</div>
+
           <div matListItemLine>
             Einwilligungen (z.&nbsp;B. optionale Angaben, Fotos/Videos,
             Newsletter).
           </div>
         </mat-list-item>
+
         <mat-list-item>
           <mat-icon matListItemIcon>security</mat-icon>
+
           <div matListItemTitle>Art. 6 Abs. 1 lit. f DSGVO</div>
+
           <div matListItemLine>
             Berechtigte Interessen (Organisation des Events, Sicherheit,
             Missbrauchsvermeidung, Nachweiszwecke).
@@ -90,6 +112,7 @@
 
     <section>
       <h2>4. Empfänger</h2>
+
       <p>
         Eine Weitergabe erfolgt nur, soweit dies für die genannten Zwecke
         erforderlich ist oder eine gesetzliche Pflicht besteht. Hierzu können
@@ -104,6 +127,7 @@
 
     <section>
       <h2>5. Übermittlungen in Drittländer</h2>
+
       <p>
         Eine Übermittlung in Drittländer findet grundsätzlich nicht statt.
         Sollte im Einzelfall ein Dienst außerhalb der EU/des EWR eingesetzt
@@ -116,14 +140,25 @@
 
     <section>
       <h2>6. Speicherdauer</h2>
+
       <p>
-        Registrierungs‑ und Teilnehmerdaten werden spätestens 30 Tage nach Ende
-        des Events gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten
-        entgegenstehen oder eine weitere Speicherung zur Geltendmachung,
-        Ausübung oder Verteidigung von Rechtsansprüchen erforderlich ist. Sofern
-        Rechnungsdaten anfallen, bewahren wir diese gem. steuer‑ und
-        handelsrechtlichen Vorgaben bis zu 10 Jahre auf. Auf Einwilligungen
-        beruhende Daten verarbeiten wir bis zum Widerruf.
+        Registrierungs- und Teilnehmerdaten werden zur Organisation des
+        wiederkehrenden LARP gespeichert, um eine Teilnahme an zukünftigen
+        Veranstaltungen zu ermöglichen. Du kannst deine personenbezogenen Daten
+        jederzeit gemäß deiner Rechte (siehe nachfolgender Punkt) löschen
+        lassen. Daten, die auf einer Einwilligung beruhen, werden bis zum
+        Widerruf gespeichert.
+      </p>
+      <p>
+        „Die von dir übermittelten personenbezogenen Daten werden für die
+        Organisation und Durchführung unserer wiederkehrenden LARP-Veranstaltung
+        gespeichert. Die Daten bleiben für die Dauer von zwei Jahren nach
+        deiner letzten Anmeldung gespeichert, um eine erneute Anmeldung bei
+        zukünftigen Veranstaltungen zu erleichtern. Danach werden sie gelöscht,
+        sofern keine gesetzlichen Aufbewahrungsfristen bestehen oder du einer
+        längeren Speicherung ausdrücklich zustimmst. Du kannst deine Daten
+        jederzeit gemäß deinen Rechten nach der DSGVO löschen oder korrigieren
+        lassen.“
       </p>
     </section>
 
@@ -131,20 +166,30 @@
 
     <section>
       <h2>7. Deine Rechte</h2>
+
       <ul class="plain-list">
         <li>Recht auf Auskunft (Art.15 DSGVO)</li>
+
         <li>Recht auf Berichtigung (Art.16 DSGVO)</li>
+
         <li>Recht auf Löschung (Art.17 DSGVO)</li>
+
         <li>Recht auf Einschränkung der Verarbeitung (Art.18 DSGVO)</li>
+
         <li>Recht auf Datenübertragbarkeit (Art.20 DSGVO)</li>
+
         <li>Widerspruchsrecht (Art.21 DSGVO)</li>
+
         <li>Widerruf von Einwilligungen (Art.7 Abs.3 DSGVO)</li>
+
         <li>Beschwerderecht bei einer Aufsichtsbehörde (Art.77 DSGVO)</li>
       </ul>
+
       <p>
         Zur Ausübung deiner Rechte kontaktiere uns bitte unter
-        <a [href]="'mailto:' + 'xxx' + '@' + 'gmx.net'">
-          {{ "xxx" + "@" + "gmx.net" }}</a
+
+        <a [href]="'mailto:' + 'x.xxxxx' + '@' + 'gmx.net'">
+          {{ "x.xxxxx" + "@" + "gmx.net" }}</a
         >.
       </p>
     </section>
@@ -152,7 +197,29 @@
     <mat-divider></mat-divider>
 
     <section>
-      <h2>8. Hosting & Server‑Logfiles</h2>
+      <h2>8. Mediennutzung, Fotos und Videos</h2>
+
+      <p>
+        Während der Veranstaltung werden Fotos und Videos zur Dokumentation und
+        Erinnerung erstellt. Diese Aufnahmen werden ausschließlich den
+        Teilnehmenden über einen geschützten Google-Drive-Ordner bereitgestellt.
+        Der Ordner bleibt 3 Monate online und wird danach gelöscht.
+      </p>
+
+      <p>
+        Eine Veröffentlichung in sozialen Medien oder auf öffentlichen
+        Plattformen erfolgt nur mit ausdrücklicher Zustimmung der abgebildeten
+        Personen. Eine vollständige Ausgrenzung einzelner Personen aus Aufnahmen
+        ist organisatorisch nicht möglich. Wer nicht aufgenommen werden möchte,
+        sollte Kameraaufnahmen nach Möglichkeit vermeiden.
+      </p>
+    </section>
+
+    <mat-divider></mat-divider>
+
+    <section>
+      <h2>9. Hosting & Server‑Logfiles</h2>
+
       <p>
         Der Betrieb der Event‑Seiten erfolgt über einen Hosting‑Provider. Dieser
         verarbeitet Meta‑/Kommunikationsdaten (z.&nbsp;B. IP‑Adresse,
@@ -165,15 +232,42 @@
     <mat-divider></mat-divider>
 
     <section>
-      <h2>9. Änderungen</h2>
+      <h2>10. Anmeldungen durch Dritte</h2>
+
+      <p>
+        Sofern eine Anmeldung durch eine andere Person erfolgt (z. B.
+        Gruppenleiter, Freund oder Elternteil), ist die anmeldende Person
+        verpflichtet, die betroffene Person über diese Datenschutzerklärung zu
+        informieren und sicherzustellen, dass die Informationen zur
+        Datenverarbeitung zur Kenntnis genommen wurden.
+      </p>
+
+      <p>
+        Die übermittelten personenbezogenen Daten werden in gleichem Umfang wie
+        bei einer direkten Anmeldung verarbeitet. Rechtsgrundlage ist Art. 6
+        Abs. 1 lit. b DSGVO (Vertragserfüllung) sowie Art. 6 Abs. 1 lit. a DSGVO
+        (Einwilligung, soweit erforderlich). Bei Teilnehmer:innen unter 18
+        Jahren gilt die Anmeldung durch die Erziehungsberechtigten als
+        Einwilligung.
+      </p>
+    </section>
+
+    <mat-divider></mat-divider>
+
+    <section>
+      <h2>11. Änderungen</h2>
+
       <p>
         Wir passen diese Datenschutzerklärung an, wenn sich Rechtslagen oder
         technische Änderungen ergeben. Die jeweils aktuelle Fassung ist in der
         App abrufbar.
       </p>
     </section>
+
     <br />
+
     <br />
-    <mat-card-subtitle>Zuletzt aktualisiert: 03.11.2025</mat-card-subtitle>
+
+    <mat-card-subtitle>Zuletzt aktualisiert: 06.11.2025</mat-card-subtitle>
   </mat-card-content>
 </mat-card>
