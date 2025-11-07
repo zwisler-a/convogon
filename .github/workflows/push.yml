@@ -28,7 +28,7 @@ jobs:
           push: true
           tags: zwisler/convogon:latest
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: GIT_COMMIT=${{ github.sha }}
+          build-args: GIT_COMMIT=${{ github.sha::7 }}
 
       - name: Trigger n8n workflow
         run: |
