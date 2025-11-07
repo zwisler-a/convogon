@@ -15,6 +15,7 @@ import {AppController} from "./app.controller";
     imports: [
         AuthModule,
         PrometheusModule.register({
+            global: true,
             customMetricPrefix: 'convogon',
         }),
         JwtModule.register({secret: jwtSecret}),

@@ -14,10 +14,11 @@ import {
 } from "@angular/material/table";
 import {ROUTES} from '../../app.routes';
 import {MatIconModule} from '@angular/material/icon';
-import {AdminAccountService} from '../admin-account.service';
+import {AccountStoreService} from '../account-store.service';
 import {map, Observable, take} from 'rxjs';
 import {RouterLink} from '@angular/router';
 import {PersonaDto} from '../../../api';
+import {NavigateBack} from '../../shared/navigate-back';
 
 @Component({
   selector: 'app-personas-view',
@@ -34,7 +35,8 @@ import {PersonaDto} from '../../../api';
     MatRow,
     MatRowDef,
     MatTableModule,
-    RouterLink
+    RouterLink,
+    NavigateBack
   ],
   templateUrl: './personas-view.html',
   styleUrl: './personas-view.css'
@@ -44,7 +46,7 @@ export class PersonasView {
   displayedColumns: string[] = ['firstName', 'lastName', 'type', 'payed'];
   protected readonly ROUTES = ROUTES;
 
-  private adminAccountService: AdminAccountService = inject(AdminAccountService);
+  private adminAccountService: AccountStoreService = inject(AccountStoreService);
   personas$: Observable<PersonaDto[]> = this.adminAccountService.getAccounts().pipe(
     map(accounts => accounts.flatMap(account => account.personas as any as PersonaDto[]))
   );

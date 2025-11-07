@@ -1,0 +1,35 @@
+<app-loading [loading]="persona$">
+  <button class="back-button" mat-raised-button appNavigateBack>
+    <mat-icon>arrow_back</mat-icon>
+    Zurück
+  </button>
+  @if (persona$ | async; as persona) {
+    <div class="heading">
+      <div class="avatar">
+        @if (persona?.type == 'nsc') {
+          <img src="/fc2015.png"/>
+        }
+        @if (persona?.type == 'sc') {
+          <img src="/fc1916.png"/>
+        }
+        @if (persona?.type == 'kid') {
+          <img src="/fc1957.png"/>
+        }
+      </div>
+      <span>
+        {{ persona.type == "nsc" ? "Nicht Spieler Charakter" : "" }}
+        {{ persona.type == "sc" ? "Spieler Charakter" : "" }}
+        {{ persona.type == "kid" ? "Kind" : "" }}
+      </span>:
+      <div>{{ persona?.firstName }} {{ persona?.lastName }}</div>
+    </div>
+    <mat-card>
+
+      <mat-card-content>
+        <app-persona-overview [persona]="persona"></app-persona-overview>
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <div>Hier gibt leider nichts zu sehen ...</div>
+  }
+</app-loading>

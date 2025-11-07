@@ -2,7 +2,7 @@
   <button
     mat-button
     class="back-button"
-    [routerLink]="'/' + ROUTES.ADMIN_VIEW_USERS"
+    appNavigateBack
   >
     <mat-icon>arrow_back</mat-icon>
     Zurück
@@ -22,6 +22,7 @@
   </div>
 
   <h2>Angemeldete Spieler</h2>
+  @if (account.personas.length) {
   <table
     mat-table
     [dataSource]="account.personas"
@@ -57,4 +58,7 @@
       style="cursor: pointer"
     ></tr>
   </table>
+  } @else {
+    Keine Spieler angemeldet ...
+  }
 </div>

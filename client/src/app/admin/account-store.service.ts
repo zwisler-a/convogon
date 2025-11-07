@@ -6,7 +6,7 @@ import {Confirm} from '../core/confirm/confirm';
 import {ConfirmDialogService} from '../core/confirm/confirm.service';
 
 @Injectable({providedIn: 'root'})
-export class AdminAccountService {
+export class AccountStoreService {
   private reload$ = new BehaviorSubject(void 0);
   private account$ = this.reload$.pipe(
     switchMap(() => this.accountService.getAllAccounts())
