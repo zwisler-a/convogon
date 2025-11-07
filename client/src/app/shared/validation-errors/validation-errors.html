@@ -1,0 +1,14 @@
+@if (control && control.errors) {
+  @if (control.hasError('required')) {
+    Dieses Feld ist erforderlich.
+  }
+  @if (control.hasError('minlength')) {
+    Mindestens {{ control.getError('minlength').requiredLength }} Zeichen erforderlich.
+  }
+  @if (control.hasError('maxlength')) {
+    Maximal {{ control.getError('maxlength').requiredLength }} Zeichen erlaubt.
+  }
+  @if (control.hasError('pattern')) {
+    Ungültiges Format.
+  }
+}

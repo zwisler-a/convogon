@@ -8,11 +8,17 @@
       <mat-form-field appearance="fill">
         <mat-label>Charaktername</mat-label>
         <input matInput formControlName="characterName"/>
+        <mat-error>
+          <app-validation-errors controlName="characterName"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Klasse</mat-label>
         <input matInput formControlName="characterClass"/>
+        <mat-error>
+          <app-validation-errors controlName="characterClass"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -33,6 +39,9 @@
           (matChipInputTokenEnd)="addReactiveKeyword($event)"
         />
         <mat-hint>Fähigkeit mit Komma seperieren</mat-hint>
+        <mat-error>
+          <app-validation-errors controlName="skills"/>
+        </mat-error>
       </mat-form-field>
 
 

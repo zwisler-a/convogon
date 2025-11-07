@@ -17,6 +17,9 @@
           placeholder="Kurz & prägnant…"
           aria-label="Wichtige Infos für die Spielleitung"></textarea>
         <mat-hint align="start">Was sollte die SL unbedingt über deinen Charakter wissen?</mat-hint>
+        <mat-error>
+          <app-validation-errors controlName="importantInfoForGM"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill" subscriptSizing="dynamic">
@@ -30,6 +33,9 @@
           placeholder="Was ist deinem Charakter am wichtigsten?"
           aria-label="Wichtigste Sache für den Charakter"></textarea>
         <mat-hint align="start">Das zentrale Ziel, Wert oder Prinzip deines Charakters.</mat-hint>
+        <mat-error>
+          <app-validation-errors controlName="mostImportantForCharacter"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill" subscriptSizing="dynamic">
@@ -45,6 +51,9 @@
         <mat-hint align="start">
           Kennst du Relevantes über die Charaktere deiner Freunde, das der SL bei einem individuellen Plot hilft?
         </mat-hint>
+        <mat-error>
+          <app-validation-errors controlName="infoAboutFriends"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill" subscriptSizing="dynamic">
@@ -56,9 +65,11 @@
           cdkAutosizeMaxRows="10"
           formControlName="storyLore"
           placeholder="Kurze Zusammenfassung!!"
-          aria-label="Story und Lore kurze Zusammenfassung"
-          maxlength="1000"></textarea>
+          aria-label="Story und Lore kurze Zusammenfassung"></textarea>
         <mat-hint align="start">Bitte kurz halten (max. 1000 Zeichen).</mat-hint>
+        <mat-error>
+          <app-validation-errors controlName="storyLore"/>
+        </mat-error>
       </mat-form-field>
 
     </form>

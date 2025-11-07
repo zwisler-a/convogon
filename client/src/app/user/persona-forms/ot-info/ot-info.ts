@@ -13,6 +13,8 @@ import {
   MatDatepickerToggle
 } from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
+import {ValidationErrors} from '../../../shared/validation-errors/validation-errors';
+import {ControlsOf, OtInfoForm} from '../persona-forms.types';
 
 @Component({
   selector: 'app-ot-info',
@@ -30,6 +32,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatDatepickerModule,
     MatCardActions,
     MatSelectModule,
+    ValidationErrors,
   ],
   templateUrl: './ot-info.html',
   styleUrl: './ot-info.css'
@@ -37,7 +40,7 @@ import {MatSelectModule} from '@angular/material/select';
 export class OtInfo {
 
   @Input()
-  form!: FormGroup;
+  form!: FormGroup<ControlsOf<OtInfoForm>>;
 
   constructor(private fb: FormBuilder) {
 

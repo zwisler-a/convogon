@@ -7,22 +7,34 @@
     <form [formGroup]="form" class="player-info-form">
       <mat-form-field appearance="fill">
         <mat-label>Vorname</mat-label>
-        <input matInput formControlName="firstName" />
+        <input matInput formControlName="firstName"/>
+        <mat-error>
+          <app-validation-errors controlName="firstName"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Nachname</mat-label>
-        <input matInput formControlName="lastName" />
+        <input matInput formControlName="lastName"/>
+        <mat-error>
+          <app-validation-errors controlName="lastName"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Adresse</mat-label>
-        <input matInput formControlName="address" />
+        <input matInput formControlName="address"/>
+        <mat-error>
+          <app-validation-errors controlName="address"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Mobilnummer</mat-label>
-        <input matInput formControlName="mobileNumber" type="tel" />
+        <input matInput formControlName="mobileNumber" type="tel"/>
+        <mat-error>
+          <app-validation-errors controlName="mobileNumber"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -34,15 +46,21 @@
           <mat-option [value]="'other'">Allergien oder Sonstiges</mat-option>
         </mat-select>
         @if (form.get('diet')?.value == 'other') {
-        <mat-hint>Bitte "Verpflegungsbesonderheiten" ausfüllen</mat-hint>
+          <mat-hint>Bitte "Verpflegungsbesonderheiten" ausfüllen</mat-hint>
         }
+        <mat-error>
+          <app-validation-errors controlName="diet"/>
+        </mat-error>
       </mat-form-field>
 
       @if (form.get('diet')?.value == 'other') {
-      <mat-form-field>
-        <mat-label>Verpflegungsbesonderheiten</mat-label>
-        <textarea matInput formControlName="dietOther"></textarea>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Verpflegungsbesonderheiten</mat-label>
+          <textarea matInput formControlName="dietOther"></textarea>
+          <mat-error>
+            <app-validation-errors controlName="dietOther"/>
+          </mat-error>
+        </mat-form-field>
       }
 
       <mat-form-field appearance="fill">
@@ -52,6 +70,9 @@
           <mat-option [value]="'tent'">Mein Zelt / Van</mat-option>
           <mat-option [value]="'outside'">Ich übernachte außerhalb</mat-option>
         </mat-select>
+        <mat-error>
+          <app-validation-errors controlName="accomodation"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-checkbox formControlName="travellingWithGroup">
@@ -59,19 +80,28 @@
       </mat-checkbox>
 
       @if (form.get('travellingWithGroup')?.value) {
-      <mat-form-field appearance="fill">
-        <mat-label>Gruppenname</mat-label>
-        <input matInput formControlName="groupName" />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Gruppenname</mat-label>
+          <input matInput formControlName="groupName"/>
+          <mat-error>
+            <app-validation-errors controlName="groupName"/>
+          </mat-error>
+        </mat-form-field>
       }
       <mat-form-field appearance="fill">
         <mat-label>Zeitpunkt Anreise (Tag, ungefähre Uhrzeit)</mat-label>
-        <input matInput formControlName="arrival" />
+        <input matInput formControlName="arrival"/>
+        <mat-error>
+          <app-validation-errors controlName="arrival"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Zeitpunkt Abreise (Tag, ungefähre Uhrzeit)</mat-label>
-        <input matInput formControlName="departure" />
+        <input matInput formControlName="departure"/>
+        <mat-error>
+          <app-validation-errors controlName="departure"/>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -81,17 +111,23 @@
           <mat-option [value]="'other'">Ja, aber...</mat-option>
           <mat-option [value]="'no'">Eher nicht</mat-option>
         </mat-select>
-        <mat-hint
-          >Wärst du bereit nebenbei etwas zu unterstützen, z.B. in der Küche,
+        <mat-hint>
+          Wärst du bereit nebenbei etwas zu unterstützen, z.B. in der Küche,
           bei den sanitären Anlagen etc. (wird IT ausgespielt)?
         </mat-hint>
+        <mat-error>
+          <app-validation-errors controlName="support"/>
+        </mat-error>
       </mat-form-field>
 
       @if (form.get('support')?.value == 'other') {
-      <mat-form-field>
-        <mat-label>Einschränkung Unterstützung</mat-label>
-        <textarea matInput formControlName="supportOther"></textarea>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Einschränkung Unterstützung</mat-label>
+          <textarea matInput formControlName="supportOther"></textarea>
+          <mat-error>
+            <app-validation-errors controlName="supportOther"/>
+          </mat-error>
+        </mat-form-field>
       }
     </form>
   </mat-card-content>

@@ -65,8 +65,8 @@ export class NonPlayerCharacter extends Persona {
     @Column({type: 'boolean', default: false})
     fighter!: boolean;
 
-    @ApiProperty({ description: 'List of character interests', example: ['Trade', 'Music'], nullable: true })
-    @Column({type: 'simple-json', nullable: true})
-    interests?: string[];
+    @ApiProperty({ description: 'List of character interests', example: 'Trade, Music', nullable: true })
+    @Column({type: 'text', nullable: true})
+    interests?: string;
 
 }

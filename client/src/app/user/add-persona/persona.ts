@@ -1,18 +1,19 @@
 import {Component, HostListener} from '@angular/core';
 import {TypeSelection} from './type-selection/type-selection';
-import {ItInfo} from './it-info/it-info';
-import {KidInfo} from './kid-info/kid-info';
-import {NscInfo} from './nsc-info/nsc-info';
-import {ScInfo} from './sc-info/sc-info';
+import {ItInfo} from '../persona-forms/it-info/it-info';
+import {KidInfo} from '../persona-forms/kid-info/kid-info';
+import {NscInfo} from '../persona-forms/nsc-info/nsc-info';
+import {ScInfo} from '../persona-forms/sc-info/sc-info';
 import {PersonaStoreService} from '../../service/persona-store.service';
 import {MatStep, MatStepper} from '@angular/material/stepper';
 import {
   FormBuilder,
   FormGroup,
+  FormControl,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import {OtInfo} from './ot-info/ot-info';
+import {OtInfo} from '../persona-forms/ot-info/ot-info';
 import {MatButton} from '@angular/material/button';
 import {JsonPipe} from '@angular/common';
 import {Review} from './review/review';
@@ -20,6 +21,15 @@ import {Router, RouterLink} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatIconModule} from '@angular/material/icon';
 import {ROUTES} from '../../app.routes';
+import {createForms} from '../persona-forms/persona-forms.utils';
+import {
+  ControlsOf,
+  ItInfoForm,
+  KidInfoForm,
+  NpcInfoForm,
+  OtInfoForm,
+  PlayerCharInfoForm
+} from '../persona-forms/persona-forms.types';
 
 @Component({
   selector: 'app-add-persona',
@@ -45,50 +55,19 @@ export class Persona {
   type?: string = undefined;
   loading = false;
 
-  itInfo: FormGroup;
-  otInfo: FormGroup;
-  kidInfo: FormGroup;
-  npcInfo: FormGroup;
-  playerCharInfo: FormGroup;
+  itInfo: FormGroup<ControlsOf<ItInfoForm>>;
+  otInfo: FormGroup<ControlsOf<OtInfoForm>>;
+  kidInfo: FormGroup<ControlsOf<KidInfoForm>>;
+  npcInfo: FormGroup<ControlsOf<NpcInfoForm>>;
+  playerCharInfo: FormGroup<ControlsOf<PlayerCharInfoForm>>;
 
   constructor(public personaService: PersonaStoreService, private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
-    this.otInfo = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      address: ['', Validators.required],
-      mobileNumber: ['', Validators.required],
-      diet: ['', Validators.required],
-      dietOther: [''],
-      support: ['', Validators.required],
-      supportOther: [''],
-      accommodation: ['', Validators.required],
-      travellingWithGroup: [false, Validators.required],
-      groupName: [''],
-      arrival: ['', Validators.required],
-      departure: ['', Validators.required],
-    });
-    this.itInfo = this.fb.group({
-      characterName: ['', Validators.required],
-      characterClass: ['', Validators.required],
-      skills: [''],
-      fighter: [false],
-    });
-    this.kidInfo = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      other: [''],
-      birthday: ['', Validators.required],
-      kidCharacterInfo: [''],
-    });
-    this.playerCharInfo = this.fb.group({
-      importantInfoForGM: [''],
-      mostImportantForCharacter: [''],
-      infoAboutFriends: [''],
-      storyLore: [''],
-    });
-    this.npcInfo = this.fb.group({
-      interests: [''],
-    });
+    const forms = createForms();
+    this.itInfo = forms.itInfo;
+    this.otInfo = forms.otInfo;
+    this.kidInfo = forms.kidInfo;
+    this.playerCharInfo = forms.playerCharInfo;
+    this.npcInfo = forms.npcInfo;
   }
 
   getPersonFromForm() {
@@ -104,7 +83,7 @@ export class Persona {
 
   createPersona() {
     this.loading = true;
-    this.personaService.createPersona(this.getPersonFromForm()).subscribe({
+    this.personaService.createPersona(this.getPersonFromForm() as any).subscribe({
       next: (result) => {
         this.loading = false;
         this.router.navigate(['/' + ROUTES.HOME]);
@@ -149,7 +128,6 @@ export class Persona {
     this.kidInfo.setValue({
       firstName: 'Tommy',
       lastName: 'Doe',
-      age: 12,
       other: 'Likes dragons',
       birthday: new Date(),
       kidCharacterInfo: '',
@@ -172,20 +150,10 @@ export class Persona {
   changeType(type: string) {
     this.type = type;
     if (this.type == 'nsc') {
-      this.itInfo = this.fb.group({
-        characterName: [''],
-        characterClass: [''],
-        skills: [''],
-        fighter: [false],
-      });
+      this.itInfo = createForms({itCharacterNameRequired: false, itCharacterClassRequired: false}).itInfo
     }
     if (this.type == 'sc') {
-      this.itInfo = this.fb.group({
-        characterName: ['', Validators.required],
-        characterClass: ['', Validators.required],
-        skills: [''],
-        fighter: [false],
-      });
+      this.itInfo = createForms().itInfo
     }
   }
 }

@@ -3,10 +3,14 @@ import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {MatInput, MatInputModule, MatLabel} from '@angular/material/input';
+import {MatSlideToggle} from '@angular/material/slide-toggle';
 import {MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
+import {MatDatepickerInput, MatDatepickerModule} from '@angular/material/datepicker';
+import {ValidationErrors} from '../../../shared/validation-errors/validation-errors';
+import {ControlsOf, KidInfoForm} from '../persona-forms.types';
 
 @Component({
-  selector: 'app-sc-info',
+  selector: 'app-kid-info',
   imports: [
     MatButton,
     MatCard,
@@ -19,12 +23,13 @@ import {MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
     MatStepperNext,
     ReactiveFormsModule,
     MatCardActions,
-    MatStepperPrevious
+    MatDatepickerModule,
+    ValidationErrors
   ],
-  templateUrl: './sc-info.html',
-  styleUrl: './sc-info.css'
+  templateUrl: './kid-info.html',
+  styleUrl: './kid-info.css'
 })
-export class ScInfo {
-  @Input() form!: FormGroup;
+export class KidInfo {
+  @Input() form!: FormGroup<ControlsOf<KidInfoForm>>;
 
 }

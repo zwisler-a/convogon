@@ -9,6 +9,8 @@ import {MatCheckbox} from '@angular/material/checkbox';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {COMMA, ENTER, SEMICOLON} from '@angular/cdk/keycodes';
+import {ValidationErrors} from '../../../shared/validation-errors/validation-errors';
+import {ControlsOf, ItInfoForm} from '../persona-forms.types';
 
 @Component({
   selector: 'app-it-info',
@@ -26,7 +28,8 @@ import {COMMA, ENTER, SEMICOLON} from '@angular/cdk/keycodes';
     MatChipsModule,
     MatIconModule,
     MatCardActions,
-    MatStepperPrevious
+    MatStepperPrevious,
+    ValidationErrors
   ],
   templateUrl: './it-info.html',
   styleUrl: './it-info.css'
@@ -35,7 +38,7 @@ export class ItInfo implements OnChanges {
 
 
   @Input()
-  form!: FormGroup;
+  form!: FormGroup<ControlsOf<ItInfoForm>>;
 
   readonly skills = signal<string[]>([]);
 

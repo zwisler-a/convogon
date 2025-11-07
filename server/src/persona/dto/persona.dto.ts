@@ -85,18 +85,18 @@ export class PersonaDto {
     @ApiPropertyOptional({description: 'Info about friends', example: 'Companions from the Northern lands'})
     infoAboutFriends?: string;
 
-    @ApiPropertyOptional({description: 'Story / lore', example: 'Born in the mountains...', nullable: true})
+    @ApiPropertyOptional({description: 'Story / lore', example: 'Born in the mountains...', type: String})
     storyLore?: string | null;
 
     // NSC-only
-    @ApiPropertyOptional({description: 'Interests', example: ['Trade', 'Music'], type: [String], nullable: true})
-    interests?: string[] | null;
+    @ApiPropertyOptional({description: 'Interests', example: ['Trade', 'Music'], type: String, nullable: true})
+    interests?: string | null;
 
     // Kid-only
     @ApiPropertyOptional({description: 'Birthday', nullable: true})
     birthday?: Date | null;
 
-    @ApiPropertyOptional({description: 'Other', example: 'Likes dragons', nullable: true})
+    @ApiPropertyOptional({description: 'Other', example: 'Likes dragons', type: String})
     other?: string | null;
 
     @ApiPropertyOptional()

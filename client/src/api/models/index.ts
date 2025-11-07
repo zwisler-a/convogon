@@ -56,13 +56,13 @@ export interface PersonaDto {
     /** Info about friends */
     infoAboutFriends?: string;
     /** Story / lore */
-    storyLore?: Record<string, unknown>;
+    storyLore?: string;
     /** Interests */
-    interests?: Array<string>;
+    interests?: string | null;
     /** Birthday */
     birthday?: Record<string, unknown>;
     /** Other */
-    other?: Record<string, unknown>;
+    other?: string;
     kidCharacterInfo?: string;
 }
 
