@@ -7,44 +7,47 @@
     <form [formGroup]="form" class="player-info-form">
       <mat-form-field appearance="fill">
         <mat-label>Vorname</mat-label>
-        <input matInput formControlName="firstName"/>
+        <input matInput formControlName="firstName" />
         <mat-error>
-          <app-validation-errors controlName="firstName"/>
+          <app-validation-errors controlName="firstName" />
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Nachname</mat-label>
-        <input matInput formControlName="lastName"/>
+        <input matInput formControlName="lastName" />
         <mat-error>
-          <app-validation-errors controlName="lastName"/>
+          <app-validation-errors controlName="lastName" />
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Geburtsdatum</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="birthday"/>
+        <input matInput [matDatepicker]="picker" formControlName="birthday" />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error>
-          <app-validation-errors controlName="birthday"/>
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Sonstiges</mat-label>
-        <input matInput formControlName="other"/>
-        <mat-error>
-          <app-validation-errors controlName="other"/>
+          <app-validation-errors controlName="birthday" />
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Charakter Information</mat-label>
-        <input maxlength="1000" matInput formControlName="kidCharacterInfo"/>
-        <mat-hint>Falls dein Kind einen eigenen Charakter spielen will, können hier Informationen dazu gegeben werden.</mat-hint>
+        <input maxlength="1000" matInput formControlName="kidCharacterInfo" />
+        <mat-hint
+          >Falls dein Kind einen eigenen Charakter spielen will, können hier
+          Informationen dazu gegeben werden.</mat-hint
+        >
         <mat-error>
-          <app-validation-errors controlName="kidCharacterInfo"/>
+          <app-validation-errors controlName="kidCharacterInfo" />
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Sonstiges</mat-label>
+        <input matInput formControlName="other" />
+        <mat-error>
+          <app-validation-errors controlName="other" />
         </mat-error>
       </mat-form-field>
     </form>
