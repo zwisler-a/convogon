@@ -25,14 +25,15 @@ export class AppService {
         return context.set(this.clientContextToken, 'default');
     }
 
-    appControllerGetHello(observe?: 'body', options?: RequestOptions<'json'>): Observable<any>;
-    appControllerGetHello(observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<any>>;
-    appControllerGetHello(observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<any>>;
-    appControllerGetHello(observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
-        const url = `${this.basePath}/api`;
+    getVersion(observe?: 'body', options?: RequestOptions<'text'>): Observable<string>;
+    getVersion(observe?: 'response', options?: RequestOptions<'text'>): Observable<HttpResponse<string>>;
+    getVersion(observe?: 'events', options?: RequestOptions<'text'>): Observable<HttpEvent<string>>;
+    getVersion(observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
+        const url = `${this.basePath}/api/version`;
 
         const requestOptions: any = {
             observe: observe as any,
+            responseType: 'text' as 'text',
             reportProgress: options?.reportProgress,
             withCredentials: options?.withCredentials,
             context: this.createContextWithClientId(options?.context)

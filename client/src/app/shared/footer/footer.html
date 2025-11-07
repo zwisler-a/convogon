@@ -7,5 +7,7 @@
     <div class="link" [routerLink]="'/' + ROUTES.CONDUCT">Code of Conduct</div>
     <div>·</div>
     <div class="link" [routerLink]="'/' + ROUTES.DATA">Datenschutz</div>
+    <div>·</div>
+    <div>Version: {{ version$ | async }}</div>
   </div>
 </footer>

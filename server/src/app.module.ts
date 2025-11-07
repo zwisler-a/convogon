@@ -9,6 +9,7 @@ import {join} from "path";
 import {ServeStaticModule} from "@nestjs/serve-static";
 import {PrometheusModule} from "@willsoto/nestjs-prometheus";
 import {ScheduleModule} from "@nestjs/schedule";
+import {AppController} from "./app.controller";
 
 @Module({
     imports: [
@@ -31,7 +32,7 @@ import {ScheduleModule} from "@nestjs/schedule";
             exclude: ['/metrics']
         }),
     ],
-    controllers: [],
+    controllers: [AppController],
     providers: [],
 })
 export class AppModule {
