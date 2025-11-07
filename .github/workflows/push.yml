@@ -21,6 +21,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Set short SHA
+        run: echo "SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
@@ -28,7 +31,8 @@ jobs:
           push: true
           tags: zwisler/convogon:latest
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: GIT_COMMIT=${{ github.sha::7 }}
+          build-args: |
+            GIT_COMMIT=${{ env.SHA_SHORT }}
 
       - name: Trigger n8n workflow
         run: |
