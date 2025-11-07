@@ -26,6 +26,10 @@ jobs:
       - name: Set short SHA
         run: echo "SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
+      - name: Set image tag
+        id: tag
+        run: echo "TAG=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
+
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
