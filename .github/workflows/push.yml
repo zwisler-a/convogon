@@ -1,7 +1,9 @@
 name: push
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - dev
 
 jobs:
   test:
@@ -29,7 +31,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: zwisler/convogon:latest
+          tags: zwisler/convogon:${{ steps.tag.outputs.TAG }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             GIT_COMMIT=${{ env.SHA_SHORT }}
