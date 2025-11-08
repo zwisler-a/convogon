@@ -12,7 +12,7 @@ import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { BASE_PATH_DEFAULT, CLIENT_CONTEXT_TOKEN_DEFAULT } from "../tokens";
 import { HttpParamsBuilder } from "../utils/http-params-builder";
-import { RequestOptions } from "../models";
+import { RequestOptions, RegisterDto } from "../models";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -41,10 +41,10 @@ export class AuthService {
         return this.httpClient.post(url, null, requestOptions);
     }
 
-    authControllerRegister(observe?: 'body', options?: RequestOptions<'json'>): Observable<any>;
-    authControllerRegister(observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<any>>;
-    authControllerRegister(observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<any>>;
-    authControllerRegister(observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
+    register(registerDto: RegisterDto, observe?: 'body', options?: RequestOptions<'json'>): Observable<any>;
+    register(registerDto: RegisterDto, observe?: 'response', options?: RequestOptions<'json'>): Observable<HttpResponse<any>>;
+    register(registerDto: RegisterDto, observe?: 'events', options?: RequestOptions<'json'>): Observable<HttpEvent<any>>;
+    register(registerDto: RegisterDto, observe?: 'body' | 'events' | 'response', options?: RequestOptions<'arraybuffer' | 'blob' | 'json' | 'text'>): Observable<any> {
         const url = `${this.basePath}/api/auth/register`;
 
         const requestOptions: any = {
@@ -54,6 +54,6 @@ export class AuthService {
             context: this.createContextWithClientId(options?.context)
         };
 
-        return this.httpClient.post(url, null, requestOptions);
+        return this.httpClient.post(url, registerDto, requestOptions);
     }
 }

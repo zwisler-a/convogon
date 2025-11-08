@@ -1,4 +1,4 @@
-import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {BadRequestException, HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import {Repository} from 'typeorm';
 import {InjectRepository} from '@nestjs/typeorm';
 import {JwtService} from '@nestjs/jwt';
@@ -6,6 +6,7 @@ import {AccountEntity} from "../account/account.entity";
 import {JwtPayloadDto} from "./jwt-payload.dto";
 import {MailService} from "../mail/mail.service";
 import {mailTemplateHtml, mailTemplateText} from "../constants";
+import {RegisterDto} from "./dto/register.dto";
 
 @Injectable()
 export class AuthService {
@@ -31,15 +32,25 @@ export class AuthService {
     }
 
 
-    async register(mail: string): Promise<{ id: string }> {
-        const existing = await this.userRepo.findOne({where: {email: mail}});
+    async register(account: RegisterDto, ip: string): Promise<{ id: string }> {
+        if (!account.acceptCodeOfConduct || !account.acceptDataPrivacy) {
+            throw new BadRequestException('Code of Conduct or Data privacy is not accepted');
+        }
+        const existing = await this.userRepo.findOne({where: {email: account.email}});
         if (existing) {
             throw new HttpException('Email already registered', HttpStatus.CONFLICT);
         }
 
-        const user = this.userRepo.create({email: mail});
+        const user = this.userRepo.create({
+            email: account.email,
+            firstName: account.firstName,
+            lastName: account.lastName,
+            acceptedCodeOfConduct: account.acceptCodeOfConduct,
+            acceptedDataPrivacy: account.acceptDataPrivacy,
+            ip: ip
+        });
         await this.userRepo.save(user);
-        await this.signIn(mail);
+        await this.signIn(account.email);
         return {id: user.id};
     }
 
