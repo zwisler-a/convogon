@@ -1,13 +1,15 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
+import {AuthService as ApiAuthService} from '../../api/services/auth.service';
+import {RegisterDto} from '../../api';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
   private token: string | null = null;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private authService: ApiAuthService) {
     this.token = localStorage.getItem('token');
   }
 
@@ -23,10 +25,8 @@ export class AuthService {
     });
   }
 
-  register(email: string) {
-    return this.http.post('/api/auth/register', {
-      email: email,
-    });
+  register(account: RegisterDto) {
+    return this.authService.register(account);
   }
 
   isLoggedIn() {

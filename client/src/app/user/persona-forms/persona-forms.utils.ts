@@ -13,7 +13,7 @@ export function createForms(opts: {
     diet: new FormControl<string | null>('', {validators: Validators.required}),
     dietOther: new FormControl<string | null>('', {validators: [Validators.maxLength(2000)]}),
     support: new FormControl<string | null>('', {validators: Validators.required}),
-    supportOther: new FormControl<string | null>('', {validators: [Validators.required, Validators.maxLength(1000)]}),
+    supportOther: new FormControl<string | null>('', {validators: [Validators.maxLength(1000)]}),
     accommodation: new FormControl<string | null>('', {validators: Validators.required}),
     travellingWithGroup: new FormControl<boolean>(false, {validators: Validators.required}),
     groupName: new FormControl<string | null>('', {validators: [Validators.maxLength(1000)]}),
@@ -23,7 +23,7 @@ export function createForms(opts: {
   const itInfo = new FormGroup<ControlsOf<ItInfoForm>>({
     characterName: new FormControl<string | null>('', {validators: opts.itCharacterNameRequired ? [Validators.required, Validators.maxLength(1000)] : Validators.maxLength(1000)}),
     characterClass: new FormControl<string | null>('', {validators: opts.itCharacterClassRequired ? [Validators.required, Validators.maxLength(1000)] : Validators.maxLength(1000)}),
-    skills: new FormControl<string[]>([''], Validators.maxLength(1000)),
+    skills: new FormControl<string[]>([], Validators.maxLength(1000)),
     fighter: new FormControl<boolean>(false),
   });
   const kidInfo = new FormGroup<ControlsOf<KidInfoForm>>({

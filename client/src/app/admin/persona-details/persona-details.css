@@ -1,0 +1,16 @@
+.back-button {
+  margin-bottom: 1rem;
+}
+
+.avatar img {
+  width: 48px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}

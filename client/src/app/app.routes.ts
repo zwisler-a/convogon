@@ -28,8 +28,8 @@ export const ROUTES = {
   ADMIN: 'admin',
   ADMIN_VIEW_PERSONA: 'admin/persona/:id',
   ADMIN_VIEW_PERSONAS: 'admin/personas',
-  ADMIN_VIEW_USERS: 'admin/users',
-  ADMIN_VIEW_USER: 'admin/auth/:id',
+  ADMIN_VIEW_USERS: 'admin/accounts',
+  ADMIN_VIEW_USER: 'admin/account/:id',
 }
 
 export const routes: Routes = [
@@ -48,7 +48,7 @@ export const routes: Routes = [
       {path: ROUTES.FAQ, component: Faq},
       {path: ROUTES.ADMIN, loadComponent: () => import(/* webpackChunkName: "admin" */ './admin/admin').then(m => m.Admin)},
       {path: ROUTES.ADMIN_VIEW_PERSONAS, loadComponent: () => import(/* webpackChunkName: "admin" */ './admin/personas-view/personas-view').then(m => m.PersonasView)},
-      {path: ROUTES.ADMIN_VIEW_PERSONA, loadComponent: () => import(/* webpackChunkName: "admin" */ './admin/admin-persona-details/admin-persona-details').then(m => m.AdminPersonaDetails)},
+      {path: ROUTES.ADMIN_VIEW_PERSONA, loadComponent: () => import(/* webpackChunkName: "admin" */ './admin/persona-details/persona-details').then(m => m.PersonaDetails)},
       {path: ROUTES.ADMIN_VIEW_USERS, loadComponent: () => import(/* webpackChunkName: "admin" */ './admin/accounts-view/accounts-view').then(m => m.AccountsView)},
       {path: ROUTES.ADMIN_VIEW_USER, loadComponent: () => import(/* webpackChunkName: "admin" */ './admin/account-view/account-view').then(m => m.AccountView)},
       {path: '**', redirectTo: ROUTES.HOME},

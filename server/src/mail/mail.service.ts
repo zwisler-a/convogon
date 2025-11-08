@@ -30,7 +30,7 @@ export class MailService {
     async sendMail(to: string, subject: string, text: string, html?: string) {
         this.logger.debug(`Sending mail to mail ${to}: ${subject}`);
         const info = await this.transporter.sendMail({
-            from: `"No Reply" <${process.env.MAIL_FROM}>`,
+            from: `"No-Reply" <${process.env.MAIL_FROM}>`,
             to,
             subject,
             text,

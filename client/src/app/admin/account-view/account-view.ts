@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
-import {AdminAccountService} from '../admin-account.service';
+import {AccountStoreService} from '../account-store.service';
 import {MatButton} from '@angular/material/button';
 import {
   MatCell,
@@ -17,6 +17,7 @@ import {
 import {ROUTES} from '../../app.routes';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {NavigateBack} from '../../shared/navigate-back';
 
 @Component({
   selector: 'app-account-view',
@@ -35,6 +36,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     RouterLink,
     MatIconModule,
     MatTooltipModule,
+    NavigateBack,
   ],
   templateUrl: './account-view.html',
   styleUrl: './account-view.css',
@@ -46,7 +48,7 @@ export class AccountView {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private accountService: AdminAccountService
+    private accountService: AccountStoreService
   ) {
     this.activatedRoute.params.subscribe((params) => {
       this.id = this.activatedRoute.snapshot.params['id'];

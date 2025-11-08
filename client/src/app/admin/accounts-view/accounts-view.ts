@@ -15,11 +15,12 @@ import {
 import {RouterLink} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {ROUTES} from '../../app.routes';
-import {AdminAccountService} from '../admin-account.service';
+import {AccountStoreService} from '../account-store.service';
 import {MatFormField, MatHint, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {BehaviorSubject, combineLatestWith, map, tap,} from 'rxjs';
+import {NavigateBack} from '../../shared/navigate-back';
 
 @Component({
   selector: 'app-accounts-view',
@@ -42,6 +43,7 @@ import {BehaviorSubject, combineLatestWith, map, tap,} from 'rxjs';
     MatLabel,
     FormsModule,
     MatHint,
+    NavigateBack,
   ],
   templateUrl: './accounts-view.html',
   styleUrl: './accounts-view.css',
@@ -62,7 +64,7 @@ export class AccountsView {
     return this._searchQuery;
   }
 
-  constructor(private accountService: AdminAccountService) {
+  constructor(private accountService: AccountStoreService) {
     this.users$ = this.accountService.getAccounts();
     this.filteredUsers$ = this.users$.pipe(
       combineLatestWith(this.searchQuery$),

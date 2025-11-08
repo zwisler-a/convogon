@@ -9,6 +9,8 @@ import {Router, RouterLink} from '@angular/router';
 import {ROUTES} from '../../app.routes';
 import {MatFormField} from '@angular/material/form-field';
 import {MatCheckbox} from '@angular/material/checkbox';
+import {ValidationErrors} from '../../shared/validation-errors/validation-errors';
+import {RegisterDto} from '../../../api';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +27,8 @@ import {MatCheckbox} from '@angular/material/checkbox';
     MatLabel,
     ReactiveFormsModule,
     MatCheckbox,
-    RouterLink
+    RouterLink,
+    ValidationErrors
   ],
   templateUrl: './register.html',
   styleUrl: './register.css'
@@ -42,16 +45,18 @@ export class Register {
     private router: Router
   ) {
     this.form = this.fb.group({
+      firstName: ['', [Validators.required, Validators.maxLength(1000)]],
+      lastName: ['', [Validators.required, Validators.maxLength(1000)]],
       email: ['', [Validators.required, Validators.email]],
-      data: [false, [Validators.required, (control: FormControl) => control.value]],
-      coc: [false, [Validators.required, (control: FormControl) => control.value]],
+      acceptDataPrivacy: [false, [Validators.required, (control: FormControl) => control.value]],
+      acceptCodeOfConduct: [false, [Validators.required, (control: FormControl) => control.value]],
     });
   }
 
   register(ev: any) {
     ev.preventDefault();
     this.disableRegister = true;
-    this.authService.register(this.form.get('email')?.value).subscribe((res: any) => {
+    this.authService.register(this.form.getRawValue() as any as RegisterDto).subscribe((res: any) => {
       this.snackBar.open("Account wurde registriert", 'OK', {})
       this.router.navigate(['/' + ROUTES.LOGIN_SEND]);
     }, (err) => this.disableRegister = false, () => this.disableRegister = false);
