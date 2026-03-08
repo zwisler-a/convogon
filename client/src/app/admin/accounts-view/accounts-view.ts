@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component, DestroyRef, inject, ViewChild} from '@angular/core';
 import {MatButton} from '@angular/material/button';
 import {
   MatCell,
@@ -10,6 +10,7 @@ import {
   MatRow,
   MatRowDef,
   MatTable,
+  MatTableDataSource,
   MatTableModule,
 } from '@angular/material/table';
 import {RouterLink} from '@angular/router';
@@ -19,8 +20,10 @@ import {AccountStoreService} from '../account-store.service';
 import {MatFormField, MatHint, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
-import {BehaviorSubject, combineLatestWith, map, tap,} from 'rxjs';
+import {BehaviorSubject, combineLatestWith, map,} from 'rxjs';
 import {NavigateBack} from '../../shared/navigate-back';
+import {MatSort, MatSortModule} from '@angular/material/sort';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-accounts-view',
@@ -44,15 +47,19 @@ import {NavigateBack} from '../../shared/navigate-back';
     FormsModule,
     MatHint,
     NavigateBack,
+    MatSortModule,
   ],
   templateUrl: './accounts-view.html',
   styleUrl: './accounts-view.css',
 })
-export class AccountsView {
+export class AccountsView implements AfterViewInit {
   displayedColumns: string[] = ['mail', 'payed', 'playerCount'];
-  users$;
-  searchQuery$ = new BehaviorSubject('');
-  filteredUsers$;
+  dataSource = new MatTableDataSource<any>([]);
+
+  @ViewChild(MatSort) sort!: MatSort;
+
+  private destroyRef = inject(DestroyRef);
+  private searchQuery$ = new BehaviorSubject('');
 
   _searchQuery: string = '';
   set searchQuery(searchQuery: string) {
@@ -65,14 +72,27 @@ export class AccountsView {
   }
 
   constructor(private accountService: AccountStoreService) {
-    this.users$ = this.accountService.getAccounts();
-    this.filteredUsers$ = this.users$.pipe(
+    this.accountService.getAccounts().pipe(
       combineLatestWith(this.searchQuery$),
       map(([users, searchQuery]) =>
         users.filter((user) => JSON.stringify(user).includes(searchQuery))
       ),
-      tap(console.log)
-    );
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe(users => {
+      this.dataSource.data = users;
+    });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      switch (property) {
+        case 'mail': return item.email ?? '';
+        case 'payed': return this.getPaymentStatus(item);
+        case 'playerCount': return this.getPlayerCount(item);
+        default: return item[property] ?? '';
+      }
+    };
+    this.dataSource.sort = this.sort;
   }
 
   protected readonly ROUTES = ROUTES;
