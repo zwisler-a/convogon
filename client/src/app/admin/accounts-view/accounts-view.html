@@ -18,24 +18,25 @@
   <h2>Registrierte Accounts</h2>
   <table
     mat-table
-    [dataSource]="filteredUsers$"
+    matSort
+    [dataSource]="dataSource"
     class="mat-elevation-z8 hoverable-rows"
   >
     <div class="table-columns">
       <ng-container matColumnDef="mail">
-        <th mat-header-cell *matHeaderCellDef>Account</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Account</th>
         <td mat-cell *matCellDef="let element">{{ element.email }}</td>
       </ng-container>
 
       <ng-container matColumnDef="payed">
-        <th mat-header-cell *matHeaderCellDef>Spendenstatus</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Spendenstatus</th>
         <td mat-cell *matCellDef="let element">
           {{ getPaymentStatus(element) }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="playerCount">
-        <th mat-header-cell *matHeaderCellDef> Spieleranzahl </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Spieleranzahl</th>
         <td mat-cell *matCellDef="let element"> {{ getPlayerCount(element) }} </td>
       </ng-container>
     </div>

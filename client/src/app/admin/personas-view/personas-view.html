@@ -8,26 +8,27 @@
   <button mat-stroked-button (click)="csvDownload()">Download CSV</button>
   <table
     mat-table
-    [dataSource]="personas$"
+    matSort
+    [dataSource]="dataSource"
     class="mat-elevation-z8 hoverable-rows"
   >
     <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef>Vorname</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vorname</th>
       <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
     </ng-container>
 
     <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef>Nachname</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nachname</th>
       <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
     </ng-container>
 
     <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef>Typ</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Typ</th>
       <td mat-cell *matCellDef="let element">{{ element.type }}</td>
     </ng-container>
 
     <ng-container matColumnDef="payed">
-      <th mat-header-cell *matHeaderCellDef>Spendenstatus</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Spendenstatus</th>
       <td mat-cell *matCellDef="let element">
         {{ element.payed ? 'Bezahlt' : 'Ausstehend' }}
       </td>
